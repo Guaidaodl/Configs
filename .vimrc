@@ -24,7 +24,13 @@ let g:auto_save = 1 "enable the vim-auto-save
 let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_slient = 1 "do not display the auto-save notification
-"""""""""""""""""""""""""""插件设置结束
+"""YCM 的配置
+let g:ycm_error_symbol= '>>'
+let g:ycm_warning_symbol=">*"
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gl :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+""""""""""""""""""""""""插件设置结束
 "显示行号
 syn on
 set number
@@ -33,6 +39,7 @@ set bs=2
 set showmatch
 set laststatus=2 "总是显示状态栏
 set cursorline
+set nowrap
 
 syntax enable
 colorscheme monokai
@@ -59,44 +66,46 @@ set incsearch
 set hls "检索时高亮
 set foldmethod=syntax "代码折叠
 set foldlevelstart=99
-set helplang=cn
-set helplang=cn
+"set helplang=cn
+
+"""""""""""""""""""""""""""快捷键""""""""""""""""""""""""""
 "normal 和visual模式快捷键
-"conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
 let mapleader = ','
+"conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
 nnoremap <C-l> gt
-nnoremap <C-s> :w<CR>
 nnoremap <C-h> gT
-nnoremap <M-1> :buffer1<CR>
-nnoremap <M-2> :buffer2<CR>
-nnoremap <M-3> :buffer3<CR>
-noremap <F10> :set transparency=0<CR>
-noremap <F11> :set transparency=30<CR>
-noremap <F5> :!open %<CR><CR>
-noremap <C-t> :NERDTree<CR>
+nnoremap <F10> :set transparency=0<CR>
+nnoremap <F11> :set transparency=30<CR>
+nnoremap <C-t> :NERDTree<CR>
 "调整缩进的快捷键
-noremap <Tab> >>
-noremap <S-Tab> <<
+nnorema <C-[> <<
+nnoremap <tab> >>
+nnoremap <C-]> >>
+"移动光标的快捷键
+nnoremap <C-e> $
+nnoremap <C-a> ^
+nnoremap <C-k> d$
+nnoremap <C-p> ddkP
+nnoremap <C-n> ddp
 
-noremap <C-e> $
-noremap <C-a> ^
-noremap <C-k> d$
-
-noremap <leader>x :close <CR>
+nnoremap <leader>x :close <CR>
+nnoremap <C-o> <Esc>
+"快速修改vimrc文件
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
 "insert模式下的快捷键
-noremap! <C-k> <Esc>d$a
+inoremap <C-k> <Esc>d$a
+inoremap <C-o> <Esc>
+inoremap <esc> <nop>
 
+"""跟文件类型有关的快捷键
+autocmd FileType html noremap <F5> :!open %<CR><CR>
+autocmd FileType vim  noremap <F5> :source %<CR>
 
 "设置初始化的窗口大小
 set columns=120
 set lines=40
 
-"YCM 的配置
-let g:ycm_error_symbol= '>>'
-let g:ycm_warning_symbol=">*"
 
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gl :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
