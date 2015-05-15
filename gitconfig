@@ -1,0 +1,32 @@
+[alias]
+	st = status
+	br = branch
+	cm = commit
+	l2 = log -2
+	l5 = log -5
+	ch = checkout
+	pr = pull --rebase
+	ci = commit
+	re = rebase
+	ss = stash save
+	sp = stash pop
+	sl = stash list
+	df = diff
+[user]
+	name = Guadiaodl
+	email = linyubinas@gmail.com
+[core]
+	excludesfile = /Users/Guaidaodl/.gitignore_global
+	editor = mvim -f
+	ignorecase = true
+	quotepath = false
+	edit = mvim
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
+[color]
+	ui = auto
