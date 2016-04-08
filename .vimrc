@@ -11,7 +11,6 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/vim-auto-save'
 " 主题
 Plugin 'sickill/vim-monokai'
@@ -24,12 +23,6 @@ let g:auto_save = 1 "enable the vim-auto-save
 let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_slient = 1 "do not display the auto-save notification
-"""YCM 的配置
-let g:ycm_error_symbol= '>>'
-let g:ycm_warning_symbol=">*"
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gl :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """"""""""""""""""""""""插件设置结束
 "显示行号
 syn on
@@ -70,13 +63,13 @@ set foldlevelstart=99
 
 """""""""""""""""""""""""""快捷键""""""""""""""""""""""""""
 "normal 和visual模式快捷键
-let mapleader = ','
+let mapleader = ' '
 "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
 nnoremap <C-l> gt
 nnoremap <C-h> gT
 nnoremap <F10> :set transparency=0<CR>
 nnoremap <F11> :set transparency=30<CR>
-nnoremap <C-t> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
 "调整缩进的快捷键
 nnorema <C-[> <<
 nnoremap <tab> >>
@@ -88,14 +81,14 @@ nnoremap <C-k> d$
 nnoremap <C-p> ddkP
 nnoremap <C-n> ddp
 
-nnoremap <leader>x :close <CR>
 nnoremap <C-o> <Esc>
-"快速修改vimrc文件
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+"laeder相关的配置
+nnoremap <leader>x :close <CR>
+nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
 "insert模式下的快捷键
 inoremap <C-k> <Esc>d$a
-inoremap <C-o> <Esc>
+inoremap jk <Esc>
 inoremap <esc> <nop>
 
 """跟文件类型有关的快捷键
