@@ -18,8 +18,9 @@ Plugin 'sickill/vim-monokai'
 Plugin 'benekastah/neomake'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'nathanaelkane/vim-indent-guides'
-" markdown
-Plugin 'suan/vim-instant-markdown'
+" markdow
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype on
@@ -42,6 +43,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:indent_guides_start_level = 1
 let g:indent_guides_guide_size = 1
 """"""""""""""""""""""""插件设置结束
+set fileencodings=utf-8,gb18030,gbk,gb2312,cp936
 "显示行号
 syn on
 set number
@@ -61,7 +63,7 @@ if has("gui_running")
   elseif has("gui_macvim")
     set guifont=Menlo\ Regular:h16
   elseif has("gui_win32")
-    set guifont=Consolas:h11:cANSI
+    set guifont=Consolas:h16:cANSI
   endif    
 endif
 
