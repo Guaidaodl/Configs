@@ -11,9 +11,13 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/vim-auto-save'
 " 主题
 Plugin 'sickill/vim-monokai'
+Plugin 'benekastah/neomake'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'nathanaelkane/vim-indent-guides'
 call vundle#end()
 filetype on
 
@@ -23,6 +27,14 @@ let g:auto_save = 1 "enable the vim-auto-save
 let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_slient = 1 "do not display the auto-save notification
+"""ctrlp的配置
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_root_markers = ['build.gradle', 'pom.xml']
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 """"""""""""""""""""""""插件设置结束
 "显示行号
 syn on
@@ -47,9 +59,14 @@ if has("gui_running")
   endif    
 endif
 
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
+
 "以下为配置tab和缩进
 set expandtab
 set shiftwidth=4
+set softtabstop=4
 set tabstop=4
 
 set autoread "自动读取已经修改的文件
@@ -75,15 +92,15 @@ nnorema <C-[> <<
 nnoremap <tab> >>
 nnoremap <C-]> >>
 "移动光标的快捷键
-nnoremap <C-e> $
-nnoremap <C-a> ^
 nnoremap <C-k> d$
-nnoremap <C-p> ddkP
-nnoremap <C-n> ddp
 
 nnoremap <C-o> <Esc>
 "laeder相关的配置
 nnoremap <leader>x :close <CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>- <C-w>-
+nnoremap <leader>+ <C-w>+
+nnoremap <leader>t :terminal<CR>
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
 "insert模式下的快捷键
@@ -94,11 +111,5 @@ inoremap <esc> <nop>
 """跟文件类型有关的快捷键
 autocmd FileType html noremap <F5> :!open %<CR><CR>
 autocmd FileType vim  noremap <F5> :source %<CR>
-
-"设置初始化的窗口大小
-set columns=120
-set lines=40
-
-
 
 
