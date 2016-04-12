@@ -18,6 +18,9 @@ Plugin 'sickill/vim-monokai'
 Plugin 'benekastah/neomake'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'nathanaelkane/vim-indent-guides'
+" markdown
+Plugin 'suan/vim-instant-markdown'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype on
 
