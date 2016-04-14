@@ -103,7 +103,7 @@ nnoremap <F10> :set transparency=0<CR>
 nnoremap <F11> :set transparency=30<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 "调整缩进的快捷键
-nnorema <C-[> <<
+nnoremap <C-[> <<
 nnoremap <tab> >>
 nnoremap <C-]> >>
 "移动光标的快捷键
