@@ -42,14 +42,17 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 """vim-indent-guides
-let g:indent_guides_start_level = 1
+let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
 """ table mode
 let g:table_mode_corner = "|"
 nnoremap <leader>tm :TableModeToogle<CR>
-
 """"""""""""""""""""""""插件设置结束
 set fileencodings=utf-8,gb18030,gbk,gb2312,cp936
+"隐藏菜单和工具条
+set guioptions-=m
+set guioptions-=T
 "显示行号
 syn on
 set number
@@ -116,6 +119,9 @@ nnoremap <leader>x :close <CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>- <C-w>-
 nnoremap <leader>+ <C-w>+
+"copy line to system clipboard
+nnoremap <leader>y "+yy
+nnoremap <leader>t :terminal<CR>
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
 "insert模式下的快捷键
@@ -123,8 +129,12 @@ inoremap <C-k> <Esc>d$a
 inoremap jk <Esc>
 inoremap <esc> <nop>
 
+"visual mode
+vnoremap <esc> <nop>
+vnoremap jk <esc>
+vnoremap <leader>y "+y
+
 """跟文件类型有关的快捷键
 autocmd FileType html noremap <F5> :!open %<CR><CR>
 autocmd FileType vim  noremap <F5> :source %<CR>
-
 
