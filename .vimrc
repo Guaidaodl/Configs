@@ -18,9 +18,11 @@ Plugin 'sickill/vim-monokai'
 Plugin 'benekastah/neomake'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'nathanaelkane/vim-indent-guides'
-" markdow
+" markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'dhruvasagar/vim-table-mode'
+
 Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype on
@@ -42,6 +44,10 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 """vim-indent-guides
 let g:indent_guides_start_level = 1
 let g:indent_guides_guide_size = 1
+""" table mode
+let g:table_mode_corner = "|"
+nnoremap <leader>tm :TableModeToogle<CR>
+
 """"""""""""""""""""""""插件设置结束
 set fileencodings=utf-8,gb18030,gbk,gb2312,cp936
 "显示行号
@@ -69,6 +75,7 @@ endif
 
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
+    nnoremap <leader>t :terminal<CR>
 endif
 
 "以下为配置tab和缩进
@@ -109,7 +116,6 @@ nnoremap <leader>x :close <CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>- <C-w>-
 nnoremap <leader>+ <C-w>+
-nnoremap <leader>t :terminal<CR>
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
 "insert模式下的快捷键
