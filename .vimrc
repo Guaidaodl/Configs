@@ -9,10 +9,12 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/vim-auto-save'
+Plugin 'airblade/vim-gitgutter'
 " 主题
 Plugin 'sickill/vim-monokai'
 Plugin 'benekastah/neomake'
@@ -24,6 +26,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'dhruvasagar/vim-table-mode'
 
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 call vundle#end()
 filetype on
 
@@ -39,16 +42,27 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['build.gradle', 'pom.xml']
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
 """vim-indent-guides
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
+
 """ table mode
 let g:table_mode_corner = "|"
 nnoremap <leader>tm :TableModeToogle<CR>
+""" YouCompleteMe
+let g:enable_ycm_at_startup = 0
+
+""" airline theme
+let g:airline_theme='papercolor'
+
+""" git
+let g:gitgutter_enable = 1
 """"""""""""""""""""""""插件设置结束
+
+syntax enable
 set fileencodings=utf-8,gb18030,gbk,gb2312,cp936
 "隐藏菜单和工具条
 set guioptions-=m
@@ -63,8 +77,11 @@ set laststatus=2 "总是显示状态栏
 set cursorline
 set nowrap
 
-syntax enable
 colorscheme monokai
+
+"语法缩进
+"set foldmehod=indent
+set foldmethod=syntax
 
 if has("gui_running")
   if has("gui_gtk2")
