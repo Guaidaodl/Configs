@@ -14,9 +14,11 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/vim-auto-save'
+"git 
 Plugin 'airblade/vim-gitgutter'
-" 主题
+"theme
 Plugin 'sickill/vim-monokai'
+
 Plugin 'benekastah/neomake'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -27,6 +29,8 @@ Plugin 'dhruvasagar/vim-table-mode'
 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
+
+Plugin 'rust-lang/rust.vim'
 call vundle#end()
 filetype on
 
@@ -44,6 +48,15 @@ let g:ctrlp_root_markers = ['build.gradle', 'pom.xml']
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
+"""YCM 的配置
+let g:ycm_error_symbol= '>>'
+let g:ycm_warning_symbol=">*"
+let g:ycm_confirm_extra_conf = 1   "自动加载config
+
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gl :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 """vim-indent-guides
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
@@ -60,6 +73,9 @@ let g:airline_theme='papercolor'
 
 """ git
 let g:gitgutter_enable = 1
+
+""" rustc的配置
+let g:rustc_path = "/usr/local/bin/rustc";
 """"""""""""""""""""""""插件设置结束
 
 syntax enable
