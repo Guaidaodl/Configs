@@ -64,7 +64,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 """ table mode
 let g:table_mode_corner = "|"
-nnoremap <leader>tm :TableModeToogle<CR>
+nnoremap <leader>tm :TableModeToggle<CR>
 """ YouCompleteMe
 let g:enable_ycm_at_startup = 0
 
@@ -73,9 +73,6 @@ let g:airline_theme='papercolor'
 
 """ git
 let g:gitgutter_enable = 1
-
-""" rustc的配置
-let g:rustc_path = "/usr/local/bin/rustc";
 """"""""""""""""""""""""插件设置结束
 
 syntax enable
