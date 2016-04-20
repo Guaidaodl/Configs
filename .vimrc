@@ -98,7 +98,7 @@ set foldmethod=syntax
 
 if has("gui_running")
   if has("gui_gtk2")
-    set guifont=Inconsolata\ 12
+set guifont=Inconsolata\ 12
   elseif has("gui_macvim")
     set guifont=Menlo\ Regular:h16
   elseif has("gui_win32")
@@ -142,7 +142,6 @@ nnoremap <C-]> >>
 "移动光标的快捷键
 nnoremap <C-k> d$
 
-nnoremap <C-o> <Esc>
 "laeder相关的配置
 nnoremap <leader>pb :CtrlPBuffer<CR>
 nnoremap <leader>x :close <CR>
@@ -157,10 +156,8 @@ nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
 "insert模式下的快捷键
 inoremap <C-k> <Esc>d$a
 inoremap jk <Esc>
-inoremap <esc> <nop>
 
 "visual mode
-vnoremap <esc> <nop>
 vnoremap jk <esc>
 vnoremap <leader>y "+y
 
