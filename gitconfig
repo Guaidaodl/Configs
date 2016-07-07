@@ -1,7 +1,7 @@
 [alias]
 	st = status
 	br = branch
-	cm = commit
+	cm = commit -am
 	l2 = log -2
 	l5 = log -5
 	ch = checkout
@@ -12,15 +12,20 @@
 	sp = stash pop
 	sl = stash list
 	df = diff
+    lg = log --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+    lga = log --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+    lgg = log --graph --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+    lgdiff = log -p --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)'
 [user]
-	name = Guadiaodl
+	name = Guaidaodl 
 	email = linyubinas@gmail.com
 [core]
-	excludesfile = /Users/Guaidaodl/.gitignore_global
+	excludesfile = /Users/linyb/.gitignore_global
 	editor = mvim -f
 	ignorecase = true
 	quotepath = false
 	edit = mvim
+	filemode = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -30,3 +35,8 @@
 	required = true
 [color]
 	ui = auto
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/linyb/.stCommitMsg
