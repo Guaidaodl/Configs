@@ -53,10 +53,6 @@ let g:ycm_error_symbol= '>>'
 let g:ycm_warning_symbol=">*"
 let g:ycm_confirm_extra_conf = 1   "自动加载config
 
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gl :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 """vim-indent-guides
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
@@ -116,7 +112,8 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-
+set list
+set lcs=tab:>-,
 set autoread "自动读取已经修改的文件
 
 set ignorecase "检索时忽略大小写
@@ -130,18 +127,22 @@ set foldlevelstart=99
 "normal 和visual模式快捷键
 let mapleader = ' '
 "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
-nnoremap <C-l> gt
-nnoremap <C-h> gT
+nnoremap <A-]> gt
+nnoremap <A-[> gT
 nnoremap <F10> :set transparency=0<CR>
 nnoremap <F11> :set transparency=30<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 "调整缩进的快捷键
-nnoremap <C-[> <<
 nnoremap <tab> >>
-nnoremap <C-]> >>
 "移动光标的快捷键
 nnoremap <C-k> d$
 
+"JumpList
+nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <C-[> <C-O>
+nnoremap <C-]> <C-I>
 "laeder相关的配置
 nnoremap <leader>pb :CtrlPBuffer<CR>
 nnoremap <leader>x :close <CR>
