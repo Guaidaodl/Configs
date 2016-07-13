@@ -31,6 +31,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 
 Plugin 'rust-lang/rust.vim'
+
+" Swift
+Plugin 'keith/swift.vim'
 call vundle#end()
 filetype on
 
