@@ -14,15 +14,18 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/vim-auto-save'
-"git 
+
+" Git 
 Plugin 'airblade/vim-gitgutter'
-"theme
+Plugin 'tpope/vim-fugitive'
+
+" Theme
 Plugin 'sickill/vim-monokai'
 
 Plugin 'benekastah/neomake'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'nathanaelkane/vim-indent-guides'
-" markdown
+" Markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'dhruvasagar/vim-table-mode'
