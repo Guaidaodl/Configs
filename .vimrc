@@ -109,11 +109,6 @@ set guifont=Inconsolata\ 12
   endif    
 endif
 
-if has('nvim')
-    tnoremap <Esc> <C-\><C-n>
-    nnoremap <leader>t :terminal<CR>
-endif
-
 "以下为配置tab和缩进
 set expandtab
 set shiftwidth=4
@@ -175,4 +170,6 @@ vnoremap <leader>y "+y
 """跟文件类型有关的快捷键
 autocmd FileType html noremap <F5> :!open %<CR><CR>
 autocmd FileType vim  noremap <F5> :source %<CR>
+
+autocmd FileType ruby setl sw=2 sts=2
 
