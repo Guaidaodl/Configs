@@ -139,8 +139,6 @@ nnoremap <A-[> gT
 nnoremap <F10> :set transparency=0<CR>
 nnoremap <F11> :set transparency=30<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-"调整缩进的快捷键
-nnoremap <tab> >>
 "移动光标的快捷键
 nnoremap <C-k> d$
 
@@ -149,7 +147,7 @@ nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <C-[> <C-O>
-nmap <C-]> <C-I>
+nnoremap <C-]> <C-I>
 
 " TagBar
 nnoremap <F8> :TagbarToggle<CR>
@@ -173,8 +171,6 @@ inoremap jk <Esc>
 "visual mode
 vnoremap jk <esc>
 vnoremap <leader>y "+y
-
-nnoremap <esc> nop
 
 """跟文件类型有关的快捷键
 autocmd FileType html noremap <F5> :!open %<CR><CR>
