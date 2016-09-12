@@ -29,9 +29,10 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'dhruvasagar/vim-table-mode'
-
+" c/c++ 加强
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
+Plugin 'majutsushi/tagbar'
 
 Plugin 'rust-lang/rust.vim'
 
@@ -143,13 +144,17 @@ nnoremap <tab> >>
 "移动光标的快捷键
 nnoremap <C-k> d$
 
-"JumpList
+" JumpList
 nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <C-[> <C-O>
-nnoremap <C-]> <C-I>
-"laeder相关的配置
+nmap <C-]> <C-I>
+
+" TagBar
+nnoremap <F8> :TagbarToggle<CR>
+
+" laeder相关的配置
 nnoremap <leader>pb :CtrlPBuffer<CR>
 nnoremap <leader>x :close <CR>
 nnoremap <leader>w :w<CR>
@@ -160,6 +165,7 @@ nnoremap <leader>y "+yy
 nnoremap <leader>t :terminal<CR>
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
+
 "insert模式下的快捷键
 inoremap <C-k> <Esc>d$a
 inoremap jk <Esc>
@@ -167,6 +173,8 @@ inoremap jk <Esc>
 "visual mode
 vnoremap jk <esc>
 vnoremap <leader>y "+y
+
+nnoremap <esc> nop
 
 """跟文件类型有关的快捷键
 autocmd FileType html noremap <F5> :!open %<CR><CR>
