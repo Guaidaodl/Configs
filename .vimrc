@@ -141,8 +141,6 @@ nnoremap <C-k> d$
 nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <C-[> <C-O>
-nnoremap <C-]> <C-I>
 
 " TagBar
 nnoremap <F8> :TagbarToggle<CR>
