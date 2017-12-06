@@ -22,24 +22,10 @@
 	email = linyubinas@gmail.com
 [core]
 	excludesfile = /Users/linyb/.gitignore_global
-	editor = mvim -f
+	editor = vim
 	ignorecase = true
 	quotepath = false
-	edit = mvim
+	edit = vim
 	fileMode = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[filter "media"]
-	clean = git media clean %f
-	smudge = git media smudge %f
-	required = true
 [color]
 	ui = auto
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[commit]
-	template = /Users/linyb/.stCommitMsg
-[diff]
-	tool = vimdiff

@@ -76,12 +76,24 @@ let g:airline_theme='papercolor'
 
 """ git
 let g:gitgutter_enable = 1
+
+""" cscope
+if has("cscope")
+  set csprg=/usr/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+    cs add cscope.out
+  endif
+  set csverb
+endif
 """"""""""""""""""""""""插件设置结束
 
 syntax enable
 set fileencodings=utf-8,gb18030,gbk,gb2312,cp936
 "隐藏菜单和工具条
-set guioptions-=m
 set guioptions-=T
 "显示行号
 syn on
@@ -100,12 +112,13 @@ colorscheme monokai
 set foldmethod=syntax
 
 if has("gui_running")
-  if has("gui_gtk2")
-set guifont=Inconsolata\ 12
-  elseif has("gui_macvim")
+  if has("gui_macvim")
     set guifont=Menlo\ Regular:h16
   elseif has("gui_win32")
     set guifont=Consolas:h16:cANSI
+  else
+    " linux
+    set guifont=Inconsolata\ 16
   endif    
 endif
 
@@ -126,8 +139,20 @@ set foldlevelstart=99
 "set helplang=cn
 
 """""""""""""""""""""""""""快捷键""""""""""""""""""""""""""
-"normal 和visual模式快捷键
 let mapleader = ' '
+
+"""跟文件类型有关的快捷键
+autocmd FileType html noremap <F5> :!open %<CR><CR>
+autocmd FileType vim  noremap <F5> :source %<CR>
+autocmd FileType ruby setl sw=2 sts=2
+
+"insert模式下的快捷键
+inoremap <C-k> <Esc>d$a
+inoremap jk <Esc>
+
+"visual mode
+vnoremap jk <esc>
+vnoremap <leader>y "+y
 "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
 nnoremap <A-]> gt
 nnoremap <A-[> gT
@@ -146,28 +171,31 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F8> :TagbarToggle<CR>
 
 " laeder相关的配置
-nnoremap <leader>pb :CtrlPBuffer<CR>
-nnoremap <leader>x :close <CR>
-nnoremap <leader>w :w<CR>
+nnoremap <leader><SPACE> :
+nnoremap <leader>wc :close <CR>
+nnoremap <leader>fs :w<CR>
 nnoremap <leader>- <C-w>-
 nnoremap <leader>+ <C-w>+
+
 "copy line to system clipboard
 nnoremap <leader>y "+yy
 nnoremap <leader>t :terminal<CR>
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
 
-"insert模式下的快捷键
-inoremap <C-k> <Esc>d$a
-inoremap jk <Esc>
+"Buffer 相关的快捷键
+nnoremap <leader>b1 :buffer 1<CR>
+nnoremap <leader>b2 :buffer 2<CR>
+nnoremap <leader>b3 :buffer 3<CR>
+nnoremap <leader>b4 :buffer 4<CR>
+nnoremap <leader>b5 :buffer 5<CR>
+nnoremap <leader>bl :ls<CR>
+nnoremap <leader>bp :bp<CR>
+nnoremap <leader>bn :bn<CR>
 
-"visual mode
-vnoremap jk <esc>
-vnoremap <leader>y "+y
-
-"""跟文件类型有关的快捷键
-autocmd FileType html noremap <F5> :!open %<CR><CR>
-autocmd FileType vim  noremap <F5> :source %<CR>
-
-autocmd FileType ruby setl sw=2 sts=2
-
+"CtrlP 的快捷键
+nnoremap <leader>pat :CtrlPBufTagAll<CR>
+nnoremap <leader>pb  :CtrlPBuffer<CR>
+nnoremap <leader>pf  :CtrlP<CR>
+nnoremap <leader>pt  :CtrlPBufTag<CR>
+nnoremap <leader>pr  :CtrlPMRUFiles<CR>
