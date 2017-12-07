@@ -172,7 +172,7 @@ nnoremap <F8> :TagbarToggle<CR>
 
 " laeder相关的配置
 nnoremap <leader><SPACE> :
-nnoremap <leader>wc :close <CR>
+
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>- <C-w>-
 nnoremap <leader>+ <C-w>+
@@ -199,3 +199,14 @@ nnoremap <leader>pb  :CtrlPBuffer<CR>
 nnoremap <leader>pf  :CtrlP<CR>
 nnoremap <leader>pt  :CtrlPBufTag<CR>
 nnoremap <leader>pr  :CtrlPMRUFiles<CR>
+
+" Windows 相关的快捷键
+nnoremap <leader>wc :close<CR>
+nnoremap <leader>ws :split<CR>
+nnoremap <leader>wv :vs<CR>
+nnoremap <leader>wo <C-w>o
+nnoremap <leader>wl <C-w>l
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wk <C-w>k
+
