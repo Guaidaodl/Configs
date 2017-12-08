@@ -17,6 +17,14 @@ fi
 echo create soft link to $script_path/vimrc
 ln -s $script_path/vimrc ~/.vimrc
 
+echo "install dein"
+if [ -d ~/.vim/bundle ]; then
+    rm -rf ~/.vim/bundle
+fi
+mkdir -p ~/.vim/bundle
+dein_install_dir=~/.vim/bundle/repos/github.com/Shougo/dein.vim
+git clone https://github.com/Shougo/dein.vim $dein_install_dir
+
 echo finish install vim config
 echo
 

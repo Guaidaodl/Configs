@@ -1,44 +1,69 @@
 set nocompatible
 set hls "检索时高亮
-filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
 
-call vundle#begin()
-" let Vundle manage Vundle, requred
-Plugin 'gmarik/Vundle.vim'
-Plugin 'rizzatti/dash.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-scripts/vim-auto-save'
+" required:
+set runtimepath+=/root/.vim/bundle/repos/github.com/Shougo/dein.vim
 
-" Git 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
+" required:
+if dein#load_state('/root/.vim/bundle')
+  call dein#begin('/root/.vim/bundle')
 
-" Theme
-Plugin 'sickill/vim-monokai'
+  " Let dein manage dein
+  " Required:
+  call dein#add('/root/.vim/bundle/repos/github.com/Shougo/dein.vim')
 
-Plugin 'benekastah/neomake'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'nathanaelkane/vim-indent-guides'
-" Markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'dhruvasagar/vim-table-mode'
-" c/c++ 加强
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'majutsushi/tagbar'
+  " Add or remove your plugins here:
+  call dein#add('rizzatti/dash.vim')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('jiangmiao/auto-pairs')
+  call dein#add('ctrlpvim/ctrlp.vim')
+  call dein#add('vim-scripts/vim-auto-save')
 
-Plugin 'rust-lang/rust.vim'
+  " Git 
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('tpope/vim-fugitive')
 
-" Swift
-Plugin 'keith/swift.vim'
-call vundle#end()
+  " Theme
+  call dein#add('sickill/vim-monokai')
+
+  call dein#add('benekastah/neomake')
+  call dein#add('octol/vim-cpp-enhanced-highlight')
+  call dein#add('nathanaelkane/vim-indent-guides')
+  " Markdown
+  call dein#add('godlygeek/tabular')
+  call dein#add('plasticboy/vim-markdown')
+  call dein#add('dhruvasagar/vim-table-mode')
+  " c/c++ 加强
+  "call dein#add('Valloric/YouCompleteMe')
+  "call dein#add('rdnetto/YCM-Generator')
+  call dein#add('majutsushi/tagbar')
+
+  call dein#add('rust-lang/rust.vim')
+  call dein#add('keith/swift.vim')
+
+  " required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+
 filetype on
 
 """""""""""""""""""""""""""插件相关设置
@@ -174,8 +199,6 @@ nnoremap <F8> :TagbarToggle<CR>
 nnoremap <leader><SPACE> :
 
 nnoremap <leader>fs :w<CR>
-nnoremap <leader>- <C-w>-
-nnoremap <leader>+ <C-w>+
 
 "copy line to system clipboard
 nnoremap <leader>y "+yy
@@ -210,6 +233,11 @@ nnoremap <leader>wl <C-w>l
 nnoremap <leader>wh <C-w>h
 nnoremap <leader>wj <C-w>j
 nnoremap <leader>wk <C-w>k
+nnoremap <leader>w= <C-w>=
+nnoremap <leader>w+ 10<C-w>+
+nnoremap <leader>w- 10<C-w>-
+nnoremap <leader>w> 10<C-w>>
+nnoremap <leader>w< 10<C-w><
 
 " Cscpoe 相关的快捷键
 nnoremap <leader>cg :cs find g<SPACE>
