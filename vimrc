@@ -7,11 +7,11 @@ if &compatible
 endif
 
 " required:
-set runtimepath+=/root/.vim/bundle/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
 
 " required:
-if dein#load_state('/root/.vim/bundle')
-  call dein#begin('/root/.vim/bundle')
+if dein#load_state('~/.vim/bundle')
+  call dein#begin('~/.vim/bundle')
 
   " Let dein manage dein
   " Required:
