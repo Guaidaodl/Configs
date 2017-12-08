@@ -21,7 +21,7 @@
 	name = Guaidaodl 
 	email = linyubinas@gmail.com
 [core]
-	excludesfile = /Users/linyb/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = vim
 	ignorecase = true
 	quotepath = false
