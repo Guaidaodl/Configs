@@ -30,9 +30,6 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tpope/vim-fugitive')
 
-  " Theme
-  call dein#add('sickill/vim-monokai')
-
   call dein#add('benekastah/neomake')
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('nathanaelkane/vim-indent-guides')
@@ -41,13 +38,28 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('plasticboy/vim-markdown')
   call dein#add('dhruvasagar/vim-table-mode')
   " c/c++ 加强
-  "call dein#add('Valloric/YouCompleteMe')
-  "call dein#add('rdnetto/YCM-Generator')
+  call dein#add('Valloric/YouCompleteMe')
+  call dein#add('rdnetto/YCM-Generator')
+
   call dein#add('majutsushi/tagbar')
 
   call dein#add('rust-lang/rust.vim')
   call dein#add('keith/swift.vim')
 
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+
+  call dein#add('Shougo/neco-vim')
+  
+  " Themes
+  call dein#add('sickill/vim-monokai')
+  call dein#add('skielbasa/vim-material-monokai')
+  call dein#add('dracula/vim')
+  call dein#add('vim-scripts/Solarized')
+  
   " required:
   call dein#end()
   call dein#save_state()
@@ -67,6 +79,11 @@ syntax enable
 filetype on
 
 """""""""""""""""""""""""""插件相关设置
+"""deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#max_list = 10
+let g:deoplete#sources = {}
+
 """vim-auto-save
 let g:auto_save = 1 "enable the vim-auto-save
 let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
@@ -130,7 +147,7 @@ set laststatus=2 "总是显示状态栏
 set cursorline
 set nowrap
 
-colorscheme monokai
+colorscheme dracula
 
 "语法缩进
 "set foldmehod=indent
@@ -198,7 +215,9 @@ nnoremap <F8> :TagbarToggle<CR>
 " laeder相关的配置
 nnoremap <leader><SPACE> :
 
+" File 相关的配置
 nnoremap <leader>fs :w<CR>
+nnoremap <leader>fo :e<SPACE>
 
 "copy line to system clipboard
 nnoremap <leader>y "+yy
