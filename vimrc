@@ -203,10 +203,15 @@ nnoremap <leader>pr  :CtrlPMRUFiles<CR>
 " Windows 相关的快捷键
 nnoremap <leader>wc :close<CR>
 nnoremap <leader>ws :split<CR>
+nnoremap <leader>wt :NERDTreeToggle<CR>
 nnoremap <leader>wv :vs<CR>
 nnoremap <leader>wo <C-w>o
 nnoremap <leader>wl <C-w>l
 nnoremap <leader>wh <C-w>h
 nnoremap <leader>wj <C-w>j
 nnoremap <leader>wk <C-w>k
+
+" Cscpoe 相关的快捷键
+nnoremap <leader>cg :cs find g<SPACE>
+nnoremap <leader>cc :cs find c<SPACE>
 
