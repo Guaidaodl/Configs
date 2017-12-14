@@ -15,7 +15,7 @@ if dein#load_state('~/.vim/bundle')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/root/.vim/bundle/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.vim/bundle/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
   call dein#add('rizzatti/dash.vim')
@@ -109,7 +109,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 """ table mode
 let g:table_mode_corner = "|"
-nnoremap <leader>tm :TableModeToggle<CR>
+
 """ YouCompleteMe
 let g:enable_ycm_at_startup = 0
 
@@ -196,8 +196,6 @@ inoremap jk <Esc>
 vnoremap jk <esc>
 vnoremap <leader>y "+y
 "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
-nnoremap <A-]> gt
-nnoremap <A-[> gT
 nnoremap <F10> :set transparency=0<CR>
 nnoremap <F11> :set transparency=30<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
@@ -214,6 +212,7 @@ nnoremap <F8> :TagbarToggle<CR>
 
 " laeder相关的配置
 nnoremap <leader><SPACE> :
+nnoremap <leader>x :close<CR>
 
 " File 相关的配置
 nnoremap <leader>fs :w<CR>
@@ -221,7 +220,6 @@ nnoremap <leader>fo :e<SPACE>
 
 "copy line to system clipboard
 nnoremap <leader>y "+yy
-nnoremap <leader>t :terminal<CR>
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
 
@@ -247,6 +245,7 @@ nnoremap <leader>wc :close<CR>
 nnoremap <leader>ws :split<CR>
 nnoremap <leader>wt :NERDTreeToggle<CR>
 nnoremap <leader>wv :vs<CR>
+nnoremap <leader>ww <C-w><C-w>
 nnoremap <leader>wo <C-w>o
 nnoremap <leader>wl <C-w>l
 nnoremap <leader>wh <C-w>h
@@ -258,7 +257,31 @@ nnoremap <leader>w- 10<C-w>-
 nnoremap <leader>w> 10<C-w>>
 nnoremap <leader>w< 10<C-w><
 
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+if has('nvim')
+    tnoremap <A-h> <C-\><C-N><C-w>h
+    tnoremap <A-j> <C-\><C-N><C-w>j
+    tnoremap <A-k> <C-\><C-N><C-w>k
+    tnoremap <A-l> <C-\><C-N><C-w>l
+endif 
+
 " Cscpoe 相关的快捷键
 nnoremap <leader>cg :cs find g<SPACE>
 nnoremap <leader>cc :cs find c<SPACE>
 
+" Terminal And tab
+nnoremap <leader>te :terminal<CR>
+nnoremap <leader>tn :tabnew<CR>
+nnoremap <leader>ts :tabs<CR>
+nnoremap <leader>tl :tabnext<CR>
+nnoremap <leader>th :tabprevious<CR>
+nnoremap <leader>to :tabonly<CR>
+nnoremap <leader>tc :tabclose<CR>
+
+" Git 相关的快捷键
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gl :Git lg<CR>
