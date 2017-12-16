@@ -36,7 +36,6 @@ if dein#load_state('~/.vim/bundle')
   " Markdown
   call dein#add('godlygeek/tabular')
   call dein#add('plasticboy/vim-markdown')
-  call dein#add('dhruvasagar/vim-table-mode')
   " c/c++ 加强
   call dein#add('Valloric/YouCompleteMe')
   call dein#add('rdnetto/YCM-Generator')
@@ -229,7 +228,7 @@ nnoremap <leader>b2 :buffer 2<CR>
 nnoremap <leader>b3 :buffer 3<CR>
 nnoremap <leader>b4 :buffer 4<CR>
 nnoremap <leader>b5 :buffer 5<CR>
-nnoremap <leader>bl :ls<CR>
+nnoremap <leader>bl :CtrlPBuffer<CR>
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bn :bn<CR>
 
@@ -273,15 +272,24 @@ nnoremap <leader>cg :cs find g<SPACE>
 nnoremap <leader>cc :cs find c<SPACE>
 
 " Terminal And tab
-nnoremap <leader>te :terminal<CR>
+nnoremap <leader>tt :terminal<CR>
 nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>ts :tabs<CR>
 nnoremap <leader>tl :tabnext<CR>
 nnoremap <leader>th :tabprevious<CR>
 nnoremap <leader>to :tabonly<CR>
 nnoremap <leader>tc :tabclose<CR>
+nnoremap <leader>te :call EditCurrentBufferInNewTab()<CR>
+nnoremap <C-h> gT
+nnoremap <C-l> gt
+function! EditCurrentBufferInNewTab()
+    let cur = bufnr("%")
+    execute "tabe" 
+    execute "buffer" . cur
+endfunction
 
 " Git 相关的快捷键
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gl :Git lg<CR>
+nnoremap <leader>gd :Git df<CR>
