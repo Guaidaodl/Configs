@@ -36,9 +36,11 @@ if dein#load_state('~/.vim/bundle')
   " Markdown
   call dein#add('godlygeek/tabular')
   call dein#add('plasticboy/vim-markdown')
-  " c/c++ 加强
-  call dein#add('Valloric/YouCompleteMe')
-  call dein#add('rdnetto/YCM-Generator')
+  if has('unix') || !has('macunix')
+    " c/c++ 加强
+    call dein#add('Valloric/YouCompleteMe')
+    call dein#add('rdnetto/YCM-Generator')
+  endif
 
   call dein#add('majutsushi/tagbar')
 
@@ -58,21 +60,30 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('skielbasa/vim-material-monokai')
   call dein#add('dracula/vim')
   call dein#add('vim-scripts/Solarized')
-  
+
+  call dein#add('junegunn/goyo.vim')
+  call dein#add('vim-voom/VOoM')
   " required:
   call dein#end()
   call dein#save_state()
 endif
 
-" Required:
+function! InstallPlugin()
+  if dein#check_install()
+    call dein#install()
+  else
+    echo "no need to install plugin"
+  endif
+endfunction
+command! PluginInstall :call InstallPlugin()
+
+function! UninstallPlugin()
+    map(dein#check_clean(), "delete(v:val, 'rf')")
+endfunction
+command! PluginClean :call UninstallPlugin()
+
 filetype plugin indent on
 syntax enable
-
-" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
-
 "End dein Scripts-------------------------
 
 filetype on
@@ -105,9 +116,6 @@ let g:ycm_confirm_extra_conf = 1   "自动加载config
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
-
-""" table mode
-let g:table_mode_corner = "|"
 
 """ YouCompleteMe
 let g:enable_ycm_at_startup = 0
