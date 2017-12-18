@@ -1,33 +1,61 @@
 #!/bin/bash
 
 work_path=$(pwd)
-script_path=$work_path/$(dirname $0)
+if [ $work_path="." ]; then
+  script_path=$work_path
+else
+  script_path=$work_path/$(dirname $0)
+fi
+
+######################################################
+#
+# Clean vim config 
+#
+######################################################
+function clean_vim_config() {
+  echo ">>> clean vim config"
+
+  rm ~/.vimrc
+  rm -rf ~/.vim
+}
+
+######################################################
+#
+# Install vim config 
+#
+# Global:
+#   script_path
+#
+######################################################
+function install_vim_config() {
+  echo ">>> start intall vim config"
+  local vim_file=~/.vimrc
+  
+  echo create soft link to $script_path/vimrc
+  ln -s $script_path/vim/vimrc ~/.vimrc
+
+  local vim_config_folder=~/.vim/config
+  mkdir -p ~/.vim/config
+  ln -s $script_path/vim/plugin.vim $vim_config_folder/plugin.vim
+  ln -s $script_path/vim/keymap.vim $vim_config_folder/keymap.vim
+  
+  echo "install dein"
+  
+  mkdir -p ~/.vim/bundle
+  dein_install_dir=~/.vim/bundle/repos/github.com/Shougo/dein.vim
+  git clone https://github.com/Shougo/dein.vim $dein_install_dir
+
+  
+  echo finish install vim config
+  echo
+}
 
 echo
 echo "配置文件的位置: $script_path"
 echo
 
-#vim config
-echo ">>> start intall vim config"
-vim_file=~/.vimrc
-if [ -f $vim_file ]; then
-    echo "remove .vimrc"
-    rm $vim_file
-fi
-echo create soft link to $script_path/vimrc
-ln -s $script_path/vimrc ~/.vimrc
-
-echo "install dein"
-if [ -d ~/.vim/bundle ]; then
-    rm -rf ~/.vim/bundle
-fi
-
-mkdir -p ~/.vim/bundle
-dein_install_dir=~/.vim/bundle/repos/github.com/Shougo/dein.vim
-git clone https://github.com/Shougo/dein.vim $dein_install_dir
-
-echo finish install vim config
-echo
+clean_vim_config
+install_vim_config
 
 #nvim config
 echo ">>>> start install nvim config"
@@ -45,5 +73,3 @@ ln -s $script_path/nvim/init.vim $nvim_path/init.vim
 
 echo "finish install nvim config"
 echo
-
-
