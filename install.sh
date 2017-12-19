@@ -38,6 +38,7 @@ function install_vim_config() {
   mkdir -p ~/.vim/config
   ln -s $script_path/vim/plugin.vim $vim_config_folder/plugin.vim
   ln -s $script_path/vim/keymap.vim $vim_config_folder/keymap.vim
+  ln -s $script_path/vim/utils.vim  $vim_config_folder/utils.vim
   
   echo "install dein"
   

@@ -1,5 +1,6 @@
-  
-function ConfigPlugin()
+source ~/.vim/config/utils.vim
+
+function! ConfigPlugin()
   if &compatible
     set nocompatible               " Be iMproved
   endif
@@ -33,7 +34,7 @@ function ConfigPlugin()
     " Markdown
     call dein#add('godlygeek/tabular')
     call dein#add('plasticboy/vim-markdown')
-    if has('unix') && !has('macunix')
+    if IsLinux()
       " c/c++ 加强
       call dein#add('Valloric/YouCompleteMe')
       call dein#add('rdnetto/YCM-Generator')

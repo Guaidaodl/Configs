@@ -1,5 +1,5 @@
-source ~/.vim/config/plugin.vim
 source ~/.vim/config/keymap.vim
+source ~/.vim/config/plugin.vim
 
 call ConfigPlugin()
 
