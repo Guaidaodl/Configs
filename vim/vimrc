@@ -1,3 +1,6 @@
+set runtimepath+=~/.vim/config
+let mapleader = ' '
+
 source ~/.vim/config/keymap.vim
 source ~/.vim/config/plugin.vim
 
@@ -19,6 +22,7 @@ let g:auto_save = 1 "enable the vim-auto-save
 let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_slient = 1 "do not display the auto-save notification
+
 """ctrlp的配置
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -108,3 +112,24 @@ set foldlevelstart=99
 "set helplang=cn
 
 call ConfigKeymap()
+
+function! MarkdownToogleTodo()
+  let line = getline('.')
+  if line =~? '^\s*-\s\[\s*\]'
+    execute 's/-\s\[\s*\]/- \[X\]'
+  elseif line=~? '^\s*-\s\[X\]'
+    execute 's/-\s\[x\]/- \[ \]/i'
+  end
+
+endfunction
+
+fun! CommandT()
+  let filetype = &filetype
+  if filetype == "markdown"
+    call MarkdownToogleTodo()
+  endif
+endfunction
+
+
+nnoremap t :call CommandT()<CR>
+nnoremap <leader>mt :call MarkdownToogleTodo()<CR>

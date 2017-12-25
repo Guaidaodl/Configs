@@ -1,10 +1,14 @@
+source ~/.vim/config/utils.vim
+
 function! ConfigKeymap()
   
-  let g:mapleader = ' '
   """跟文件类型有关的快捷键
   autocmd FileType html noremap <F5> :!open %<CR><CR>
   autocmd FileType vim  noremap <F5> :source %<CR>
+  autocmd FileType vim setl sw=2 sts=2
   autocmd FileType ruby setl sw=2 sts=2
+
+  call keymap#mapMacAlt()
   
   "insert模式下的快捷键
   inoremap <C-k> <Esc>d$a
@@ -47,9 +51,15 @@ function! ConfigKeymap()
   nnoremap <leader>b3 :buffer 3<CR>
   nnoremap <leader>b4 :buffer 4<CR>
   nnoremap <leader>b5 :buffer 5<CR>
+  nnoremap <leader>b6 :buffer 6<CR>
+  nnoremap <leader>b7 :buffer 7<CR>
+  nnoremap <leader>b8 :buffer 8<CR>
+  nnoremap <leader>b9 :buffer 9<CR>
   nnoremap <leader>bl :CtrlPBuffer<CR>
   nnoremap <leader>bp :bp<CR>
   nnoremap <leader>bn :bn<CR>
+  nnoremap <leader>bd :bd<CR>
+  nnoremap <leader>bk :bd!<CR> " kill buffer
   
   "CtrlP 的快捷键
   nnoremap <leader>pat :CtrlPBufTagAll<CR>
@@ -61,7 +71,9 @@ function! ConfigKeymap()
   " Windows 相关的快捷键
   nnoremap <leader>wc :close<CR>
   nnoremap <leader>ws :split<CR>
-  nnoremap <leader>wt :NERDTreeToggle<CR>
+  nnoremap <leader>wt :NERDTreeFocus<CR>
+  nnoremap <leader>w[ :NERDTreeToggle<CR>
+  nnoremap <leader>w] :TagbarToggle<CR>
   nnoremap <leader>wv :vs<CR>
   nnoremap <leader>ww <C-w><C-w>
   nnoremap <leader>wo <C-w>o
@@ -69,36 +81,37 @@ function! ConfigKeymap()
   nnoremap <leader>wh <C-w>h
   nnoremap <leader>wj <C-w>j
   nnoremap <leader>wk <C-w>k
+  nnoremap <leader>wg :Goyo<CR>
   nnoremap <leader>w= <C-w>=
   nnoremap <leader>w+ 10<C-w>+
   nnoremap <leader>w- 10<C-w>-
   nnoremap <leader>w> 10<C-w>>
   nnoremap <leader>w< 10<C-w><
-  
   nnoremap <A-h> <C-w>h
   nnoremap <A-j> <C-w>j
   nnoremap <A-k> <C-w>k
   nnoremap <A-l> <C-w>l
+  
+
+  " Terminal
+  nnoremap <leader>tt :terminal<CR>
   if has('nvim')
-    if has('macunix')
-      tnoremap ˙ <C-\><C-N><C-w>h
-      tnoremap ∆ <C-\><C-N><C-w>j
-      tnoremap ˚ <C-\><C-N><C-w>k
-      tnoremap ¬ <C-\><C-N><C-w>l
-    else
-      tnoremap <A-h> <C-\><C-N><C-w>h
-      tnoremap <A-j> <C-\><C-N><C-w>j
-      tnoremap <A-k> <C-\><C-N><C-w>k
-      tnoremap <A-l> <C-\><C-N><C-w>l
-    endif
-  endif 
+    tnoremap <A-h> <C-\><C-N><C-w>h
+    tnoremap <A-j> <C-\><C-N><C-w>j
+    tnoremap <A-k> <C-\><C-N><C-w>k
+    tnoremap <A-l> <C-\><C-N><C-w>l
+  else
+    tnoremap <A-h> <C-w>h
+    tnoremap <A-j> <C-w>j
+    tnoremap <A-k> <C-w>k
+    tnoremap <A-l> <C-w>l
+  endif
   
   " Cscpoe 相关的快捷键
   nnoremap <leader>cg :cs find g<SPACE>
   nnoremap <leader>cc :cs find c<SPACE>
   
-  " Terminal And tab
-  nnoremap <leader>tt :terminal<CR>
+  " Tab
   nnoremap <leader>tn :tabnew<CR>
   nnoremap <leader>ts :tabs<CR>
   nnoremap <leader>tl :tabnext<CR>
@@ -114,6 +127,22 @@ function! ConfigKeymap()
   nnoremap <leader>gc :Gcommit<CR>
   nnoremap <leader>gl :Git lg<CR>
   nnoremap <leader>gd :Git df<CR>
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"
+" 映射 Mac 的特殊字符到 Alt 
+"
+"""""""""""""""""""""""""""""""""""""""""""""""
+function! keymap#mapMacAlt()
+  map ˙ <A-h>
+  tmap ˙ <A-h>
+  map ∆ <A-j>
+  tmap ∆ <A-j>
+  map ˚ <A-k>
+  tmap ˚ <A-k>
+  map ¬ <A-l>
+  tmap ¬ <A-l>
 endfunction
 
 function! EditCurrentBufferInNewTab()

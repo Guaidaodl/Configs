@@ -34,24 +34,29 @@ function! ConfigPlugin()
     " Markdown
     call dein#add('godlygeek/tabular')
     call dein#add('plasticboy/vim-markdown')
-    if IsLinux()
+    if utils#isLinux()
       " c/c++ 加强
       call dein#add('Valloric/YouCompleteMe')
       call dein#add('rdnetto/YCM-Generator')
     endif
   
-    call dein#add('majutsushi/tagbar')
+    call dein#add('majutsushi/tagbar') 
   
     call dein#add('rust-lang/rust.vim')
     call dein#add('keith/swift.vim')
   
+    " Auto complete
     call dein#add('Shougo/deoplete.nvim')
     if !has('nvim')
       call dein#add('roxma/nvim-yarp')
       call dein#add('roxma/vim-hug-neovim-rpc')
     endif
-  
+    " deoplete source for vim
     call dein#add('Shougo/neco-vim')
+
+    "Code snippet
+    call dein#add('SirVer/ultisnips')
+    call dein#add('honza/vim-snippets')
     
     " Themes
     call dein#add('sickill/vim-monokai')
@@ -59,8 +64,10 @@ function! ConfigPlugin()
     call dein#add('dracula/vim')
     call dein#add('vim-scripts/Solarized')
   
-    call dein#add('junegunn/goyo.vim')
-    call dein#add('vim-voom/VOoM')
+    call dein#add('junegunn/goyo.vim', {'on_cmd': "goyo"})
+    call dein#add('vim-voom/VOoM', 
+                \ {'on_ft': ['vimwiki', 'markdown']})
+    
     " required:
     call dein#end()
     call dein#save_state()
@@ -72,6 +79,7 @@ function! ConfigPlugin()
   
   filetype plugin indent on
   syntax enable
+
 endfunction
 
 function! InstallPlugin()
