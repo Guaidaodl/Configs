@@ -1,11 +1,11 @@
 set runtimepath+=~/.vim/config
+
 let mapleader = ' '
 
 source ~/.vim/config/keymap.vim
 source ~/.vim/config/plugin.vim
 
 call ConfigPlugin()
-
 set nocompatible
 set hls "检索时高亮
 
@@ -113,12 +113,21 @@ set foldlevelstart=99
 
 call ConfigKeymap()
 
+""""""" Emoji
+iabbrev :t: 🍅
+iabbrev :x: ❌
+
+""""""" CommandT
 function! MarkdownToogleTodo()
   let line = getline('.')
   if line =~? '^\s*-\s\[\s*\]'
     execute 's/-\s\[\s*\]/- \[X\]'
-  elseif line=~? '^\s*-\s\[X\]'
+  elseif line =~? '^\s*-\s\[X\]'
     execute 's/-\s\[x\]/- \[ \]/i'
+  elseif line =~? '^\s*-'
+    execute 's/^\(\s*-\)/\1 \[ \]'
+  else 
+    execute 's/^\(\s*\)/\1- [ ]'
   end
 
 endfunction
@@ -130,6 +139,7 @@ fun! CommandT()
   endif
 endfunction
 
-
 nnoremap t :call CommandT()<CR>
 nnoremap <leader>mt :call MarkdownToogleTodo()<CR>
+let g:vim_markdown_folding_level = 6
+

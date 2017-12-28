@@ -127,6 +127,12 @@ function! ConfigKeymap()
   nnoremap <leader>gc :Gcommit<CR>
   nnoremap <leader>gl :Git lg<CR>
   nnoremap <leader>gd :Git df<CR>
+
+  " Markdown 相关的快捷键
+  autocmd FileType markdown nnoremap <leader>mv :Voom markdown<CR>
+
+  " 折叠的快捷键, z 实在太难摁了
+  nnoremap <leader>h za
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""

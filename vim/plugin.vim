@@ -20,7 +20,6 @@ function! ConfigPlugin()
     call dein#add('scrooloose/nerdtree')
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')
-    call dein#add('jiangmiao/auto-pairs')
     call dein#add('ctrlpvim/ctrlp.vim')
     call dein#add('vim-scripts/vim-auto-save')
   
@@ -68,6 +67,9 @@ function! ConfigPlugin()
     call dein#add('vim-voom/VOoM', 
                 \ {'on_ft': ['vimwiki', 'markdown']})
     
+    if utils#isMac()
+      call dein#add('ybian/smartim')
+    endif
     " required:
     call dein#end()
     call dein#save_state()
@@ -80,6 +82,8 @@ function! ConfigPlugin()
   filetype plugin indent on
   syntax enable
 
+
+  call plugin#configSmartim()
 endfunction
 
 function! InstallPlugin()
@@ -94,3 +98,9 @@ function! UninstallPlugin()
   map(dein#check_clean(), "delete(v:val, 'rf')")
 endfunction
 
+
+fun! plugin#configSmartim()
+  if utils#isMac()
+    let g:smartim_default = 'com.apple.keylayout.ABC'
+  endif
+endf
