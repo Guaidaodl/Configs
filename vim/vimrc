@@ -78,7 +78,8 @@ set laststatus=2 "总是显示状态栏
 set cursorline
 set nowrap
 
-colorscheme dracula
+set background=dark
+colorscheme solarized
 
 "语法缩进
 "set foldmehod=indent
