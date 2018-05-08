@@ -107,9 +107,10 @@ function! ConfigKeymap()
     tnoremap <A-l> <C-w>l
   endif
   
-  " Cscpoe 相关的快捷键
+  " GTags 相关的快捷键
   nnoremap <leader>cg :cs find g<SPACE>
   nnoremap <leader>cc :cs find c<SPACE>
+  nnoremap <C-j> :GtagsCursor<CR>
   
   " Tab
   nnoremap <leader>tn :tabnew<CR>
