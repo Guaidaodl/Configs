@@ -106,6 +106,8 @@ set foldlevelstart=99
 
 call ConfigKeymap()
 
+au BufRead,BufNewFile Podfile set filetype=ruby
+
 """"""" Emoji
 iabbrev :t: 🍅
 iabbrev :x: ❌
