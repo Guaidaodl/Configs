@@ -20,7 +20,7 @@ function! ConfigPlugin()
     call dein#add('scrooloose/nerdtree')
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')
-    call dein#add('ctrlpvim/ctrlp.vim')
+    call dein#add('Yggdroot/LeaderF')
     call dein#add('vim-scripts/vim-auto-save')
   
     " Git 
@@ -36,11 +36,6 @@ function! ConfigPlugin()
 
     call dein#add('ludovicchabant/vim-gutentags')
     call dein#add('vim-scripts/gtags.vim')
-    if utils#isLinux()
-      " c/c++ 加强
-      call dein#add('Valloric/YouCompleteMe')
-      call dein#add('rdnetto/YCM-Generator')
-    endif
   
     call dein#add('majutsushi/tagbar') 
   

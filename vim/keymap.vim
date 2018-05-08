@@ -55,18 +55,19 @@ function! ConfigKeymap()
   nnoremap <leader>b7 :buffer 7<CR>
   nnoremap <leader>b8 :buffer 8<CR>
   nnoremap <leader>b9 :buffer 9<CR>
-  nnoremap <leader>bl :CtrlPBuffer<CR>
+  nnoremap <leader>bl :LeaderfBuffer<CR>
   nnoremap <leader>bp :bp<CR>
   nnoremap <leader>bn :bn<CR>
   nnoremap <leader>bd :bd<CR>
   nnoremap <leader>bk :bd!<CR> " kill buffer
   
-  "CtrlP 的快捷键
-  nnoremap <leader>pat :CtrlPBufTagAll<CR>
-  nnoremap <leader>pb  :CtrlPBuffer<CR>
-  nnoremap <leader>pf  :CtrlP<CR>
-  nnoremap <leader>pt  :CtrlPBufTag<CR>
-  nnoremap <leader>pr  :CtrlPMRUFiles<CR>
+  "LeaderF 的快捷键
+  nnoremap <C-p> :LeaderfFile<CR>
+  nnoremap <leader>pat :LeaderfBufTagAll<CR>
+  nnoremap <leader>pb  :LeaderfBuffer<CR>
+  nnoremap <leader>pf  :LeaderfFile<CR>
+  nnoremap <leader>pt  :LeaderfTag<CR>
+  nnoremap <leader>pr  :LeaderfMru<CR>
   
   " Windows 相关的快捷键
   nnoremap <leader>wc :close<CR>
