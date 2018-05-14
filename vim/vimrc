@@ -71,7 +71,7 @@ set cursorline
 set nowrap
 
 set background=dark
-colorscheme solarized
+colorscheme monokai
 
 "语法缩进
 "set foldmehod=indent

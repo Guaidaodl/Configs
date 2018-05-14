@@ -23,10 +23,6 @@ function! ConfigKeymap()
   nnoremap <C-t> :NERDTreeToggle<CR>
   "移动光标的快捷键
   nnoremap <C-k> d$
-  
-  " JumpList
-  nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
-  nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
   nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
   
   " TagBar
@@ -63,10 +59,10 @@ function! ConfigKeymap()
   
   "LeaderF 的快捷键
   nnoremap <C-p> :LeaderfFile<CR>
-  nnoremap <leader>pat :LeaderfBufTagAll<CR>
   nnoremap <leader>pb  :LeaderfBuffer<CR>
   nnoremap <leader>pf  :LeaderfFile<CR>
-  nnoremap <leader>pt  :LeaderfTag<CR>
+  nnoremap <leader>pta :LeaderfTag<CR>
+  nnoremap <leader>ptb :LeaderfBufTag<CR>
   nnoremap <leader>pr  :LeaderfMru<CR>
   
   " Windows 相关的快捷键
@@ -93,7 +89,6 @@ function! ConfigKeymap()
   nnoremap <A-k> <C-w>k
   nnoremap <A-l> <C-w>l
   
-
   " Terminal
   nnoremap <leader>tt :terminal<CR>
   if has('nvim')
@@ -112,7 +107,13 @@ function! ConfigKeymap()
   nnoremap <leader>cg :cs find g<SPACE>
   nnoremap <leader>cc :cs find c<SPACE>
   nnoremap <C-j> :GtagsCursor<CR>
-  
+
+  " Quickfix 相关的快捷键
+  nnoremap <leader>qc :ccl<CR>
+  nnoremap <leader>qn :cn<CR>
+  nnoremap <leader>qp :cp<CR>
+  nnoremap <leader>ql :cl<CR>
+ 
   " Tab
   nnoremap <leader>tn :tabnew<CR>
   nnoremap <leader>ts :tabs<CR>
