@@ -1,5 +1,4 @@
 source ~/.vim/config/utils.vim
-
 function! ConfigKeymap()
   
   """跟文件类型有关的快捷键
@@ -56,14 +55,15 @@ function! ConfigKeymap()
   nnoremap <leader>bn :bn<CR>
   nnoremap <leader>bd :bd<CR>
   nnoremap <leader>bk :bd!<CR> " kill buffer
+  nnoremap <C-h> :bp<CR>
+  nnoremap <C-l> :bn<CR>
   
   "LeaderF 的快捷键
-  nnoremap <C-p> :LeaderfFile<CR>
-  nnoremap <leader>pb  :LeaderfBuffer<CR>
-  nnoremap <leader>pf  :LeaderfFile<CR>
-  nnoremap <leader>pta :LeaderfTag<CR>
-  nnoremap <leader>ptb :LeaderfBufTag<CR>
-  nnoremap <leader>pr  :LeaderfMru<CR>
+  nnoremap <leader>ft  :LeaderfBufTag<CR>
+  nnoremap <leader>fb  :LeaderfBuffer<CR>
+  nnoremap <leader>ff  :LeaderfFile<CR>
+  nnoremap <leader>fa  :LeaderfTag<CR>
+  nnoremap <leader>fr  :LeaderfMru<CR>
   
   " Windows 相关的快捷键
   nnoremap <leader>wc :close<CR>
@@ -110,6 +110,7 @@ function! ConfigKeymap()
 
   " Quickfix 相关的快捷键
   nnoremap <leader>qc :ccl<CR>
+  nnoremap <leader>qo :copen<CR>
   nnoremap <leader>qn :cn<CR>
   nnoremap <leader>qp :cp<CR>
   nnoremap <leader>ql :cl<CR>
@@ -122,8 +123,6 @@ function! ConfigKeymap()
   nnoremap <leader>to :tabonly<CR>
   nnoremap <leader>tc :tabclose<CR>
   nnoremap <leader>te :call EditCurrentBufferInNewTab()<CR>
-  nnoremap <C-h> gT
-  nnoremap <C-l> gt
   
   " Git 相关的快捷键
   nnoremap <leader>gs :Gstatus<CR>
@@ -131,11 +130,15 @@ function! ConfigKeymap()
   nnoremap <leader>gl :Git lg<CR>
   nnoremap <leader>gd :Git df<CR>
 
-  " Markdown 相关的快捷键
-  autocmd FileType markdown nnoremap <leader>mv :Voom markdown<CR>
-
   " 折叠的快捷键, z 实在太难摁了
   nnoremap <leader>h za
+
+  nnoremap <leader>r :%s///gc<Left><Left><Left><Left>
+  nnoremap <leader>m1 @1
+  nnoremap <leader>m2 @2
+  nnoremap <leader>m3 @3
+  nnoremap <leader>m4 @4
+  nnoremap <leader>m5 @5
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""

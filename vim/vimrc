@@ -36,9 +36,10 @@ let g:indent_guides_enable_on_vim_startup = 1
 """ YouCompleteMe
 let g:enable_ycm_at_startup = 0
 
-""" airline theme
+""" airline 
 let g:airline_theme='papercolor'
-
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_b = "%{airline#util#wrap(airline#extensions#branch#get_head(),0)}" 
 """ git
 let g:gitgutter_enable = 1
 
