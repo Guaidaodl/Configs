@@ -1,0 +1,9 @@
+let mapleader = ' '
+
+inoremap jk <Esc>
+vnoremap jk <Esc>
+
+nnoremap <leader><space> :
+nnoremap <leader>ft :action FileStructurePopup<CR>
+nnoremap <leader>fc :action GotoClass<CR>
+nnoremap <leader>ff :action GotoFile<CR>
