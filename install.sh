@@ -40,11 +40,10 @@ function install_vim_config() {
   ln -s $script_path/vim/keymap.vim $vim_config_folder/keymap.vim
   ln -s $script_path/vim/utils.vim  $vim_config_folder/utils.vim
   
-  echo "install dein"
+  echo "install vim-plug"
   
-  mkdir -p ~/.vim/bundle
-  dein_install_dir=~/.vim/bundle/repos/github.com/Shougo/dein.vim
-  git clone https://github.com/Shougo/dein.vim $dein_install_dir
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   
   echo finish install vim config
