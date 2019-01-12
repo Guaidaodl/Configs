@@ -14,7 +14,6 @@ function! ConfigKeymap()
   inoremap jk <Esc>
   
   "visual mode
-  vnoremap jk <esc>
   vnoremap <leader>y "+y
   "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
   nnoremap <F10> :set transparency=0<CR>

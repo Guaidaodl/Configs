@@ -1,40 +1,27 @@
 set runtimepath+=~/.vim/config
 
+set nocompatible
 let mapleader = ' '
 
 source ~/.vim/config/keymap.vim
 source ~/.vim/config/plugin.vim
 
 call ConfigPlugin()
-set nocompatible
 set hls "检索时高亮
 
 filetype on
 
 """""""""""""""""""""""""""插件相关设置
-"""deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#max_list = 10
-let g:deoplete#sources = {}
-
 """vim-auto-save
 let g:auto_save = 1 "enable the vim-auto-save
 let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_slient = 1 "do not display the auto-save notification
 
-"""YCM 的配置
-let g:ycm_error_symbol= '>>'
-let g:ycm_warning_symbol=">*"
-let g:ycm_confirm_extra_conf = 1   "自动加载config
-
 """vim-indent-guides
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
-
-""" YouCompleteMe
-let g:enable_ycm_at_startup = 0
 
 """ airline 
 let g:airline_theme='papercolor'
@@ -43,18 +30,6 @@ let g:airline_section_b = "%{airline#util#wrap(airline#extensions#branch#get_hea
 """ git
 let g:gitgutter_enable = 1
 
-""" cscope
-if has("cscope")
-  set csprg=/usr/bin/cscope
-  set csto=1
-  set cst
-  set nocsverb
-  " add any database in current directory
-  if filereadable("cscope.out")
-    cs add cscope.out
-  endif
-  set csverb
-endif
 """"""""""""""""""""""""插件设置结束
 
 syntax enable
