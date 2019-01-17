@@ -11,27 +11,6 @@ set hls "检索时高亮
 
 filetype on
 
-"""""""""""""""""""""""""""插件相关设置
-"""vim-auto-save
-let g:auto_save = 1 "enable the vim-auto-save
-let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
-let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
-let g:auto_save_slient = 1 "do not display the auto-save notification
-
-"""vim-indent-guides
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup = 1
-
-""" airline 
-let g:airline_theme='papercolor'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_section_b = "%{airline#util#wrap(airline#extensions#branch#get_head(),0)}" 
-""" git
-let g:gitgutter_enable = 1
-
-""""""""""""""""""""""""插件设置结束
-
 syntax enable
 set fileencodings=utf-8,gb18030,gbk,gb2312,cp936
 "隐藏菜单和工具条
