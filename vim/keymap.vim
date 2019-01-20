@@ -23,9 +23,6 @@ function! ConfigKeymap()
   nnoremap <C-k> d$
   nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
   
-  " TagBar
-  nnoremap <F8> :TagbarToggle<CR>
-  
   " laeder相关的配置
   nnoremap <leader><SPACE> :
   nnoremap <leader>x :close<CR>

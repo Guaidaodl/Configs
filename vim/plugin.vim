@@ -9,7 +9,6 @@ function! ConfigPlugin()
   Plug 'vim-airline/vim-airline-themes'
   Plug 'Yggdroot/LeaderF'
   Plug 'vim-scripts/vim-auto-save'
-  
   " Git 
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
@@ -20,10 +19,6 @@ function! ConfigPlugin()
   Plug 'godlygeek/tabular'
   Plug 'plasticboy/vim-markdown'
  
-  Plug 'vim-scripts/gtags.vim'
-  
-  Plug 'majutsushi/tagbar' 
-  
   "Code snippet
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
@@ -34,13 +29,14 @@ function! ConfigPlugin()
   Plug 'dracula/vim'
   Plug 'vim-scripts/Solarized'
   
+  " IDE 相关的插件
   Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
         \ 'do': 'bash install.sh',
         \ }
   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }  
   
-  Plug 'neomake/neomake'
+  Plug 'ludovicchabant/vim-gutentags'
 
   call plug#end()
   
@@ -67,20 +63,60 @@ function! ConfigPlugin()
   """ LanguageClient
   set hidden
 
-  let g:LanguageClient_serverCommands = {
-        \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-        \ }
   nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
   nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
   nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
+  let g:LanguageClient_serverCommands = {
+        \   'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+        \ }
+
+  let g:LanguageClient_diagnosticsDisplay = {
+        \   1: {
+        \     "name": "Error",
+        \     "texthl": "ALEError",
+        \     "signText": "❌",
+        \     "signTexthl": "ALEErrorSign",
+        \   },
+        \   2: {
+        \     "name": "Warning",
+        \     "texthl": "ALEWarning",
+        \     "signText": "❗️",
+        \     "signTexthl": "ALEWarningSign",
+        \   },
+        \   3: {
+        \       "name": "Information",
+        \       "texthl": "ALEInfo",
+        \       "signText": "❓",
+        \       "signTexthl": "ALEInfoSign",
+        \   },
+        \   4: {
+        \       "name": "Hint",
+        \       "texthl": "ALEInfo",
+        \       "signText": "🔍",
+        \       "signTexthl": "ALEInfoSign",
+        \   },
+        \ }
+
+
   "deoplete
   let g:deoplete#enable_at_startup = 1
+  
+  " gutentags
+  " 项目根目录的标志
+  let g:gutentags_project_root = ['.git', 'Cargo.toml']
+  " 所生成的数据文件的名称
+  let g:gutentags_ctags_tagfile = '.tags'
 
-  "neomake
-  " 写入文件后检查
-  " call neomake#configure#automake('w')
+  " 忽略 build 文件夹里的
+  let g:gutentags_ctags_exclude = ['build', 'target']
+  " 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+  let s:vim_tags = expand('~/.cache/tags')
+  let g:gutentags_cache_dir = s:vim_tags
 
-  """""""""""""""""""""""插件设置结束
+  " 检测 ~/.cache/tags 不存在就新建
+  if !isdirectory(s:vim_tags)
+    silent! call mkdir(s:vim_tags, 'p')
+  endif
 endfunction
 
