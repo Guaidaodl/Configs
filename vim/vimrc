@@ -6,7 +6,7 @@ let mapleader = ' '
 source ~/.vim/config/keymap.vim
 source ~/.vim/config/plugin.vim
 
-call ConfigPlugin()
+call plugin#main()
 set hls "检索时高亮
 
 filetype on

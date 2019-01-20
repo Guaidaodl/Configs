@@ -1,6 +1,6 @@
 source ~/.vim/config/utils.vim
 
-function! ConfigPlugin()
+function! plugin#main()
   call plug#begin('~/.vim/plug')
   
   " Add or remove your plugins here:
@@ -29,14 +29,21 @@ function! ConfigPlugin()
   Plug 'dracula/vim'
   Plug 'vim-scripts/Solarized'
   
-  " IDE 相关的插件
+  """"""""""""""""""""""""""""" IDE 相关的插件
+  " 自动补全
   Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
         \ 'do': 'bash install.sh',
         \ }
   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }  
   
+  " 符号跳转
   Plug 'ludovicchabant/vim-gutentags'
+  call plugin#config_gutentags()
+
+  " 异步运行命令
+  Plug 'skywind3000/asyncrun.vim'
+  call plugin#config_asyncrun()
 
   call plug#end()
   
@@ -99,10 +106,22 @@ function! ConfigPlugin()
         \ }
 
 
-  "deoplete
+  """" deoplete
   let g:deoplete#enable_at_startup = 1
   
-  " gutentags
+endfunction
+
+"""" 配置 Asyncrun
+function! plugin#config_asyncrun()
+  " 自动打开 quickfix window ，高度为 6
+  let g:asyncrun_open = 6
+
+  " 设置 F10 打开/关闭 Quickfix 窗口
+  nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+endfunction
+
+""" 配置gutentags
+function! plugin#config_gutentags()
   " 项目根目录的标志
   let g:gutentags_project_root = ['.git', 'Cargo.toml']
   " 所生成的数据文件的名称
@@ -119,4 +138,3 @@ function! ConfigPlugin()
     silent! call mkdir(s:vim_tags, 'p')
   endif
 endfunction
-

@@ -16,8 +16,6 @@ function! ConfigKeymap()
   "visual mode
   vnoremap <leader>y "+y
   "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
-  nnoremap <F10> :set transparency=0<CR>
-  nnoremap <F11> :set transparency=30<CR>
   nnoremap <C-t> :NERDTreeToggle<CR>
   "移动光标的快捷键
   nnoremap <C-k> d$
