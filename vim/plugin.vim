@@ -35,6 +35,8 @@ function! plugin#main()
         \ 'branch': 'next',
         \ 'do': 'bash install.sh',
         \ }
+  call plugin#config_client()
+
   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }  
   
   " 符号跳转
@@ -66,45 +68,6 @@ function! plugin#main()
   let g:airline_section_b = "%{airline#util#wrap(airline#extensions#branch#get_head(),0)}" 
   """ git
   let g:gitgutter_enable = 1
-
-  """ LanguageClient
-  set hidden
-
-  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-
-  let g:LanguageClient_serverCommands = {
-        \   'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-        \ }
-
-  let g:LanguageClient_diagnosticsDisplay = {
-        \   1: {
-        \     "name": "Error",
-        \     "texthl": "ALEError",
-        \     "signText": "❌",
-        \     "signTexthl": "ALEErrorSign",
-        \   },
-        \   2: {
-        \     "name": "Warning",
-        \     "texthl": "ALEWarning",
-        \     "signText": "❗️",
-        \     "signTexthl": "ALEWarningSign",
-        \   },
-        \   3: {
-        \       "name": "Information",
-        \       "texthl": "ALEInfo",
-        \       "signText": "❓",
-        \       "signTexthl": "ALEInfoSign",
-        \   },
-        \   4: {
-        \       "name": "Hint",
-        \       "texthl": "ALEInfo",
-        \       "signText": "🔍",
-        \       "signTexthl": "ALEInfoSign",
-        \   },
-        \ }
-
 
   """" deoplete
   let g:deoplete#enable_at_startup = 1
@@ -138,3 +101,47 @@ function! plugin#config_gutentags()
     silent! call mkdir(s:vim_tags, 'p')
   endif
 endfunction
+
+""" 配置 LanguageClient
+function! plugin#config_client()
+
+  """ LanguageClient
+  set hidden
+
+  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+
+  let g:LanguageClient_serverCommands = {
+        \   'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+        \ }
+
+  let g:LanguageClient_hoverPreview = "Always"
+
+  let g:LanguageClient_diagnosticsDisplay = {
+        \   1: {
+        \     "name": "Error",
+        \     "texthl": "ALEError",
+        \     "signText": "❌",
+        \     "signTexthl": "ALEErrorSign",
+        \   },
+        \   2: {
+        \     "name": "Warning",
+        \     "texthl": "ALEWarning",
+        \     "signText": "❗️",
+        \     "signTexthl": "ALEWarningSign",
+        \   },
+        \   3: {
+        \       "name": "Information",
+        \       "texthl": "ALEInfo",
+        \       "signText": "❓",
+        \       "signTexthl": "ALEInfoSign",
+        \   },
+        \   4: {
+        \       "name": "Hint",
+        \       "texthl": "ALEInfo",
+        \       "signText": "🔍",
+        \       "signTexthl": "ALEInfoSign",
+        \   },
+        \ }
+endfunction 
