@@ -31,25 +31,26 @@ function! plugin#main()
   
   """"""""""""""""""""""""""""" IDE 相关的插件
   " 自动补全
-  Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': 'bash install.sh',
-        \ }
-  call plugin#config_client()
+"  Plug 'autozimu/LanguageClient-neovim', {
+"        \ 'branch': 'next',
+"        \ 'do': 'bash install.sh',
+"        \ }
+"  call plugin#config_client()
+  Plug 'w0rp/ale'
 
   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }  
   
   " 符号跳转
   Plug 'ludovicchabant/vim-gutentags'
-  call plugin#config_gutentags()
 
   " 异步运行命令
   Plug 'skywind3000/asyncrun.vim'
-  call plugin#config_asyncrun()
 
   call plug#end()
   
-  
+  call plugin#config_gutentags()
+  call plugin#config_asyncrun()
+  call plugin#config_ale()
   """""""""""""""""""""""""""插件相关设置
   """vim-auto-save
   let g:auto_save = 1 "enable the vim-auto-save
@@ -102,6 +103,26 @@ function! plugin#config_gutentags()
   endif
 endfunction
 
+function! plugin#config_ale() 
+  let g:ale_linters = {
+    \ 'rust': ['rls'],  
+    \}
+  let g:ale_rust_rls_toolchain = 'stable'
+
+  "开启自动补全
+  let g:ale_completion_enabled = 1
+
+  "ale 相关的快捷键
+  nnoremap <silent> <C-q> :ALEHover<CR>
+  nnoremap <silent> <C-j> :ALEGoToDefinition<CR>
+  nnoremap <silent> <C-g> :ALEFindReferences<CR>
+
+  let g:ale_sign_error = '❌'
+  let g:ale_sign_warning = "❗️"
+  let g:ale_sign_info = "❕"
+  let g:ale_set_highlights = 0
+endfunction
+
 """ 配置 LanguageClient
 function! plugin#config_client()
 
@@ -131,7 +152,7 @@ function! plugin#config_client()
         \     "signText": "❗️",
         \     "signTexthl": "ALEWarningSign",
         \   },
-        \   3: {
+        \   3: 
         \       "name": "Information",
         \       "texthl": "ALEInfo",
         \       "signText": "❓",

@@ -97,11 +97,6 @@ function! ConfigKeymap()
     tnoremap <A-l> <C-w>l
   endif
   
-  " GTags 相关的快捷键
-  nnoremap <leader>cg :cs find g<SPACE>
-  nnoremap <leader>cc :cs find c<SPACE>
-  nnoremap <C-j> :GtagsCursor<CR>
-
   " Quickfix 相关的快捷键
   nnoremap <leader>qc :ccl<CR>
   nnoremap <leader>qo :copen<CR>
