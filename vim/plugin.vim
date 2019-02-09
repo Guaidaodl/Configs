@@ -7,8 +7,11 @@ function! plugin#main()
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'Yggdroot/LeaderF'
   Plug 'vim-scripts/vim-auto-save'
+ 
+  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf.vim'
+
   " Git 
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
@@ -48,6 +51,7 @@ function! plugin#main()
 
   call plug#end()
   
+  call plugin#config_fzf()
   call plugin#config_gutentags()
   call plugin#config_asyncrun()
   call plugin#config_ale()
@@ -75,10 +79,19 @@ endfunction
 """" 配置 Asyncrun
 function! plugin#config_asyncrun()
   " 自动打开 quickfix window ，高度为 6
-  let g:asyncrun_open = 6
+  let g:asyncrun_open = 10
 
   " 设置 F10 打开/关闭 Quickfix 窗口
   nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+endfunction
+
+""" 配置 fzf 相关的快捷键
+function! plugin#config_fzf()
+  nnoremap <leader>fa :Tags<CR>
+  nnoremap <leader>fb :Buffers<CR>
+  nnoremap <leader>ff :Files<CR>
+  nnoremap <leader>fh :History:<CR>
+  nnoremap <leader>ft :BTags<CR>
 endfunction
 
 """ 配置gutentags

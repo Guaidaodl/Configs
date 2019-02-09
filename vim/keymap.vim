@@ -22,7 +22,7 @@ function! ConfigKeymap()
   nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
   
   " laeder相关的配置
-  nnoremap <leader><SPACE> :
+  nnoremap <leader><SPACE> :Commands<CR>
   nnoremap <leader>x :close<CR>
   
   " File 相关的配置
@@ -44,20 +44,13 @@ function! ConfigKeymap()
   nnoremap <leader>b7 :buffer 7<CR>
   nnoremap <leader>b8 :buffer 8<CR>
   nnoremap <leader>b9 :buffer 9<CR>
-  nnoremap <leader>bl :LeaderfBuffer<CR>
+  nnoremap <leader>bl :Buffers<CR>
   nnoremap <leader>bp :bp<CR>
   nnoremap <leader>bn :bn<CR>
   nnoremap <leader>bd :bd<CR>
   nnoremap <leader>bk :bd!<CR> " kill buffer
   nnoremap <C-h> :bp<CR>
   nnoremap <C-l> :bn<CR>
-  
-  "LeaderF 的快捷键
-  nnoremap <leader>ft  :LeaderfBufTag<CR>
-  nnoremap <leader>fb  :LeaderfBuffer<CR>
-  nnoremap <leader>ff  :LeaderfFile<CR>
-  nnoremap <leader>fa  :LeaderfTag<CR>
-  nnoremap <leader>fr  :LeaderfMru<CR>
   
   " Windows 相关的快捷键
   nnoremap <leader>wc :close<CR>
