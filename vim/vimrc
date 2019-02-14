@@ -1,6 +1,13 @@
-set runtimepath+=~/.vim/config
-
 set nocompatible
+
+if has('win32')
+  set runtimepath +=~/.vim
+  set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
+  set termencoding=utf-8
+  set encoding=utf-8
+endif
+set runtimepath +=~/.vim/config
+
 let mapleader = ' '
 
 source ~/.vim/config/keymap.vim
@@ -62,34 +69,4 @@ set foldlevelstart=99
 call ConfigKeymap()
 
 au BufRead,BufNewFile Podfile set filetype=ruby
-
-""""""" Emoji
-iabbrev :t: 🍅
-iabbrev :x: ❌
-
-""""""" CommandT
-function! MarkdownToogleTodo()
-  let line = getline('.')
-  if line =~? '^\s*-\s\[\s*\]'
-    execute 's/-\s\[\s*\]/- \[X\]'
-  elseif line =~? '^\s*-\s\[X\]'
-    execute 's/-\s\[x\]/- \[ \]/i'
-  elseif line =~? '^\s*-'
-    execute 's/^\(\s*-\)/\1 \[ \]'
-  else 
-    execute 's/^\(\s*\)/\1- [ ]'
-  end
-
-endfunction
-
-fun! CommandT()
-  let filetype = &filetype
-  if filetype == "markdown"
-    call MarkdownToogleTodo()
-  endif
-endfunction
-
-nnoremap t :call CommandT()<CR>
-nnoremap <leader>mt :call MarkdownToogleTodo()<CR>
-let g:vim_markdown_folding_level = 6
 

@@ -70,9 +70,6 @@ function! plugin#main()
   """ git
   let g:gitgutter_enable = 1
 
-  """" deoplete
-  let g:deoplete#enable_at_startup = 1
-  
 endfunction
 
 """" 配置 Asyncrun
@@ -117,11 +114,22 @@ function! plugin#config_ale()
   nnoremap <silent> <C-j> :ALEGoToDefinition<CR>
   nnoremap <silent> <C-g> :ALEFindReferences<CR>
 
-  let g:ale_sign_error = '❌'
-  let g:ale_sign_warning = "❗️"
-  let g:ale_sign_info = "❕"
+  " Windows 下显示 emoji 一直有问题. 所以就用默认的
+  if (utils#isMac())
+    let g:ale_sign_error = '❌'
+    let g:ale_sign_warning = "❗️"
+    let g:ale_sign_info = "❕"
+  endif
   let g:ale_set_highlights = 0
 endfunction
+
+""" 配置Deoplete
+function! plugin#config_client()
+  let g:deoplete#enable_at_startup = 1
+  if (has('win32'))
+    let g:python3_host_prog = "python"
+  endif
+endfunction  
 
 """ 配置 LanguageClient
 function! plugin#config_client()
@@ -166,3 +174,4 @@ function! plugin#config_client()
         \   },
         \ }
 endfunction 
+
