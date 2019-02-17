@@ -87,11 +87,13 @@ endfunction
 
 """ 配置 fzf 相关的快捷键
 function! plugin#config_fzf()
+  " 快捷键
   nnoremap <leader>fa :Tags<CR>
   nnoremap <leader>fb :Buffers<CR>
   nnoremap <leader>ff :Files<CR>
   nnoremap <leader>fh :History:<CR>
   nnoremap <leader>ft :BTags<CR>
+  nnoremap <A-x> :Commands<CR>
 endfunction
 
 """ 配置gutentags

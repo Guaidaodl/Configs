@@ -35,42 +35,33 @@ function! ConfigKeymap()
   nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
   
   "Buffer 相关的快捷键
-  nnoremap <leader>b1 :buffer 1<CR>
-  nnoremap <leader>b2 :buffer 2<CR>
-  nnoremap <leader>b3 :buffer 3<CR>
-  nnoremap <leader>b4 :buffer 4<CR>
-  nnoremap <leader>b5 :buffer 5<CR>
-  nnoremap <leader>b6 :buffer 6<CR>
-  nnoremap <leader>b7 :buffer 7<CR>
-  nnoremap <leader>b8 :buffer 8<CR>
-  nnoremap <leader>b9 :buffer 9<CR>
-  nnoremap <leader>bl :Buffers<CR>
-  nnoremap <leader>bp :bp<CR>
-  nnoremap <leader>bn :bn<CR>
-  nnoremap <leader>bd :bd<CR>
-  nnoremap <leader>bk :bd!<CR> " kill buffer
-  nnoremap <C-h> :bp<CR>
-  nnoremap <C-l> :bn<CR>
+  nnoremap <silent> <leader>bl :Buffers<CR>
+  nnoremap <silent> <leader>bp :bp<CR>
+  nnoremap <silent> <leader>bn :bn<CR>
+  nnoremap <silent> <leader>bd :bd<CR>l
+  nnoremap <silent> <leader>bk :bd!<CR> " kill buffer
+  nnoremap <silent> <C-h> :bp<CR>
+  nnoremap <silent> <C-l> :bn<CR>
   
   " Windows 相关的快捷键
-  nnoremap <leader>wc :close<CR>
-  nnoremap <leader>ws :split<CR>
-  nnoremap <leader>wt :NERDTreeFocus<CR>
-  nnoremap <leader>w[ :NERDTreeToggle<CR>
-  nnoremap <leader>w] :TagbarToggle<CR>
-  nnoremap <leader>wv :vs<CR>
-  nnoremap <leader>ww <C-w><C-w>
-  nnoremap <leader>wo <C-w>o
-  nnoremap <leader>wl <C-w>l
-  nnoremap <leader>wh <C-w>h
-  nnoremap <leader>wj <C-w>j
-  nnoremap <leader>wk <C-w>k
-  nnoremap <leader>wg :Goyo<CR>
-  nnoremap <leader>w= <C-w>=
-  nnoremap <leader>w+ 10<C-w>+
-  nnoremap <leader>w- 10<C-w>-
-  nnoremap <leader>w> 10<C-w>>
-  nnoremap <leader>w< 10<C-w><
+  nnoremap <silent> <leader>wc :close<CR>
+  nnoremap <silent> <leader>ws :split<CR>
+  nnoremap <silent> <leader>wt :NERDTreeFocus<CR>
+  nnoremap <silent> <leader>w[ :NERDTreeToggle<CR>
+  nnoremap <silent> <leader>w] :TagbarToggle<CR>
+  nnoremap <silent> <leader>wv :vs<CR>
+  nnoremap <silent> <leader>ww <C-w><C-w>
+  nnoremap <silent> <leader>wo <C-w>o
+  nnoremap <silent> <leader>wl <C-w>l
+  nnoremap <silent> <leader>wh <C-w>h
+  nnoremap <silent> <leader>wj <C-w>j
+  nnoremap <silent> <leader>wk <C-w>k
+  nnoremap <silent> <leader>wg :Goyo<CR>
+  nnoremap <silent> <leader>w= <C-w>=
+  nnoremap <silent> <leader>w+ 10<C-w>+
+  nnoremap <silent> <leader>w- 10<C-w>-
+  nnoremap <silent> <leader>w> 10<C-w>>
+  nnoremap <silent> <leader>w< 10<C-w><
   nnoremap <A-h> <C-w>h
   nnoremap <A-j> <C-w>j
   nnoremap <A-k> <C-w>k
@@ -132,11 +123,14 @@ function! keymap#mapMacAlt()
   map ˙ <A-h>
   tmap ˙ <A-h>
   map ∆ <A-j>
+
   tmap ∆ <A-j>
   map ˚ <A-k>
   tmap ˚ <A-k>
   map ¬ <A-l>
   tmap ¬ <A-l>
+  map ≈ <A-x>
+  tmap ≈ <A-x>
 endfunction
 
 function! EditCurrentBufferInNewTab()
