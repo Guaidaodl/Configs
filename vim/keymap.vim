@@ -11,10 +11,12 @@ function! ConfigKeymap()
   
   "insert模式下的快捷键
   inoremap <C-k> <Esc>d$a
-  inoremap jk <Esc>
+  inoremap fd <Esc>
   
   "visual mode
   vnoremap <leader>y "+y
+  vnoremap fd <Esc>
+
   "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
   nnoremap <C-t> :NERDTreeToggle<CR>
   "移动光标的快捷键
