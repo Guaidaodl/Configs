@@ -1,7 +1,7 @@
 let mapleader = ' '
 
-inoremap jk <Esc>
-vnoremap jk <Esc>
+inoremap fd <Esc>
+vnoremap fd <Esc>
 
 nnoremap <leader><space> :
 nnoremap <leader>ft :action FileStructurePopup<CR>
