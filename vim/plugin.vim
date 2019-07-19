@@ -56,6 +56,7 @@ function! plugin#main()
   " 异步运行命令
   Plug 'skywind3000/asyncrun.vim'
 
+  Plug 'udalov/kotlin-vim'
   call plug#end()
   
   call plugin#config_fzf()
@@ -63,6 +64,7 @@ function! plugin#main()
   call plugin#config_asyncrun()
   call plugin#config_deoplete()
   call plugin#config_ale()
+  call plugin#config_deoplete()
   """""""""""""""""""""""""""插件相关设置
   """vim-auto-save
   let g:auto_save = 1 "enable the vim-auto-save
