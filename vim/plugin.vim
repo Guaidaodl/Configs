@@ -10,6 +10,7 @@ function! plugin#main()
   Plug 'vim-scripts/vim-auto-save'
  
   Plug '/usr/local/opt/fzf'
+  Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
 
   " Git 
@@ -41,7 +42,13 @@ function! plugin#main()
 "  call plugin#config_client()
   Plug 'w0rp/ale'
 
-  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }  
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
   
   " 符号跳转
   Plug 'ludovicchabant/vim-gutentags'
@@ -54,6 +61,7 @@ function! plugin#main()
   call plugin#config_fzf()
   call plugin#config_gutentags()
   call plugin#config_asyncrun()
+  call plugin#config_deoplete()
   call plugin#config_ale()
   """""""""""""""""""""""""""插件相关设置
   """vim-auto-save
@@ -139,7 +147,7 @@ function! plugin#config_ale()
 endfunction
 
 """ 配置Deoplete
-function! plugin#config_client()
+function! plugin#config_deoplete()
   let g:deoplete#enable_at_startup = 1
   if (has('win32'))
     let g:python3_host_prog = "python"
