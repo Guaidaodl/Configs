@@ -7,3 +7,4 @@ nnoremap <leader><space> :
 nnoremap <leader>ft :action FileStructurePopup<CR>
 nnoremap <leader>fc :action GotoClass<CR>
 nnoremap <leader>ff :action GotoFile<CR>
+set ideajoin
