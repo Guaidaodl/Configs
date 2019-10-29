@@ -12,10 +12,11 @@
 	sp = stash pop
 	sl = stash list
 	df = diff
-    lg = log --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
-    lga = log --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
-    lgg = log --graph --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
-    lgdiff = log -p --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)'
+	su = submodule update
+    	lg = log --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+   	lga = log --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+    	lgg = log --graph --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+    	lgdiff = log -p --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)'
 	dfc = diff --cached
 [user]
 	name = Guaidaodl 
@@ -25,7 +26,6 @@
 	editor = vim
 	ignorecase = true
 	quotepath = false
-	edit = vim
 	fileMode = false
 [color]
 	ui = auto
