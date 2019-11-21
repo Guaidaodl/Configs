@@ -1,6 +1,10 @@
 let mapleader = ' '
 
+set hlsearch
+set incsearch
+
 inoremap fd <Esc>
+inoremap <C-/> <Esc>
 vnoremap fd <Esc>
 
 nnoremap <leader><space> :

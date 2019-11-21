@@ -41,7 +41,8 @@ set foldmethod=syntax
 
 if has("gui_running")
   if has("gui_macvim")
-    set guifont=Menlo\ Regular:h16
+    set macligatures
+    set guifont=Fira\ Code\ Retina:h16
   elseif has("gui_win32")
     set guifont=Consolas:h16:cANSI
   else

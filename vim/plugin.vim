@@ -56,7 +56,9 @@ function! plugin#main()
   " 异步运行命令
   Plug 'skywind3000/asyncrun.vim'
 
+  """ 语法高亮
   Plug 'udalov/kotlin-vim'
+  Plug 'dart-lang/dart-vim-plugin'
   call plug#end()
   
   call plugin#config_fzf()
