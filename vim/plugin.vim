@@ -109,6 +109,9 @@ function! plugin#config_fzf()
 endfunction
 
 """ 配置gutentags
+"
+" 想要正常使用 gutentags 需要使用 gtags 和 universal-ctags 
+" 可以使用 brew 安装
 function! plugin#config_gutentags()
   " 项目根目录的标志
   let g:gutentags_project_root = ['.git', 'Cargo.toml']
@@ -118,6 +121,9 @@ function! plugin#config_gutentags()
   let g:gutentags_modules = []
   if executable('ctags')
     let g:gutentags_modules += ['ctags']
+  endif
+  if executable('gtags-cscope') && executable('gtags')
+	let g:gutentags_modules += ['gtags_cscope']
   endif
 
   " 忽略 build 文件夹里的
