@@ -6,6 +6,7 @@
 # - fzf: https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
 # - z.lua: https://github.com/skywind3000/z.lua 
 # - powerlevel9k: https://github.com/Powerlevel9k/powerlevel9k 
+# - thefunck: https://github.com/nvbn/thefuck
 #
 # 需要额外的插件
 # - zsh-autosuggestions: https://github.com/zsh-users/zsh-autosuggestions 
@@ -38,10 +39,15 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 eval "$(lua $Z_LUA_PATH --init zsh)"
 
 ########################################################### 
+# thefuck
+###########################################################
+eval $(thefuck --alias)
+
+########################################################### 
 # git 相关的配置
 ###########################################################
 alias g="git"
-alias gaf='git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add'
+alias gaf='git ls-files -m -o --exclude-standard | fzf --print0 -m --bind ctrl-t:toggle-all,ctrl-a:select-all,ctrl-d:deselect-all | xargs -0 -t -o git add'
 
 # 打印选中的分支
 function gsb() {
