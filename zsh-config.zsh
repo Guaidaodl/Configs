@@ -30,7 +30,7 @@ ZSH_DISABLE_COMPFIX=true
 ########################################################### 
 # fzf 
 ###########################################################
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+export FZF_DEFAULT_OPTS='--height 80% --reverse --border'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ########################################################### 
@@ -43,11 +43,19 @@ eval "$(lua $Z_LUA_PATH --init zsh)"
 ###########################################################
 eval $(thefuck --alias)
 
+###########################################################
+# 别名
+########################################################### 
+if which mvim 2>&1 1>/dev/null
+then
+    alias vim=mvim
+    alias vimdiff=mvimdiff
+fi
+alias g=git
+
 ########################################################### 
 # git 相关的配置
 ###########################################################
-alias g="git"
-alias gaf='git ls-files -m -o --exclude-standard | fzf --print0 -m --bind ctrl-t:toggle-all,ctrl-a:select-all,ctrl-d:deselect-all | xargs -0 -t -o git add'
 
 # 打印选中的分支
 function gsb() {
