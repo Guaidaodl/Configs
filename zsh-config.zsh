@@ -18,6 +18,8 @@
 plugins=(adb zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
+export TERM=xterm-256color
+
 ########################################################### 
 #  powerlevel9k
 ###########################################################
@@ -52,6 +54,7 @@ then
     alias vimdiff=mvimdiff
 fi
 alias g=git
+alias f=fuck
 
 ########################################################### 
 # git 相关的配置
@@ -102,5 +105,4 @@ function gchr() {
 function gmb() {
     git merge `gsb`
 }
-
 
