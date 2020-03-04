@@ -1,6 +1,7 @@
 source ~/.vim/config/utils.vim
 function! ConfigKeymap()
-  
+
+  let g:which_key_map = {}
   """跟文件类型有关的快捷键
   autocmd FileType html noremap <F5> :!open %<CR><CR>
   autocmd FileType vim  noremap <F5> :source %<CR>
@@ -8,11 +9,11 @@ function! ConfigKeymap()
   autocmd FileType ruby setl sw=2 sts=2
 
   call keymap#mapMacAlt()
-  
+
   "insert模式下的快捷键
   inoremap <C-k> <Esc>d$a
   inoremap fd <Esc>
-  
+
   "visual mode
   vnoremap <leader>y "+y
   vnoremap fd <Esc>
@@ -22,20 +23,20 @@ function! ConfigKeymap()
   "移动光标的快捷键
   nnoremap <C-k> d$
   nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-  
+
   " laeder相关的配置
   nnoremap <leader><SPACE> :Commands<CR>
   nnoremap <leader>x :close<CR>
-  
+
   " File 相关的配置
   nnoremap <leader>fs :w<CR>
   nnoremap <leader>fo :e<SPACE>
-  
+
   "copy line to system clipboard
   nnoremap <leader>y "+yy
   nnoremap <leader>ev :tabe $MYVIMRC<CR>
   nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
-  
+
   "Buffer 相关的快捷键
   nnoremap <silent> <leader>bl :Buffers<CR>
   nnoremap <silent> <leader>bp :bp<CR>
@@ -44,34 +45,30 @@ function! ConfigKeymap()
   nnoremap <silent> <leader>bk :bd!<CR> " kill buffer
   nnoremap <silent> <C-h> :bp<CR>
   nnoremap <silent> <C-l> :bn<CR>
-  
+
   " Windows 相关的快捷键
-  nnoremap <silent> <leader>wc :close<CR>
-  nnoremap <silent> <leader>ws :split<CR>
-  nnoremap <silent> <leader>wt :NERDTreeFocus<CR>
   nnoremap <silent> <leader>w[ :NERDTreeToggle<CR>
-  nnoremap <silent> <leader>w] :TagbarToggle<CR>
-  nnoremap <silent> <leader>wv :vs<CR>
-  nnoremap <silent> <leader>ww <C-w><C-w>
-  nnoremap <silent> <leader>wo <C-w>o
-  nnoremap <silent> <leader>wl <C-w>l
-  nnoremap <silent> <leader>wh <C-w>h
-  nnoremap <silent> <leader>wj <C-w>j
-  nnoremap <silent> <leader>wk <C-w>k
-  nnoremap <silent> <leader>wg :Goyo<CR>
-  nnoremap <silent> <leader>w= <C-w>=
-  nnoremap <silent> <leader>w+ 10<C-w>+
-  nnoremap <silent> <leader>w- 10<C-w>-
-  nnoremap <silent> <leader>w> 10<C-w>>
-  nnoremap <silent> <leader>w< 10<C-w><
+  let g:which_key_map.w = { 'name': '+windows'}
+  call keymap#nnore_leader_key_map('wd', ':close<CR>', 'close')
+  call keymap#nnore_leader_key_map('ws', '<C-w>s', 'split')
+  call keymap#nnore_leader_key_map('wv', '<C-w>v', 'vsplit')
+  call keymap#nnore_leader_key_map('wo', '<C-w><C-w>', 'other')
+  call keymap#nnore_leader_key_map('wm', '<C-w>o', 'maximum')
+  call keymap#nnore_leader_key_map('wh', '<C-w>h', 'go left')
+  call keymap#nnore_leader_key_map('wh', '<C-w>h', 'go left')
+  call keymap#nnore_leader_key_map('wj', '<C-w>j', 'go down')
+  call keymap#nnore_leader_key_map('wk', '<C-w>k', 'go up')
+  call keymap#nnore_leader_key_map('wl', '<C-w>l', 'go right')
+  call keymap#nnore_leader_key_map('w=', '<C-w>=', 'equal')
   nnoremap <A-h> <C-w>h
   nnoremap <A-j> <C-w>j
   nnoremap <A-k> <C-w>k
   nnoremap <A-l> <C-w>l
-  
+
   " Terminal
-  nnoremap <leader>tt :terminal<CR>
+  call keymap#nnore_leader_key_map("'", ':terminal<CR>', 'terminal')
   if has('nvim')
+    tnoremap fd <C-\><C-N>
     tnoremap <A-h> <C-\><C-N><C-w>h
     tnoremap <A-j> <C-\><C-N><C-w>j
     tnoremap <A-k> <C-\><C-N><C-w>k
@@ -82,28 +79,31 @@ function! ConfigKeymap()
     tnoremap <A-k> <C-w>k
     tnoremap <A-l> <C-w>l
   endif
-  
+
   " Quickfix 相关的快捷键
   nnoremap <leader>qc :ccl<CR>
   nnoremap <leader>qo :copen<CR>
   nnoremap <leader>qn :cn<CR>
   nnoremap <leader>qp :cp<CR>
   nnoremap <leader>ql :cl<CR>
- 
+
   " Tab
-  nnoremap <leader>tn :tabnew<CR>
-  nnoremap <leader>ts :tabs<CR>
-  nnoremap <leader>tl :tabnext<CR>
-  nnoremap <leader>th :tabprevious<CR>
-  nnoremap <leader>to :tabonly<CR>
-  nnoremap <leader>tc :tabclose<CR>
-  nnoremap <leader>te :call EditCurrentBufferInNewTab()<CR>
-  
+  let g:which_key_map.t = {'name': '+tab'}
+  call keymap#nnore_leader_key_map('tn', ":tabnew<CR>", "new")
+  call keymap#nnore_leader_key_map('ts', ":tabs<CR>", "tabs")
+  call keymap#nnore_leader_key_map('tl', ":tabnext<CR>", "left")
+  call keymap#nnore_leader_key_map('th', ":tabprevious<CR>", "right")
+  call keymap#nnore_leader_key_map('to', ":tabonly<CR>", "only")
+  call keymap#nnore_leader_key_map('td', ":tabclose<CR>", "delete")
+  call keymap#nnore_leader_key_map('te', ":call EditCurrentBufferInNewTab()<CR>", "edit")
+
   " Git 相关的快捷键
-  nnoremap <leader>gs :Gstatus<CR>
-  nnoremap <leader>gc :Gcommit<CR>
-  nnoremap <leader>gl :Git lg<CR>
-  nnoremap <leader>gd :Git df<CR>
+  let g:which_key_map.g = {'name': '+git'}
+  call keymap#nnore_leader_key_map('gb', ":Gblame<CR>", "blame")
+  call keymap#nnore_leader_key_map('gc', ":Gcommit<CR>", "commit")
+  call keymap#nnore_leader_key_map('gd', ":Git diff<CR>", "diff")
+  call keymap#nnore_leader_key_map('gs', ":Gstatus<CR>", "status")
+
 
   " 折叠的快捷键, z 实在太难摁了
   nnoremap <leader>h za
@@ -114,11 +114,37 @@ function! ConfigKeymap()
   nnoremap <leader>m3 @3
   nnoremap <leader>m4 @4
   nnoremap <leader>m5 @5
+
+  call which_key#register('<Space>', "g:which_key_map")
+endfunction
+
+function! keymap#nnore_leader_key_map(key_sequence, map, description)
+  let len = len(a:key_sequence)
+
+  let index = 0
+  let current_map = g:which_key_map
+  while index < len
+    let key = a:key_sequence[index]
+    if index < len -1
+      """ 创建中间的节点
+      if !has_key(current_map, key)
+        let current_map[key] = {}
+      endif
+      let current_map = current_map[key]
+    else
+      " 写入描述
+      let current_map[key] = a:description
+    endif
+
+    let index = index + 1
+  endwhile
+  let cmd = "nnoremap <silent> <leader>" . a:key_sequence . " " . a:map
+  execute cmd
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""
 "
-" 映射 Mac 的特殊字符到 Alt 
+" 映射 Mac 的特殊字符到 Alt
 "
 """""""""""""""""""""""""""""""""""""""""""""""
 function! keymap#mapMacAlt()

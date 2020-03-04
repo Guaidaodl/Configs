@@ -33,7 +33,7 @@ set cursorline
 set nowrap
 
 set background=dark
-colorscheme monokai
+colorscheme dracula
 
 "语法缩进
 "set foldmehod=indent
@@ -45,9 +45,6 @@ if has("gui_running")
     set guifont=Fira\ Code\ Retina:h16
   elseif has("gui_win32")
     set guifont=Consolas:h16:cANSI
-  else
-    " linux
-    set guifont=Inconsolata\ 16
   endif    
 endif
 

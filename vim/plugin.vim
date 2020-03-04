@@ -13,6 +13,7 @@ function! plugin#main()
   Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
 
+  Plug 'liuchengxu/vim-which-key'
   " Git 
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
@@ -61,13 +62,15 @@ function! plugin#main()
   Plug 'dart-lang/dart-vim-plugin'
   call plug#end()
   
+  """""""""""""""""""""""""""插件相关设置
   call plugin#config_fzf()
+  call plugin#config_which_key()
   call plugin#config_gutentags()
   call plugin#config_asyncrun()
+  call plugin#config_ultisnips()
   call plugin#config_deoplete()
   call plugin#config_ale()
   call plugin#config_deoplete()
-  """""""""""""""""""""""""""插件相关设置
   """vim-auto-save
   let g:auto_save = 1 "enable the vim-auto-save
   let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
@@ -88,6 +91,12 @@ function! plugin#main()
 
 endfunction
 
+"""" 配置 whichkey
+function! plugin#config_which_key()
+  set timeoutlen=500
+  let g:mapleader = "\<Space>"
+  nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+endfunction
 """" 配置 Asyncrun
 function! plugin#config_asyncrun()
   " 自动打开 quickfix window ，高度为 6
@@ -214,4 +223,12 @@ function! plugin#config_client()
         \   },
         \ }
 endfunction 
+
+""" 配置 Ultisnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+function! plugin#config_ultisnips()
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+endfunction
 
