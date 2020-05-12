@@ -87,6 +87,13 @@ function! ConfigKeymap()
   nnoremap <leader>qp :cp<CR>
   nnoremap <leader>ql :cl<CR>
 
+  let g:which_key_map.c = { 'name': 'coclist'}
+  call keymap#nnore_leader_key_map('cb', ":CocList buffers<CR>", "buffers")
+  call keymap#nnore_leader_key_map('cc', ":CocList vimcommands<CR>", "commands")
+  call keymap#nnore_leader_key_map('cf', ":CocList files<CR>", "files")
+  call keymap#nnore_leader_key_map('cg', ":CocList grep<CR>", "grep")
+  call keymap#nnore_leader_key_map('ct', ":CocList tags<CR>", "tags")
+
   " Tab
   let g:which_key_map.t = {'name': '+tab'}
   call keymap#nnore_leader_key_map('tn', ":tabnew<CR>", "new")
@@ -109,11 +116,19 @@ function! ConfigKeymap()
   nnoremap <leader>h za
 
   nnoremap <leader>r :%s///gc<Left><Left><Left><Left>
-  nnoremap <leader>m1 @1
-  nnoremap <leader>m2 @2
-  nnoremap <leader>m3 @3
-  nnoremap <leader>m4 @4
-  nnoremap <leader>m5 @5
+  
+  " marco
+  let g:which_key_map.g = {'name': '+macro'}
+  call keymap#nnore_leader_key_map('mm', "@@", "repeat")
+  call keymap#nnore_leader_key_map('ma', "@a", "@a")
+  call keymap#nnore_leader_key_map('mb', "@b", "@b")
+  call keymap#nnore_leader_key_map('mc', "@c", "@c")
+  call keymap#nnore_leader_key_map('md', "@d", "@d")
+  call keymap#nnore_leader_key_map('m1', "@1", "@1")
+  call keymap#nnore_leader_key_map('m2', "@2", "@2")
+  call keymap#nnore_leader_key_map('m3', "@3", "@3")
+  call keymap#nnore_leader_key_map('m4', "@4", "@4")
+  call keymap#nnore_leader_key_map('m5', "@5", "@5")
 
   call which_key#register('<Space>', "g:which_key_map")
 endfunction

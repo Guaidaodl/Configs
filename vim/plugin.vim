@@ -41,7 +41,8 @@ function! plugin#main()
 "        \ 'do': 'bash install.sh',
 "        \ }
 "  call plugin#config_client()
-  Plug 'w0rp/ale'
+  "Plug 'w0rp/ale'
+  Plug 'neoclide/coc.nvim', { 'branch': 'release'}
 
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -63,8 +64,8 @@ function! plugin#main()
   call plug#end()
   
   """""""""""""""""""""""""""插件相关设置
-  call plugin#config_fzf()
   call plugin#config_which_key()
+  call plugin#config_fzf()
   call plugin#config_gutentags()
   call plugin#config_asyncrun()
   call plugin#config_ultisnips()
