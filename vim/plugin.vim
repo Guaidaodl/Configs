@@ -51,7 +51,10 @@ function! plugin#main()
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
-  
+
+  " 彩虹括号
+  Plug 'luochen1990/rainbow'
+
   " 符号跳转
   Plug 'ludovicchabant/vim-gutentags'
 
@@ -61,6 +64,7 @@ function! plugin#main()
   """ 语法高亮
   Plug 'udalov/kotlin-vim'
   Plug 'dart-lang/dart-vim-plugin'
+  Plug 'wlangstroth/vim-racket'
   call plug#end()
   
   """""""""""""""""""""""""""插件相关设置
@@ -69,8 +73,8 @@ function! plugin#main()
   call plugin#config_gutentags()
   call plugin#config_asyncrun()
   call plugin#config_ultisnips()
-  call plugin#config_deoplete()
-  call plugin#config_ale()
+  call plugin#config_rainbow()
+  "call plugin#config_ale()
   call plugin#config_deoplete()
   """vim-auto-save
   let g:auto_save = 1 "enable the vim-auto-save
@@ -233,3 +237,8 @@ function! plugin#config_ultisnips()
   let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 endfunction
 
+
+""" 配置 rainbow
+function! plugin#config_rainbow()
+  let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+endfunction
