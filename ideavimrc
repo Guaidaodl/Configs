@@ -8,7 +8,9 @@ inoremap <C-/> <Esc>
 vnoremap fd <Esc>
 
 nnoremap <leader><space> :
-nnoremap <leader>ft :action FileStructurePopup<CR>
-nnoremap <leader>fc :action GotoClass<CR>
-nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>jt :action FileStructurePopup<CR>
+nnoremap <leader>jc :action GotoClass<CR>
+nnoremap <leader>jf :action GotoFile<CR>
+
 set ideajoin
+set surround

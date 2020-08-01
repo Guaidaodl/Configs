@@ -103,6 +103,20 @@ function gchr() {
 }
 
 function gmb() {
-    git merge `gsb`
+   git merge `gsb`
+}
+
+########################################################### 
+# Jenkins 相关的配置
+###########################################################
+
+# 使用 Jenkins 构建 like 当前分支的包
+function jlb() {
+  local branch
+  branch=$(git rev-parse --abbrev-ref HEAD)
+  
+  curl $JENKINS_URL/view/Like/job/like-android/buildWithParameters \
+    --user $JENKINS_LOGIN_NAME:$JENKINS_TOKEN \
+    -X POST -F BRANCH=$branch
 }
 
