@@ -111,7 +111,8 @@ function gmb() {
 ###########################################################
 
 # 使用 Jenkins 构建 like 当前分支的包
-function jlb() {
+# build-like
+function bl() {
   local branch
   branch=$(git rev-parse --abbrev-ref HEAD)
   
@@ -120,3 +121,12 @@ function jlb() {
     -X POST -F BRANCH=$branch
 }
 
+# build-like-branch
+function blb() {
+  local branch
+  branch=$(gsb)
+  
+  curl $JENKINS_URL/view/Like/job/like-android/buildWithParameters \
+    --user $JENKINS_LOGIN_NAME:$JENKINS_TOKEN \
+    -X POST -F BRANCH=$branch
+}
