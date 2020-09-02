@@ -14,6 +14,12 @@ function! ConfigKeymap()
   inoremap <C-k> <Esc>d$a
   inoremap fd <Esc>
 
+  " Cmdline 的快捷键
+  cnoremap <C-A> <Home>
+  cnoremap <C-F> <Right>
+  cnoremap <C-B> <Left>
+  cnoremap <C-E> <End>
+  
   "visual mode
   vnoremap <leader>y "+y
   vnoremap fd <Esc>

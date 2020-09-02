@@ -7,6 +7,7 @@ if has('win32')
   set encoding=utf-8
 endif
 set runtimepath +=~/.vim/config
+set pyxversion=3
 
 let mapleader = ' '
 
