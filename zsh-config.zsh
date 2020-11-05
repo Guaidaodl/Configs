@@ -59,6 +59,7 @@ alias f=fuck
 ########################################################### 
 # git 相关的配置
 ###########################################################
+alias gpr='git pull --rebase'
 
 # 打印选中的分支
 function gsb() {
@@ -85,6 +86,19 @@ function gpg() {
     local branch
     branch=$(git rev-parse --abbrev-ref HEAD)
     git push origin HEAD:refs/for/$branch
+}
+
+# git push new branch
+function gpn() {
+    git rev-parse --git-dir 1>/dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        (>&2 echo "Not in git dir")
+        return -1
+    fi
+
+    local branch
+    branch=$(git rev-parse --abbrev-ref HEAD)
+    git push -u origin $branch
 }
 
 function gch() {

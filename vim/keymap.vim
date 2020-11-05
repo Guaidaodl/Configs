@@ -28,15 +28,20 @@ function! ConfigKeymap()
   nnoremap <C-t> :NERDTreeToggle<CR>
   "移动光标的快捷键
   nnoremap <C-k> d$
-  nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
   " laeder相关的配置
   nnoremap <leader><SPACE> :Commands<CR>
   nnoremap <leader>x :close<CR>
 
   " File 相关的配置
-  nnoremap <leader>fs :w<CR>
-  nnoremap <leader>fo :e<SPACE>
+  let g:which_key_map.f = { 'name': '+file'}
+  let g:Lf_ShortcutF = "<leader>ff"
+  call keymap#nnore_leader_key_map('fs', ':w<CR>', 'save')
+
+  " leaderf 相关的配置
+  call keymap#nnore_leader_key_map('fb', ':Leaderf buffer --popup<CR>', 'buffer')
+  call keymap#nnore_leader_key_map('ff', ':Leaderf file --popup', 'files')
+  call keymap#nnore_leader_key_map('ft', ':Leaderf bufTag --popup', 'bufTag')
 
   "copy line to system clipboard
   nnoremap <leader>y "+yy
@@ -44,11 +49,13 @@ function! ConfigKeymap()
   nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
 
   "Buffer 相关的快捷键
-  nnoremap <silent> <leader>bl :Buffers<CR>
-  nnoremap <silent> <leader>bp :bp<CR>
-  nnoremap <silent> <leader>bn :bn<CR>
-  nnoremap <silent> <leader>bd :bd<CR>l
-  nnoremap <silent> <leader>bk :bd!<CR> " kill buffer
+  let g:which_key_map.b = { 'buffer': '+buffer' }
+  let g:Lf_ShortcutB = '<leader>fb'
+  call keymap#nnore_leader_key_map('bl', ':Buffers', 'buffers')
+  call keymap#nnore_leader_key_map('bp', ':bp<CR>', 'previous buffer')
+  call keymap#nnore_leader_key_map('bn', ':bn<CR>', 'next buffer')
+  call keymap#nnore_leader_key_map('bd', ':bd<CR>', 'delete buffer')
+  call keymap#nnore_leader_key_map('bk', ':bd<CR>', 'kill buffer')
   nnoremap <silent> <C-h> :bp<CR>
   nnoremap <silent> <C-l> :bn<CR>
 
@@ -72,7 +79,6 @@ function! ConfigKeymap()
   nnoremap <A-l> <C-w>l
 
   " Terminal
-  call keymap#nnore_leader_key_map("'", ':terminal<CR>', 'terminal')
   if has('nvim')
     tnoremap fd <C-\><C-N>
     tnoremap <A-h> <C-\><C-N><C-w>h
@@ -92,13 +98,6 @@ function! ConfigKeymap()
   nnoremap <leader>qn :cn<CR>
   nnoremap <leader>qp :cp<CR>
   nnoremap <leader>ql :cl<CR>
-
-  let g:which_key_map.c = { 'name': 'coclist'}
-  call keymap#nnore_leader_key_map('cb', ":CocList buffers<CR>", "buffers")
-  call keymap#nnore_leader_key_map('cc', ":CocList vimcommands<CR>", "commands")
-  call keymap#nnore_leader_key_map('cf', ":CocList files<CR>", "files")
-  call keymap#nnore_leader_key_map('cg', ":CocList grep<CR>", "grep")
-  call keymap#nnore_leader_key_map('ct', ":CocList tags<CR>", "tags")
 
   " Tab
   let g:which_key_map.t = {'name': '+tab'}
@@ -124,7 +123,7 @@ function! ConfigKeymap()
   nnoremap <leader>r :%s///gc<Left><Left><Left><Left>
   
   " marco
-  let g:which_key_map.g = {'name': '+macro'}
+  let g:which_key_map.m = {'name': '+macro'}
   call keymap#nnore_leader_key_map('mm', "@@", "repeat")
   call keymap#nnore_leader_key_map('ma', "@a", "@a")
   call keymap#nnore_leader_key_map('mb', "@b", "@b")
@@ -140,10 +139,10 @@ function! ConfigKeymap()
 endfunction
 
 function! keymap#nnore_leader_key_map(key_sequence, map, description)
-  let len = len(a:key_sequence)
-
   let index = 0
+  let len = len(a:key_sequence)
   let current_map = g:which_key_map
+
   while index < len
     let key = a:key_sequence[index]
     if index < len -1
