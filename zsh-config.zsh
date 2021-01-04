@@ -7,6 +7,7 @@
 # - z.lua: https://github.com/skywind3000/z.lua 
 # - powerlevel9k: https://github.com/Powerlevel9k/powerlevel9k 
 # - thefunck: https://github.com/nvbn/thefuck
+# - lsd: https://github.com/Peltoche/lsd
 #
 # 需要额外的插件
 # - zsh-autosuggestions: https://github.com/zsh-users/zsh-autosuggestions 
@@ -55,6 +56,8 @@ then
 fi
 alias g=git
 alias f=fuck
+alias ls=lsd
+alias ll='lsd -l'
 
 ########################################################### 
 # git 相关的配置

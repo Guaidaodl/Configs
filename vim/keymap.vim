@@ -21,7 +21,6 @@ function! ConfigKeymap()
   cnoremap <C-E> <End>
   
   "visual mode
-  vnoremap <leader>y "+y
   vnoremap fd <Esc>
 
   "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
@@ -30,28 +29,35 @@ function! ConfigKeymap()
   nnoremap <C-k> d$
 
   " laeder相关的配置
-  nnoremap <leader><SPACE> :Commands<CR>
-  nnoremap <leader>x :close<CR>
+  call keymap#nnore_leader_key_map('x', ':close<CR>', 'close')
+
+  let g:which_key_map.p = { 'name': '+Preferences'}
+  call keymap#nnore_leader_key_map('pe', ':tabe $MYVIMRC<CR>', 'edit config')
+  call keymap#nnore_leader_key_map('pl', ':source $MYVIMRC<CR> :echo "(>^.^<)"<CR>', 'load config')
+  call keymap#nnore_leader_key_map('pi', ':PlugInstall<CR>', 'install plugins')
+  call keymap#nnore_leader_key_map('pc', ':PlugClean<CR>', 'clean plugins')
+  call keymap#nnore_leader_key_map('pu', ':PlugUpdate<CR>', 'update plugins')
+  call keymap#nnore_leader_key_map('pg', ':PlugUpgrade<CR>', 'upgrade vim-plug')
 
   " File 相关的配置
-  let g:which_key_map.f = { 'name': '+file'}
-  let g:Lf_ShortcutF = "<leader>ff"
+  let g:which_key_map.f = { 'name': '+File'}
+  call keymap#nnore_leader_key_map('fq', ':q<CR>', 'quit')
+  call keymap#nnore_leader_key_map('fn', ':new<CR>', 'new')
   call keymap#nnore_leader_key_map('fs', ':w<CR>', 'save')
+  call keymap#nnore_leader_key_map('fS', ':w ', 'save as')
 
   " leaderf 相关的配置
-  call keymap#nnore_leader_key_map('fb', ':Leaderf buffer --popup<CR>', 'buffer')
-  call keymap#nnore_leader_key_map('ff', ':Leaderf file --popup', 'files')
-  call keymap#nnore_leader_key_map('ft', ':Leaderf bufTag --popup', 'bufTag')
-
-  "copy line to system clipboard
-  nnoremap <leader>y "+yy
-  nnoremap <leader>ev :tabe $MYVIMRC<CR>
-  nnoremap <leader>sv :source $MYVIMRC<CR>:echo "(>^.^<)"<CR>
+  let g:which_key_map.j = { 'name': '+Jump'}
+  let g:Lf_ShortcutF = "<leader>jf"
+  call keymap#nnore_leader_key_map('jb', ':Leaderf buffer --popup<CR>', 'buffer')
+  call keymap#nnore_leader_key_map('jf', ':Leaderf file --popup<CR>', 'files')
+  call keymap#nnore_leader_key_map('jt', ':Leaderf bufTag --popup<CR>', 'bufTag')
+  call keymap#nnore_leader_key_map('jr', ':Leaderf rg --popup<CR>', 'rg')
 
   "Buffer 相关的快捷键
-  let g:which_key_map.b = { 'buffer': '+buffer' }
+  let g:which_key_map.b = { 'name': '+Buffer' }
   let g:Lf_ShortcutB = '<leader>fb'
-  call keymap#nnore_leader_key_map('bl', ':Buffers', 'buffers')
+  call keymap#nnore_leader_key_map('bl', ':Leaderf buffer --popup<CR>', 'buffers')
   call keymap#nnore_leader_key_map('bp', ':bp<CR>', 'previous buffer')
   call keymap#nnore_leader_key_map('bn', ':bn<CR>', 'next buffer')
   call keymap#nnore_leader_key_map('bd', ':bd<CR>', 'delete buffer')
@@ -59,9 +65,25 @@ function! ConfigKeymap()
   nnoremap <silent> <C-h> :bp<CR>
   nnoremap <silent> <C-l> :bn<CR>
 
+  let g:which_key_map.e = { 'name': '+Edit' }
+  vnoremap <leader>y "+y
+  call keymap#nnore_leader_key_map('ey', '"+yy', 'copy line')
+  call keymap#nnore_leader_key_map('ep', '"+p', 'paste')
+  call keymap#nnore_leader_key_map('er', ':%s///gc<Left><Left><Left><Left>', 'replace')
+
   " Windows 相关的快捷键
   nnoremap <silent> <leader>w[ :NERDTreeToggle<CR>
-  let g:which_key_map.w = { 'name': '+windows'}
+  let g:which_key_map.w = { 'name': '+Windows'}
+  call keymap#nnore_leader_key_map('1', ':1 wincmd w<CR>', 'window 1')
+  call keymap#nnore_leader_key_map('2', ':2 wincmd w<CR>', 'window 2')
+  call keymap#nnore_leader_key_map('3', ':3 wincmd w<CR>', 'window 3')
+  call keymap#nnore_leader_key_map('4', ':4 wincmd w<CR>', 'window 4')
+  call keymap#nnore_leader_key_map('5', ':5 wincmd w<CR>', 'window 5')
+  call keymap#nnore_leader_key_map('w1', ':1 wincmd w<CR>', 'window 1')
+  call keymap#nnore_leader_key_map('w2', ':2 wincmd w<CR>', 'window 2')
+  call keymap#nnore_leader_key_map('w3', ':3 wincmd w<CR>', 'window 3')
+  call keymap#nnore_leader_key_map('w4', ':4 wincmd w<CR>', 'window 4')
+  call keymap#nnore_leader_key_map('w5', ':5 wincmd w<CR>', 'window 5')
   call keymap#nnore_leader_key_map('wd', ':close<CR>', 'close')
   call keymap#nnore_leader_key_map('ws', '<C-w>s', 'split')
   call keymap#nnore_leader_key_map('wv', '<C-w>v', 'vsplit')
@@ -93,14 +115,23 @@ function! ConfigKeymap()
   endif
 
   " Quickfix 相关的快捷键
-  nnoremap <leader>qc :ccl<CR>
-  nnoremap <leader>qo :copen<CR>
-  nnoremap <leader>qn :cn<CR>
-  nnoremap <leader>qp :cp<CR>
-  nnoremap <leader>ql :cl<CR>
+  let g:which_key_map.q = {'name': '+QuickFix'}
+  call keymap#nnore_leader_key_map('qc', ':ccl<CR>', '')
+  call keymap#nnore_leader_key_map('qo', ':copen<CR>', '')
+  call keymap#nnore_leader_key_map('qn', ':cn<CR>', '')
+  call keymap#nnore_leader_key_map('qp', ':cp<CR>', '')
+  call keymap#nnore_leader_key_map('ql', ':cl<CR>', '')
 
   " Tab
-  let g:which_key_map.t = {'name': '+tab'}
+  let g:which_key_map.t = {'name': '+Tab'}
+  call keymap#nnore_leader_key_map('t1', "1gt", "Tab 1")
+  call keymap#nnore_leader_key_map('t2', "2gt", "Tab 2")
+  call keymap#nnore_leader_key_map('t3', "3gt", "Tab 3")
+  call keymap#nnore_leader_key_map('t4', "4gt", "Tab 4")
+  call keymap#nnore_leader_key_map('t5', "5gt", "Tab 5")
+  call keymap#nnore_leader_key_map('t6', "6gt", "Tab 6")
+  call keymap#nnore_leader_key_map('t7', "7gt", "Tab 7")
+  call keymap#nnore_leader_key_map('tn', ":tabnew<CR>", "new")
   call keymap#nnore_leader_key_map('tn', ":tabnew<CR>", "new")
   call keymap#nnore_leader_key_map('ts', ":tabs<CR>", "tabs")
   call keymap#nnore_leader_key_map('tl', ":tabnext<CR>", "left")
@@ -120,7 +151,6 @@ function! ConfigKeymap()
   " 折叠的快捷键, z 实在太难摁了
   nnoremap <leader>h za
 
-  nnoremap <leader>r :%s///gc<Left><Left><Left><Left>
   
   " marco
   let g:which_key_map.m = {'name': '+macro'}

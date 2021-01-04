@@ -5,8 +5,14 @@ function! plugin#main()
   
   " Add or remove your plugins here:
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
+    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  endif
+
+  
+  Plug 'itchyny/lightline.vim'
   Plug 'vim-scripts/vim-auto-save'
  
   Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -33,6 +39,7 @@ function! plugin#main()
   Plug 'vim-scripts/Solarized'
   
   """"""""""""""""""""""""""""" IDE 相关的插件
+  Plug 'dense-analysis/ale'
   " 彩虹括号
   Plug 'luochen1990/rainbow'
 
@@ -46,10 +53,16 @@ function! plugin#main()
   call plug#end()
   
   """""""""""""""""""""""""""插件相关设置
+  call plugin#config_lightline()
+  call plugin#config_leaderf()
   call plugin#config_which_key()
   call plugin#config_asyncrun()
   call plugin#config_ultisnips()
   call plugin#config_rainbow()
+  if has('nvim')
+    call plugin#config_deoplete()
+    call plugin#config_defx()
+  endif
   """vim-auto-save
   let g:auto_save = 1 "enable the vim-auto-save
   let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
@@ -62,18 +75,47 @@ function! plugin#main()
   let g:indent_guides_enable_on_vim_startup = 1
   
   """ airline 
-  let g:airline_theme='papercolor'
+  let g:airline_theme='bubblegum'
   let g:airline#extensions#tabline#enabled = 1
   let g:airline_section_b = "%{airline#util#wrap(airline#extensions#branch#get_head(),0)}" 
   """ git
   let g:gitgutter_enable = 1
-
 endfunction
 
-"""" 配置 whichkey
+function! plugin#config_lightline()
+  let g:lightline = {}
+  let g:lightline.active = {
+      \ 'left': [ [ 'winnr', 'mode', 'paste' ],
+      \           [ 'readonly', 'filename', 'modified' ] ],
+      \ 'right': [ [ 'lineinfo' ],
+      \            [ 'percent' ],
+      \            [ 'fileformat', 'fileencoding', 'filetype' ] ] }
+  let g:lightline.inactive = {
+      \ 'left': [ [ 'winnr', 'filename' ] ],
+      \ 'right': [ [ 'lineinfo' ],
+      \            [ 'percent' ] ] }
+  let g:lightline.tabline = {
+      \ 'left': [ [ 'tabs' ] ],
+      \ 'right': [ [ 'close' ] ] }
+endfunction
+
+""" 配置 leaderf
+function! plugin#config_leaderf()
+  " 配置图标
+  let g:Lf_ShowDevIcons = 0
+endfunction
+
+""" 配置 deoplete
+function! plugin#config_deoplete()
+  let g:deoplete#enable_at_startup = 1
+  call deoplete#custom#option('smart_case', v:true)
+endfunction
+
+""" 配置 whichkey
 function! plugin#config_which_key()
-  set timeoutlen=500
+  set timeoutlen=100
   let g:mapleader = "\<Space>"
+  let g:which_key_use_floating_win = 1
   nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 endfunction
 """" 配置 Asyncrun
@@ -97,4 +139,83 @@ endfunction
 """ 配置 rainbow
 function! plugin#config_rainbow()
   let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+endfunction
+
+""" 配置 defx
+function! plugin#config_defx()
+    call defx#custom#option('_', {
+      \ 'winwidth': 30,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'show_ignored_files': 0,
+      \ 'buffer_name': '',
+      \ 'toggle': 1,
+      \ 'resume': 1
+      \ })
+    autocmd FileType defx call s:defx_my_settings()
+endfunction
+
+function! s:defx_my_settings() abort
+  " Define mappings
+  nnoremap <silent><buffer><expr> <CR>
+  \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> c
+  \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+  \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+  \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> E
+  \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P
+  \ defx#do_action('preview')
+  nnoremap <silent><buffer><expr> o
+  \ defx#do_action('open_tree', 'toggle')
+  nnoremap <silent><buffer><expr> K
+  \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+  \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+  \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> C
+  \ defx#do_action('toggle_columns',
+  \                'mark:indent:icon:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S
+  \ defx#do_action('toggle_sort', 'time')
+  nnoremap <silent><buffer><expr> d
+  \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+  \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> !
+  \ defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr> x
+  \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy
+  \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+  \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ;
+  \ defx#do_action('repeat')
+  nnoremap <silent><buffer><expr> h
+  \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~
+  \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q
+  \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+  \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+  \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+  \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+  \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+  \ defx#do_action('change_vim_cwd')
 endfunction
