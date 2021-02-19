@@ -8,6 +8,8 @@
 # - powerlevel9k: https://github.com/Powerlevel9k/powerlevel9k 
 # - thefunck: https://github.com/nvbn/thefuck
 # - lsd: https://github.com/Peltoche/lsd
+# - nvm: https://github.com/nvm-sh/nvm
+# - pyenv: https://github.com/pyenv/pyenv
 #
 # 需要额外的插件
 # - zsh-autosuggestions: https://github.com/zsh-users/zsh-autosuggestions 
@@ -15,6 +17,8 @@
 # 需要设定以下的环境变量:
 # Z_LUA_PATH: z.lua 脚本的位置
 #
+# 想要有最佳体验需要:
+# - nerd font: https://github.com/ryanoasis/nerd-fonts
 
 plugins=(adb zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
@@ -54,10 +58,25 @@ then
     alias vim=mvim
     alias vimdiff=mvimdiff
 fi
+if which nvim 2>&1 1>/dev/null
+then
+    alias vim=nvim
+    alias vimdiff=nvimdiff
+fi
 alias g=git
 alias f=fuck
 alias ls=lsd
 alias ll='lsd -l'
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ########################################################### 
 # git 相关的配置
