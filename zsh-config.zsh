@@ -5,7 +5,6 @@
 # 需要先安装的软件:
 # - fzf: https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
 # - z.lua: https://github.com/skywind3000/z.lua 
-# - powerlevel9k: https://github.com/Powerlevel9k/powerlevel9k 
 # - thefunck: https://github.com/nvbn/thefuck
 # - lsd: https://github.com/Peltoche/lsd
 # - nvm: https://github.com/nvm-sh/nvm
@@ -25,14 +24,15 @@ source $ZSH/oh-my-zsh.sh
 
 export TERM=xterm-256color
 
+export ZSH_THEME="powerlevel10k/powerlevel10k"
 ########################################################### 
 #  powerlevel9k
 ###########################################################
-source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_DISABLE_RPROMPT=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
-ZSH_DISABLE_COMPFIX=true
+# source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_DISABLE_RPROMPT=true
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
+# ZSH_DISABLE_COMPFIX=true
 
 ########################################################### 
 # fzf 

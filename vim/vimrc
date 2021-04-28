@@ -14,7 +14,6 @@ let mapleader = ' '
 source ~/.vim/config/keymap.vim
 source ~/.vim/config/plugin.vim
 
-call plugin#main()
 set hls "检索时高亮
 
 filetype on
@@ -34,7 +33,6 @@ set cursorline
 set nowrap
 
 set background=dark
-colorscheme dracula
 
 "语法缩进
 "set foldmehod=indent
@@ -43,7 +41,7 @@ set foldmethod=syntax
 if has("gui_running")
   if has("gui_macvim")
     set macligatures
-    set guifont=Fira\ Code\ Retina:h16
+    set guifont=FiraCode\ Nerd\ Font\ Mono:h16
   elseif has("gui_win32")
     set guifont=Consolas:h16:cANSI
   endif    
@@ -63,9 +61,12 @@ set incsearch
 set hls "检索时高亮
 set foldmethod=syntax "代码折叠
 set foldlevelstart=99
-"set helplang=cn
+set pumheight=10 "自动提示的个数 10
 
+" 配置插件和 keymap
+call plugin#main()
 call ConfigKeymap()
+colorscheme dracula
 
 au BufRead,BufNewFile Podfile set filetype=ruby
 

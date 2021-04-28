@@ -5,9 +5,12 @@ function! plugin#main()
   
   " Add or remove your plugins here:
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'tpope/vim-surround'
 
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
+    " 支持 neovim 内置的 lsp
+    Plug 'deoplete-plugins/deoplete-lsp'
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
   endif
 
@@ -39,7 +42,7 @@ function! plugin#main()
   Plug 'vim-scripts/Solarized'
   
   """"""""""""""""""""""""""""" IDE 相关的插件
-  Plug 'dense-analysis/ale'
+  Plug 'neovim/nvim-lspconfig'
   " 彩虹括号
   Plug 'luochen1990/rainbow'
 
@@ -50,6 +53,7 @@ function! plugin#main()
   Plug 'udalov/kotlin-vim'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'wlangstroth/vim-racket'
+
   call plug#end()
   
   """""""""""""""""""""""""""插件相关设置
@@ -62,6 +66,7 @@ function! plugin#main()
   if has('nvim')
     call plugin#config_deoplete()
     call plugin#config_defx()
+    call plugin#config_lsp()
   endif
   """vim-auto-save
   let g:auto_save = 1 "enable the vim-auto-save
@@ -108,12 +113,13 @@ endfunction
 """ 配置 deoplete
 function! plugin#config_deoplete()
   let g:deoplete#enable_at_startup = 1
-  call deoplete#custom#option('smart_case', v:true)
+  call deoplete#custom#option({
+  \ 'smart_case': v:true,
+  \})
 endfunction
 
 """ 配置 whichkey
 function! plugin#config_which_key()
-  set timeoutlen=100
   let g:mapleader = "\<Space>"
   let g:which_key_use_floating_win = 1
   nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
@@ -218,4 +224,20 @@ function! s:defx_my_settings() abort
   \ defx#do_action('print')
   nnoremap <silent><buffer><expr> cd
   \ defx#do_action('change_vim_cwd')
+endfunction
+
+function! plugin#config_lsp() 
+lua << EOF
+
+local lspconfig = require('lspconfig')
+
+lspconfig.rls.setup{}
+lspconfig.ccls.setup {
+  init_options = {
+    cache = {
+      directory = ".ccls-cache";
+    };
+  }
+}
+EOF
 endfunction
