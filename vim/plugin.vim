@@ -228,11 +228,27 @@ endfunction
 
 function! plugin#config_lsp() 
 lua << EOF
-
 local lspconfig = require('lspconfig')
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', '<leader>lD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', '<leader>ld', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>lp', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  -- Set some keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  end
+  if client.resolved_capabilities.document_range_formatting then
+    buf_set_keymap("v", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  end
+end
 lspconfig.rls.setup{}
 lspconfig.ccls.setup {
+  on_attach = on_attach;
   init_options = {
     cache = {
       directory = ".ccls-cache";

@@ -150,7 +150,6 @@ function! ConfigKeymap()
 
   " 折叠的快捷键, z 实在太难摁了
   nnoremap <leader>h za
-
   
   " marco
   let g:which_key_map.m = {'name': '+macro'}
@@ -165,6 +164,15 @@ function! ConfigKeymap()
   call keymap#nnore_leader_key_map('m4', "@4", "@4")
   call keymap#nnore_leader_key_map('m5', "@5", "@5")
 
+  " 定义 lsp 的键位描述
+  let g:which_key_map.l = { "name": "+lsp" }
+  let g:which_key_map.l["f"] = "Format"
+  let g:which_key_map.l["d"] = "Definition"
+  let g:which_key_map.l["D"] = "Declaration"
+  let g:which_key_map.l["p"] = "Parameters"
+
+
+  call which_key#register('<Space>', "g:which_key_map")
   call which_key#register('<Space>', "g:which_key_map")
 endfunction
 
