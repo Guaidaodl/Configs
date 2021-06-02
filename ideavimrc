@@ -8,9 +8,34 @@ inoremap <C-/> <Esc>
 vnoremap fd <Esc>
 
 nnoremap <leader><space> :
-nnoremap <leader>jt :action FileStructurePopup<CR>
+
+
 nnoremap <leader>jc :action GotoClass<CR>
 nnoremap <leader>jf :action GotoFile<CR>
+nnoremap <leader>js :action FileStructurePopup<CR>
+let g:WhichKeyDesc_Jump = "<leader>j +Jumps"
+let g:WhichKeyDesc_Jump_Class = "<leader>jc Class"
+let g:WhichKeyDesc_Jump_File = "<leader>jf Files"
+let g:WhichKeyDesc_Jump_Symbol = "<leader>js Symbol"
 
+
+nnoremap <leader>rr :action RenameElement<CR>
+let g:WhichKeyDesc_Refactor = "<leader>r +Refactor"
+let g:WhichKeyDesc_Refactor_Rename = "<leader>rr rename"
+
+
+
+nnoremap H ^
+nnoremap L $
+
+set which-key
 set ideajoin
 set surround
+
+" disable the timeout option
+set notimeout
+
+let g:WhichKeyDesc_windows        = "<leader>w  Windows"
+let g:WhichKeyDesc_windows_delete = "<leader>wd delete"
+let g:WhichKeyDesc_windows_split  = "<leader>ws split below"
+

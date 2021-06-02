@@ -1,4 +1,5 @@
 source ~/.vim/config/utils.vim
+
 function! ConfigKeymap()
 
   let g:which_key_map = {}
@@ -23,10 +24,11 @@ function! ConfigKeymap()
   "visual mode
   vnoremap fd <Esc>
 
-  "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
   nnoremap <C-t> :NERDTreeToggle<CR>
-  "移动光标的快捷键
   nnoremap <C-k> d$
+  "移动光标的快捷键
+  nnoremap H ^
+  nnoremap L $
 
   " laeder相关的配置
   call keymap#nnore_leader_key_map('x', ':close<CR>', 'close')
@@ -170,6 +172,7 @@ function! ConfigKeymap()
   let g:which_key_map.l["d"] = "Definition"
   let g:which_key_map.l["D"] = "Declaration"
   let g:which_key_map.l["p"] = "Parameters"
+  let g:which_key_map.l["r"] = "References"
 
 
   call which_key#register('<Space>', "g:which_key_map")
