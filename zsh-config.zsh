@@ -25,14 +25,6 @@ source $ZSH/oh-my-zsh.sh
 export TERM=xterm-256color
 
 export ZSH_THEME="powerlevel10k/powerlevel10k"
-########################################################### 
-#  powerlevel9k
-###########################################################
-# source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# POWERLEVEL9K_DISABLE_RPROMPT=true
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
-# ZSH_DISABLE_COMPFIX=true
 
 ########################################################### 
 # fzf 
@@ -67,6 +59,7 @@ alias g=git
 alias f=fuck
 alias ls=lsd
 alias ll='lsd -l'
+alias en='emacs -nw'
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
