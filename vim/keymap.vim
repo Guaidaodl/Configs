@@ -55,6 +55,7 @@ function! ConfigKeymap()
   call keymap#nnore_leader_key_map('jf', ':Leaderf file --popup<CR>', 'files')
   call keymap#nnore_leader_key_map('jt', ':Leaderf bufTag --popup<CR>', 'bufTag')
   call keymap#nnore_leader_key_map('jr', ':Leaderf rg --popup<CR>', 'rg')
+  call keymap#nnore_leader_key_map('jh', ':Leaderf cmdHistory --popup<CR>', 'cmd history')
 
   "Buffer 相关的快捷键
   let g:which_key_map.b = { 'name': '+Buffer' }

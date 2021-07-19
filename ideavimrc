@@ -24,13 +24,12 @@ let g:WhichKeyDesc_Refactor = "<leader>r +Refactor"
 let g:WhichKeyDesc_Refactor_Rename = "<leader>rr rename"
 
 
-
 nnoremap H ^
 nnoremap L $
 
-set which-key
 set ideajoin
 set surround
+set easymotion
 
 " disable the timeout option
 set notimeout

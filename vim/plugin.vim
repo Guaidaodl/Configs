@@ -6,6 +6,7 @@ function! plugin#main()
   " Add or remove your plugins here:
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   Plug 'tpope/vim-surround'
+  Plug 'easymotion/vim-easymotion'
 
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
