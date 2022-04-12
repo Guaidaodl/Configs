@@ -72,6 +72,20 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ########################################################### 
+# 代理相关的配置
+###########################################################
+
+function proxy_on() {
+    export http_proxy=$LOCAL_HTTP_PROXY
+    export https_proxy=$http_proxy
+    echo -e "终端代理已开启。"
+}
+
+function proxy_off(){
+    unset http_proxy https_proxy
+    echo -e "终端代理已关闭。"
+}
+########################################################### 
 # git 相关的配置
 ###########################################################
 alias gpr='git pull --rebase'
