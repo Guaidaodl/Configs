@@ -70,3 +70,5 @@ colorscheme dracula
 
 au BufRead,BufNewFile Podfile set filetype=ruby
 
+" 区分语言的一些配置
+autocmd FileType lua setlocal et sta sw=2 sts=2

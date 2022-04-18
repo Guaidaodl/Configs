@@ -19,7 +19,7 @@
 # 想要有最佳体验需要:
 # - nerd font: https://github.com/ryanoasis/nerd-fonts
 
-plugins=(adb zsh-autosuggestions)
+plugins=(adb zsh-autosuggestions git)
 source $ZSH/oh-my-zsh.sh
 
 export TERM=xterm-256color
@@ -29,7 +29,7 @@ export ZSH_THEME="powerlevel10k/powerlevel10k"
 ########################################################### 
 # fzf 
 ###########################################################
-export FZF_DEFAULT_OPTS='--height 80% --reverse --border'
+export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ########################################################### 
@@ -77,7 +77,7 @@ export NVM_DIR="$HOME/.nvm"
 alias gpr='git pull --rebase'
 
 # 打印选中的分支
-function gsb() {
+function gd_gsb() {
     git rev-parse --git-dir 1>/dev/null 2>&1
     if [ $? -ne 0 ]; then
         (>&2 echo "Not in git dir")
@@ -124,16 +124,19 @@ function gch() {
 }
 
 function gchr() {
-  local branch=$(git branch -r | fzf +m --reverse --height 40% | sed "s/^ *origin\///1")
+  local branch=$(git branch -r | grep origin | fzf  | sed "s/^ *origin\//origin\//")
 
   if [ -n "$branch" ]; then
-    git checkout $branch
+    git checkout --track $branch
   fi
 }
 
 function gmb() {
-   git merge `gsb`
+   git merge `gd_gsb`
 }
+
+alias gsa='git stage -A'
+alias gbf=gd_gsb
 
 ########################################################### 
 # Jenkins 相关的配置

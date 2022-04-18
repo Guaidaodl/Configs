@@ -48,6 +48,9 @@ function! plugin#main()
   Plug 'neovim/nvim-lspconfig'
   " 彩虹括号
   Plug 'luochen1990/rainbow'
+  " 调试
+  let g:vimspector_enable_mappings = 'HUMAN'
+  Plug 'puremourning/vimspector'
 
   " 异步运行命令
   Plug 'skywind3000/asyncrun.vim'
@@ -56,6 +59,7 @@ function! plugin#main()
   Plug 'udalov/kotlin-vim'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'wlangstroth/vim-racket'
+  Plug 'pboettch/vim-cmake-syntax'
 
   call plug#end()
   
@@ -111,6 +115,8 @@ endfunction
 function! plugin#config_leaderf()
   " 配置图标
   let g:Lf_ShowDevIcons = 0
+  let g:Lf_UseVersionControlTool = 0
+  let g:Lf_DefaultExternalTool = "rg"
 endfunction
 
 """ 配置 deoplete
@@ -251,13 +257,7 @@ local on_attach = function(client, bufnr)
   end
 end
 lspconfig.rls.setup{}
-lspconfig.ccls.setup {
-  on_attach = on_attach;
-  init_options = {
-    cache = {
-      directory = ".ccls-cache";
-    };
-  }
-}
+
+lspconfig.clangd.setup{}
 EOF
 endfunction
