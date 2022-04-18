@@ -15,6 +15,7 @@ nnoremap <leader>jf :action GotoFile<CR>
 nnoremap <leader>js :action FileStructurePopup<CR>
 
 nnoremap <leader>rr :action RenameElement<CR>
+nnoremap <leader>p "0p
 
 nnoremap H ^
 nnoremap L $

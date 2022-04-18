@@ -32,14 +32,15 @@ function! ConfigKeymap()
 
   " laeder相关的配置
   call keymap#nnore_leader_key_map('x', ':close<CR>', 'close')
+  call keymap#nnore_leader_key_map('p', '"0p', 'paste 0')
 
-  let g:which_key_map.p = { 'name': '+Preferences'}
-  call keymap#nnore_leader_key_map('pe', ':tabe $MYVIMRC<CR>', 'edit config')
-  call keymap#nnore_leader_key_map('pl', ':source $MYVIMRC<CR> :echo "(>^.^<)"<CR>', 'load config')
-  call keymap#nnore_leader_key_map('pi', ':PlugInstall<CR>', 'install plugins')
-  call keymap#nnore_leader_key_map('pc', ':PlugClean<CR>', 'clean plugins')
-  call keymap#nnore_leader_key_map('pu', ':PlugUpdate<CR>', 'update plugins')
-  call keymap#nnore_leader_key_map('pg', ':PlugUpgrade<CR>', 'upgrade vim-plug')
+  let g:which_key_map.P = { 'name': '+Preferences'}
+  call keymap#nnore_leader_key_map('Pe', ':tabe $MYVIMRC<CR>', 'edit config')
+  call keymap#nnore_leader_key_map('Pl', ':source $MYVIMRC<CR> :echo "(>^.^<)"<CR>', 'load config')
+  call keymap#nnore_leader_key_map('Pi', ':PlugInstall<CR>', 'install plugins')
+  call keymap#nnore_leader_key_map('Pc', ':PlugClean<CR>', 'clean plugins')
+  call keymap#nnore_leader_key_map('Pu', ':PlugUpdate<CR>', 'update plugins')
+  call keymap#nnore_leader_key_map('Pg', ':PlugUpgrade<CR>', 'upgrade vim-plug')
 
   " File 相关的配置
   let g:which_key_map.f = { 'name': '+File'}
@@ -134,7 +135,6 @@ function! ConfigKeymap()
   call keymap#nnore_leader_key_map('t5', "5gt", "Tab 5")
   call keymap#nnore_leader_key_map('t6', "6gt", "Tab 6")
   call keymap#nnore_leader_key_map('t7', "7gt", "Tab 7")
-  call keymap#nnore_leader_key_map('tn', ":tabnew<CR>", "new")
   call keymap#nnore_leader_key_map('tn', ":tabnew<CR>", "new")
   call keymap#nnore_leader_key_map('ts', ":tabs<CR>", "tabs")
   call keymap#nnore_leader_key_map('tl', ":tabnext<CR>", "left")
