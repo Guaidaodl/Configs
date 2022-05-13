@@ -3,7 +3,7 @@ source ~/.vim/config/utils.vim
 function! plugin#main()
   call plug#begin('~/.vim/plug')
   
-  " Add or remove your plugins here:
+  " enhanced
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   Plug 'tpope/vim-surround'
   Plug 'easymotion/vim-easymotion'

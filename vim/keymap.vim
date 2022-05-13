@@ -1,6 +1,7 @@
 source ~/.vim/config/utils.vim
 
 function! ConfigKeymap()
+  let mapleader = ' '
 
   let g:which_key_map = {}
   """跟文件类型有关的快捷键
@@ -31,8 +32,10 @@ function! ConfigKeymap()
   nnoremap L $
 
   " laeder相关的配置
-  call keymap#nnore_leader_key_map('x', ':close<CR>', 'close')
   call keymap#nnore_leader_key_map('p', '"0p', 'paste 0')
+  call keymap#vnore_leader_key_map('x', '"+d', 'Ctrl-X')
+  call keymap#vnore_leader_key_map('c', '"+y', 'Ctrl-C')
+  call keymap#nnore_leader_key_map('v', '"+p', 'Ctrl-V')
 
   let g:which_key_map.P = { 'name': '+Preferences'}
   call keymap#nnore_leader_key_map('Pe', ':tabe $MYVIMRC<CR>', 'edit config')
@@ -180,7 +183,15 @@ function! ConfigKeymap()
   call which_key#register('<Space>', "g:which_key_map")
 endfunction
 
+function! keymap#vnore_leader_key_map(key_sequence, map, description)
+  call keymap#leader_key_map("vnoremap", a:key_sequence, a:map, a:description)
+endfunction
+
 function! keymap#nnore_leader_key_map(key_sequence, map, description)
+  call keymap#leader_key_map("nnoremap", a:key_sequence, a:map, a:description)
+endfunction
+
+function! keymap#leader_key_map(map_type, key_sequence, map, description)
   let index = 0
   let len = len(a:key_sequence)
   let current_map = g:which_key_map
@@ -200,9 +211,10 @@ function! keymap#nnore_leader_key_map(key_sequence, map, description)
 
     let index = index + 1
   endwhile
-  let cmd = "nnoremap <silent> <leader>" . a:key_sequence . " " . a:map
+  let cmd = a:map_type . " <silent> <leader>" . a:key_sequence . " " . a:map
   execute cmd
 endfunction
+
 
 """""""""""""""""""""""""""""""""""""""""""""""
 "

@@ -5,7 +5,6 @@ set incsearch
 set ignorecase
 
 inoremap fd <Esc>
-inoremap <C-/> <Esc>
 vnoremap fd <Esc>
 
 nnoremap <leader><space> :

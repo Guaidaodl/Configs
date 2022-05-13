@@ -9,8 +9,6 @@ endif
 set runtimepath +=~/.vim/config
 set pyxversion=3
 
-let mapleader = ' '
-
 source ~/.vim/config/keymap.vim
 source ~/.vim/config/plugin.vim
 
@@ -72,3 +70,6 @@ au BufRead,BufNewFile Podfile set filetype=ruby
 
 " 区分语言的一些配置
 autocmd FileType lua setlocal et sta sw=2 sts=2
+
+" 大文件关闭语法高亮(50M, 基本都是日志)
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 10000000 | syntax clear | endif
