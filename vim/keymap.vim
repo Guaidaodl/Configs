@@ -148,10 +148,10 @@ function! ConfigKeymap()
 
   " Git 相关的快捷键
   let g:which_key_map.g = {'name': '+git'}
-  call keymap#nnore_leader_key_map('gb', ":Gblame<CR>", "blame")
-  call keymap#nnore_leader_key_map('gc', ":Gcommit<CR>", "commit")
+  call keymap#nnore_leader_key_map('gb', ":Git blame<CR>", "blame")
+  call keymap#nnore_leader_key_map('gc', ":Git commit<CR>", "commit")
   call keymap#nnore_leader_key_map('gd', ":Git diff<CR>", "diff")
-  call keymap#nnore_leader_key_map('gs', ":Gstatus<CR>", "status")
+  call keymap#nnore_leader_key_map('gs', ":Git<CR>", "status")
 
 
   " 折叠的快捷键, z 实在太难摁了
@@ -172,11 +172,11 @@ function! ConfigKeymap()
 
   " 定义 lsp 的键位描述
   let g:which_key_map.l = { "name": "+lsp" }
-  let g:which_key_map.l["f"] = "Format"
-  let g:which_key_map.l["d"] = "Definition"
-  let g:which_key_map.l["D"] = "Declaration"
-  let g:which_key_map.l["p"] = "Parameters"
-  let g:which_key_map.l["r"] = "References"
+  call keymap#nnore_leader_key_map('ld', ':lua vim.lsp.buf.definition()<CR>', 'Definition')
+  call keymap#nnore_leader_key_map('lD', ':lua vim.lsp.buf.declaration()<CR>', 'Declaration')
+  call keymap#nnore_leader_key_map('lh', ':lua vim.lsp.buf.hover()<CR>', 'Hover')
+  call keymap#nnore_leader_key_map('lr', ':lua vim.lsp.buf.rename()<CR>', 'Rename')
+  call keymap#nnore_leader_key_map('ls', ':lua vim.lsp.buf.signature_help()<CR>', 'Signature')
 
 
   call which_key#register('<Space>', "g:which_key_map")
