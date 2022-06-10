@@ -123,11 +123,11 @@ function! ConfigKeymap()
 
   " Quickfix 相关的快捷键
   let g:which_key_map.q = {'name': '+QuickFix'}
-  call keymap#nnore_leader_key_map('qc', ':ccl<CR>', '')
-  call keymap#nnore_leader_key_map('qo', ':copen<CR>', '')
-  call keymap#nnore_leader_key_map('qn', ':cn<CR>', '')
-  call keymap#nnore_leader_key_map('qp', ':cp<CR>', '')
-  call keymap#nnore_leader_key_map('ql', ':cl<CR>', '')
+  call keymap#nnore_leader_key_map('qc', ':ccl<CR>', 'Close')
+  call keymap#nnore_leader_key_map('qo', ':copen<CR>', 'Open')
+  call keymap#nnore_leader_key_map('qn', ':cn<CR>', 'Next error')
+  call keymap#nnore_leader_key_map('qp', ':cp<CR>', 'Previous error')
+  call keymap#nnore_leader_key_map('ql', ':cl<CR>', 'list error')
 
   " Tab
   let g:which_key_map.t = {'name': '+Tab'}
@@ -177,6 +177,9 @@ function! ConfigKeymap()
   call keymap#nnore_leader_key_map('lh', ':lua vim.lsp.buf.hover()<CR>', 'Hover')
   call keymap#nnore_leader_key_map('lr', ':lua vim.lsp.buf.rename()<CR>', 'Rename')
   call keymap#nnore_leader_key_map('ls', ':lua vim.lsp.buf.signature_help()<CR>', 'Signature')
+  call keymap#nnore_leader_key_map('lf', ':lua vim.lsp.buf.formatting()<CR>', 'Format File')
+  call keymap#vnore_leader_key_map('lf', ':lua vim.lsp.buf.range_formatting()<CR>', 'Format')
+  call keymap#nnore_leader_key_map('lr', ':lua vim.lsp.buf.references()<CR>', 'Reference')
 
 
   call which_key#register('<Space>', "g:which_key_map")
