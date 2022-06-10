@@ -36,14 +36,17 @@ set background=dark
 "set foldmehod=indent
 set foldmethod=syntax
 
-if has("gui_running")
+
+" 根据不同的客户端配置字体
+if has("gui_macvim") || has("gui_vimr")
   if has("gui_macvim")
     set macligatures
-    set guifont=FiraCode\ Nerd\ Font\ Mono:h16
-  elseif has("gui_win32")
-    set guifont=Consolas:h16:cANSI
-  endif    
-endif
+  endif
+  " 检查连字符的效果 != -->
+  set guifont=FiraCode\ Nerd\ Font\ Mono:h16
+elseif has("gui_win32")
+  set guifont=Consolas:h16:cANSI
+endif    
 
 "以下为配置tab和缩进
 set expandtab
