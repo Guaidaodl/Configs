@@ -151,14 +151,6 @@ function! ConfigKeymap()
   call utils#nnore_leader_key_map('td', ":tabclose<CR>", "delete")
   call utils#nnore_leader_key_map('te', ":call EditCurrentBufferInNewTab()<CR>", "edit")
 
-  " Git 相关的快捷键
-  let g:which_key_map.g = {'name': '+git'}
-  call utils#nnore_leader_key_map('gb', ":Git blame<CR>", "blame")
-  call utils#nnore_leader_key_map('gc', ":Git commit<CR>", "commit")
-  call utils#nnore_leader_key_map('gd', ":Git diff<CR>", "diff")
-  call utils#nnore_leader_key_map('gs', ":Git<CR>", "status")
-
-
   " 折叠的快捷键, z 实在太难摁了
   nnoremap <leader>h za
   

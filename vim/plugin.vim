@@ -23,6 +23,7 @@ function! plugin#main()
 
   Plug 'liuchengxu/vim-which-key'
   " Git 
+  " 配置: config_git_plugins
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
   
@@ -76,6 +77,7 @@ function! plugin#main()
     call plugin#config_deoplete()
     call plugin#config_lsp()
   endif
+  call plugin#config_git_plugins()
   """vim-auto-save
   let g:auto_save = 1 "enable the vim-auto-save
   let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
@@ -91,8 +93,6 @@ function! plugin#main()
   let g:airline_theme='bubblegum'
   let g:airline#extensions#tabline#enabled = 1
   let g:airline_section_b = "%{airline#util#wrap(airline#extensions#branch#get_head(),0)}" 
-  """ git
-  let g:gitgutter_enable = 1
 endfunction
 
 function! plugin#config_nvim_tree()
@@ -171,4 +171,15 @@ end
 lspconfig.rls.setup{}
 lspconfig.clangd.setup{}
 EOF
+endfunction
+
+function! plugin#config_git_plugins()
+  let g:gitgutter_enable = 1
+
+  " Git 相关的快捷键
+  let g:which_key_map.g = {'name': '+git'}
+  call utils#nnore_leader_key_map('gb', ":Git blame<CR>", "blame")
+  call utils#nnore_leader_key_map('gc', ":Git commit<CR>", "commit")
+  call utils#nnore_leader_key_map('gd', ":Git diff<CR>", "diff")
+  call utils#nnore_leader_key_map('gs', ":tab Git<CR>", "status")
 endfunction
