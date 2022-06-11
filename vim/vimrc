@@ -9,6 +9,7 @@ endif
 set runtimepath +=~/.vim/config
 set pyxversion=3
 
+let g:which_key_map = {}
 source ~/.vim/config/keymap.vim
 source ~/.vim/config/plugin.vim
 

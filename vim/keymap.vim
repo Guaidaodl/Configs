@@ -3,7 +3,6 @@ source ~/.vim/config/utils.vim
 function! ConfigKeymap()
   let mapleader = ' '
 
-  let g:which_key_map = {}
   """跟文件类型有关的快捷键
   autocmd FileType html noremap <F5> :!open %<CR><CR>
   autocmd FileType vim  noremap <F5> :source %<CR>
