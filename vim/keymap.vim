@@ -25,7 +25,7 @@ function! ConfigKeymap()
   "visual mode
   vnoremap fd <Esc>
 
-  nnoremap <C-t> :NERDTreeToggle<CR>
+  nnoremap <C-t> :NvimTreeToggle<CR>
   nnoremap <C-k> d$
   "移动光标的快捷键
   nnoremap H ^
@@ -60,6 +60,11 @@ function! ConfigKeymap()
   call keymap#nnore_leader_key_map('jt', ':Leaderf bufTag --popup<CR>', 'bufTag')
   call keymap#nnore_leader_key_map('jr', ':Leaderf rg --popup<CR>', 'rg')
   call keymap#nnore_leader_key_map('jh', ':Leaderf cmdHistory --popup<CR>', 'cmd history')
+  if has("gui_vimr")
+    " mac 的一些快捷键
+    nnoremap <D-e> :Leaderf buffer --popup<CR>
+    nnoremap <D-o> :Leaderf file --popup<CR>
+  endif
 
   "Buffer 相关的快捷键
   let g:which_key_map.b = { 'name': '+Buffer' }

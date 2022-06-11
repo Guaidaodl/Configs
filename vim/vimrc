@@ -43,7 +43,7 @@ if has("gui_macvim") || has("gui_vimr")
     set macligatures
   endif
   " 检查连字符的效果 != -->
-  set guifont=FiraCode\ Nerd\ Font\ Mono:h16
+  set guifont=FiraCode\ Nerd\ Font:h16
 elseif has("gui_win32")
   set guifont=Consolas:h16:cANSI
 endif    

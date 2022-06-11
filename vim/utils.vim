@@ -1,4 +1,3 @@
-
 let s:debug = 0 
 
 if (!s:debug && exists("g:custom_load_util"))
