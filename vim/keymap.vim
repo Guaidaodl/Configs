@@ -85,17 +85,18 @@ function! ConfigKeymap()
   " Windows 相关的快捷键
   nnoremap <silent> <leader>w[ :NERDTreeToggle<CR>
   let g:which_key_map.w = { 'name': '+Windows'}
-  call utils#nnore_leader_key_map('1', ':1 wincmd w<CR>', 'window 1')
-  call utils#nnore_leader_key_map('2', ':2 wincmd w<CR>', 'window 2')
-  call utils#nnore_leader_key_map('3', ':3 wincmd w<CR>', 'window 3')
-  call utils#nnore_leader_key_map('4', ':4 wincmd w<CR>', 'window 4')
-  call utils#nnore_leader_key_map('5', ':5 wincmd w<CR>', 'window 5')
   call utils#nnore_leader_key_map('w1', ':1 wincmd w<CR>', 'window 1')
   call utils#nnore_leader_key_map('w2', ':2 wincmd w<CR>', 'window 2')
   call utils#nnore_leader_key_map('w3', ':3 wincmd w<CR>', 'window 3')
   call utils#nnore_leader_key_map('w4', ':4 wincmd w<CR>', 'window 4')
   call utils#nnore_leader_key_map('w5', ':5 wincmd w<CR>', 'window 5')
-  call utils#nnore_leader_key_map('wd', ':close<CR>', 'close')
+  let g:which_key_map.w.Q = { 'name': '+Quit Other'}
+  call utils#nnore_leader_key_map('wQ1', ':1q<CR>', 'Quit W1')
+  call utils#nnore_leader_key_map('wQ2', ':2q<CR>', 'Quit W2')
+  call utils#nnore_leader_key_map('wQ3', ':3q<CR>', 'Quit W3')
+  call utils#nnore_leader_key_map('wQ4', ':4q<CR>', 'Quit W4')
+  call utils#nnore_leader_key_map('wQ5', ':5q<CR>', 'Quit W5')
+  call utils#nnore_leader_key_map('wq', ':q<CR>', 'quit')
   call utils#nnore_leader_key_map('ws', '<C-w>s', 'split')
   call utils#nnore_leader_key_map('wv', '<C-w>v', 'vsplit')
   call utils#nnore_leader_key_map('wo', '<C-w><C-w>', 'other')
@@ -106,6 +107,13 @@ function! ConfigKeymap()
   call utils#nnore_leader_key_map('wk', '<C-w>k', 'go up')
   call utils#nnore_leader_key_map('wl', '<C-w>l', 'go right')
   call utils#nnore_leader_key_map('w=', '<C-w>=', 'equal')
+  if has("gui_vimr")
+    nnoremap <D-1> :1 wincmd w<CR>
+    nnoremap <D-2> :2 wincmd w<CR>
+    nnoremap <D-3> :3 wincmd w<CR>
+    nnoremap <D-4> :4 wincmd w<CR>
+    nnoremap <D-5> :5 wincmd w<CR>
+  endif
   nnoremap <A-h> <C-w>h
   nnoremap <A-j> <C-w>j
   nnoremap <A-k> <C-w>k
@@ -175,7 +183,7 @@ function! ConfigKeymap()
   call utils#nnore_leader_key_map('ls', ':lua vim.lsp.buf.signature_help()<CR>', 'Signature')
   call utils#nnore_leader_key_map('lf', ':lua vim.lsp.buf.formatting()<CR>', 'Format File')
   call utils#vnore_leader_key_map('lf', ':lua vim.lsp.buf.range_formatting()<CR>', 'Format')
-  call utils#nnore_leader_key_map('lr', ':lua vim.lsp.buf.references()<CR>', 'Reference')
+  call utils#nnore_leader_key_map('lR', ':lua vim.lsp.buf.references()<CR>', 'Reference')
 
 
   call which_key#register('<Space>', "g:which_key_map")
