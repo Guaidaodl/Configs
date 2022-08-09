@@ -58,6 +58,7 @@ function! plugin#main()
   Plug 'skywind3000/asynctasks.vim'
 
   """ 语法高亮
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'udalov/kotlin-vim'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'wlangstroth/vim-racket'
@@ -78,6 +79,7 @@ function! plugin#main()
     call plugin#config_lsp()
   endif
   call plugin#config_git_plugins()
+  call plugin#config_treesitter()
   """vim-auto-save
   let g:auto_save = 1 "enable the vim-auto-save
   let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
@@ -165,11 +167,11 @@ endfunction
 
 function! plugin#config_lsp() 
 lua << EOF
-local lspconfig = require('lspconfig')
-local on_attach = function(client, bufnr)
-end
-lspconfig.rls.setup{}
-lspconfig.clangd.setup{}
+  local lspconfig = require('lspconfig')
+  local on_attach = function(client, bufnr)
+  end
+  lspconfig.rls.setup{}
+  lspconfig.clangd.setup{}
 EOF
 endfunction
 
@@ -183,3 +185,19 @@ function! plugin#config_git_plugins()
   call utils#nnore_leader_key_map('gd', ":Git diff<CR>", "diff")
   call utils#nnore_leader_key_map('gs', ":tab Git<CR>", "status")
 endfunction
+
+function! plugin#config_treesitter()
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    disable = {},
+
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+endfunction
+
