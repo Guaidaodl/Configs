@@ -172,6 +172,7 @@ lua << EOF
   end
   lspconfig.rls.setup{}
   lspconfig.clangd.setup{}
+  lspconfig.pyright.setup{}
 EOF
 endfunction
 

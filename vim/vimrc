@@ -64,6 +64,7 @@ set hls "检索时高亮
 set foldmethod=syntax "代码折叠
 set foldlevelstart=99
 set pumheight=10 "自动提示的个数 10
+set mouse=a "支持鼠标点击
 
 " 配置插件和 keymap
 call plugin#main()
@@ -71,6 +72,8 @@ call ConfigKeymap()
 colorscheme dracula
 
 au BufRead,BufNewFile Podfile set filetype=ruby
+au BufRead,BufNewFile JenkinsFile set filetype=groovy
+
 
 " 区分语言的一些配置
 autocmd FileType lua setlocal et sta sw=2 sts=2
