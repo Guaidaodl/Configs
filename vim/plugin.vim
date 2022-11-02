@@ -172,7 +172,9 @@ lua << EOF
   end
   lspconfig.rls.setup{}
   lspconfig.clangd.setup{}
-  lspconfig.pyright.setup{}
+  lspconfig.pyright.setup{
+    on_attach = on_attach
+  }
 EOF
 endfunction
 

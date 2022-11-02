@@ -13,7 +13,7 @@ function! ConfigKeymap()
 
   "insert模式下的快捷键
   inoremap <C-k> <Esc>d$a
-  inoremap fd <Esc>
+  inoremap jk <Esc>
 
   " Cmdline 的快捷键
   cnoremap <C-A> <Home>
@@ -22,9 +22,9 @@ function! ConfigKeymap()
   cnoremap <C-E> <End>
   
   "visual mode
-  vnoremap fd <Esc>
+  vnoremap jk <Esc>
 
-  nnoremap <C-t> :NvimTreeToggle<CR>
+  nnoremap <C-q> :NvimTreeToggle<CR>
   nnoremap <C-k> d$
   "移动光标的快捷键
   nnoremap H ^

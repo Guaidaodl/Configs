@@ -4,8 +4,7 @@ set hlsearch
 set incsearch
 set ignorecase
 
-inoremap fd <Esc>
-vnoremap fd <Esc>
+inoremap jk <Esc>
 
 nnoremap <leader><space> :
 
