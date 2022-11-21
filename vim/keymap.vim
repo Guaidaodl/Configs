@@ -21,9 +21,6 @@ function! ConfigKeymap()
   cnoremap <C-B> <Left>
   cnoremap <C-E> <End>
   
-  "visual mode
-  vnoremap jk <Esc>
-
   nnoremap <C-q> :NvimTreeToggle<CR>
   nnoremap <C-k> d$
   "移动光标的快捷键
@@ -33,6 +30,7 @@ function! ConfigKeymap()
   " laeder相关的配置
   call utils#nnore_leader_key_map('p', '"0p', 'paste 0')
   call utils#vnore_leader_key_map('x', '"+d', 'Ctrl-X')
+  call utils#nnore_leader_key_map('x', ':q<CR>',  'Close')
   call utils#vnore_leader_key_map('c', '"+y', 'Ctrl-C')
   call utils#nnore_leader_key_map('v', '"+p', 'Ctrl-V')
 
@@ -121,7 +119,7 @@ function! ConfigKeymap()
 
   " Terminal
   if has('nvim')
-    tnoremap fd <C-\><C-N>
+    tnoremap jk <C-\><C-N>
     tnoremap <A-h> <C-\><C-N><C-w>h
     tnoremap <A-j> <C-\><C-N><C-w>j
     tnoremap <A-k> <C-\><C-N><C-w>k
@@ -181,7 +179,7 @@ function! ConfigKeymap()
   call utils#nnore_leader_key_map('lh', ':lua vim.lsp.buf.hover()<CR>', 'Hover')
   call utils#nnore_leader_key_map('lr', ':lua vim.lsp.buf.rename()<CR>', 'Rename')
   call utils#nnore_leader_key_map('ls', ':lua vim.lsp.buf.signature_help()<CR>', 'Signature')
-  call utils#nnore_leader_key_map('lf', ':lua vim.lsp.buf.formatting()<CR>', 'Format File')
+  call utils#nnore_leader_key_map('lf', ':lua vim.lsp.buf.format { async = true }<CR>', 'Format File')
   call utils#vnore_leader_key_map('lf', ':lua vim.lsp.buf.range_formatting()<CR>', 'Format')
   call utils#nnore_leader_key_map('lR', ':lua vim.lsp.buf.references()<CR>', 'Reference')
 

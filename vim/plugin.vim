@@ -8,6 +8,7 @@ function! plugin#main()
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'tpope/vim-surround'
   Plug 'easymotion/vim-easymotion'
+  Plug 'akinsho/toggleterm.nvim'
 
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
@@ -59,6 +60,7 @@ function! plugin#main()
 
   """ 语法高亮
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'p00f/nvim-ts-rainbow'
   Plug 'udalov/kotlin-vim'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'wlangstroth/vim-racket'
@@ -67,6 +69,7 @@ function! plugin#main()
   call plug#end()
   
   """""""""""""""""""""""""""插件相关设置
+  call plugin#config_toggleterm()
   call plugin#config_lightline()
   call plugin#config_leaderf()
   call plugin#config_which_key()
@@ -128,6 +131,12 @@ function! plugin#config_leaderf()
   let g:Lf_DefaultExternalTool = "rg"
 endfunction
 
+""" 配置 toggleterm.nvim
+function! plugin#config_toggleterm()
+lua << EOF
+require("toggleterm").setup{}
+EOF
+endfunction
 """ 配置 deoplete
 function! plugin#config_deoplete()
   let g:deoplete#enable_at_startup = 1
@@ -200,6 +209,10 @@ require'nvim-treesitter.configs'.setup {
 
     additional_vim_regex_highlighting = false,
   },
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- 扩展模式, 支持 html 等
+  }
 }
 EOF
 endfunction
