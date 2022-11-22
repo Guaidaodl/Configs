@@ -8,7 +8,7 @@ if has('win32')
 endif
 set runtimepath +=~/.vim/config
 set pyxversion=3
-
+  
 let g:which_key_map = {}
 source ~/.vim/config/keymap.vim
 source ~/.vim/config/plugin.vim
@@ -18,11 +18,12 @@ set hls "检索时高亮
 filetype on
 
 syntax enable
+syn on
+
 set fileencodings=utf-8,gb18030,gbk,gb2312,cp936
 "隐藏菜单和工具条
 set guioptions-=T
 "显示行号
-syn on
 set number
 set ai "自动缩进
 set bs=2
@@ -30,7 +31,6 @@ set showmatch
 set laststatus=2 "总是显示状态栏
 set cursorline
 set nowrap
-
 set background=dark
 
 "语法缩进
@@ -55,7 +55,8 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set list
-set lcs=tab:>-,
+set lcs=tab:>-,space:·
+set list
 set autoread "自动读取已经修改的文件
 
 set ignorecase "检索时忽略大小写
@@ -81,3 +82,4 @@ autocmd FileType cpp setlocal et sta sw=2 sts=2
 
 " 大文件关闭语法高亮(50M, 基本都是日志)
 autocmd BufWinEnter * if line2byte(line("$") + 1) > 10000000 | syntax clear | endif
+
