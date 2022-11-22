@@ -52,16 +52,20 @@ function! ConfigKeymap()
   " leaderf 相关的配置
   let g:which_key_map.j = { 'name': '+Jump'}
   let g:Lf_ShortcutF = "<leader>jf"
-  call utils#nnore_leader_key_map('jb', ':Leaderf buffer --popup<CR>', 'buffer')
-  call utils#nnore_leader_key_map('jf', ':Leaderf file --popup<CR>', 'files')
-  call utils#nnore_leader_key_map('jt', ':Leaderf bufTag --popup<CR>', 'bufTag')
-  call utils#nnore_leader_key_map('jr', ':Leaderf rg --popup<CR>', 'rg')
-  call utils#nnore_leader_key_map('jh', ':Leaderf cmdHistory --popup<CR>', 'cmd history')
+  call utils#nnore_leader_key_map('jb', ':Telescope buffers<CR>', 'buffer')
+  call utils#nnore_leader_key_map('jf', ':Telescope find_files<CR>', 'files')
+  call utils#nnore_leader_key_map('jh', ':Telescope command_history<CR>', 'cmd history')
+  call utils#nnore_leader_key_map('jj', ':Telescope jumplist<CR>', 'Jump List')
+  call utils#nnore_leader_key_map('jt', ':Telescope lsp_document_symbols<CR>', 'bufTag')
+  call utils#nnore_leader_key_map('jT', ':Telescope lsp_workspace_symbols<CR>', 'Tag')
+  call utils#nnore_leader_key_map('jr', ':Telescope live_grep<CR>', 'rg')
   if has("gui_vimr")
     " mac 的一些快捷键
-    nnoremap <D-e> :Leaderf buffer --popup<CR>
-    nnoremap <D-o> :Leaderf file --popup<CR>
+    nnoremap <D-e> :Telescope buffers<CR>
+    nnoremap <D-o> :Telescope find_files<CR>
+    nnoremap <D-g> :Telescope lsp_document_symbols<CR>
   endif
+  nnoremap <C-g> :Telescope lsp_references<CR>
 
   "Buffer 相关的快捷键
   let g:which_key_map.b = { 'name': '+Buffer' }
@@ -176,12 +180,15 @@ function! ConfigKeymap()
   let g:which_key_map.l = { "name": "+lsp" }
   call utils#nnore_leader_key_map('ld', ':lua vim.lsp.buf.definition()<CR>', 'Definition')
   call utils#nnore_leader_key_map('lD', ':lua vim.lsp.buf.declaration()<CR>', 'Declaration')
-  call utils#nnore_leader_key_map('lh', ':lua vim.lsp.buf.hover()<CR>', 'Hover')
-  call utils#nnore_leader_key_map('lr', ':lua vim.lsp.buf.rename()<CR>', 'Rename')
-  call utils#nnore_leader_key_map('ls', ':lua vim.lsp.buf.signature_help()<CR>', 'Signature')
   call utils#nnore_leader_key_map('lf', ':lua vim.lsp.buf.format { async = true }<CR>', 'Format File')
   call utils#vnore_leader_key_map('lf', ':lua vim.lsp.buf.range_formatting()<CR>', 'Format')
+  call utils#nnore_leader_key_map('lh', ':lua vim.lsp.buf.hover()<CR>', 'Hover')
+  call utils#nnore_leader_key_map('lp', ':TroubleToggle document_diagnostics<CR>', 'Problems')
+  call utils#nnore_leader_key_map('lP', ':TroubleToggle workspace_diagnostics<CR>', 'All Problems')
+  call utils#nnore_leader_key_map('lr', ':lua vim.lsp.buf.rename()<CR>', 'Rename')
   call utils#nnore_leader_key_map('lR', ':lua vim.lsp.buf.references()<CR>', 'Reference')
+  call utils#nnore_leader_key_map('ls', ':lua vim.lsp.buf.signature_help()<CR>', 'Signature')
+  nnoremap <F2> :lua vim.lsp.buf.rename()<CR>
 
 
   call which_key#register('<Space>', "g:which_key_map")

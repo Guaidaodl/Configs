@@ -20,7 +20,8 @@ function! plugin#main()
   Plug 'itchyny/lightline.vim'
   Plug 'vim-scripts/vim-auto-save'
  
-  Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
   Plug 'liuchengxu/vim-which-key'
   " Git 
@@ -28,8 +29,6 @@ function! plugin#main()
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
   
-  Plug 'nathanaelkane/vim-indent-guides'
- 
   " Markdown
   Plug 'godlygeek/tabular'
   Plug 'plasticboy/vim-markdown'
@@ -48,6 +47,8 @@ function! plugin#main()
   
   """"""""""""""""""""""""""""" IDE 相关的插件
   Plug 'neovim/nvim-lspconfig'
+  Plug 'folke/trouble.nvim'
+
   " 彩虹括号
   Plug 'luochen1990/rainbow'
   " 调试
@@ -71,7 +72,6 @@ function! plugin#main()
   """""""""""""""""""""""""""插件相关设置
   call plugin#config_toggleterm()
   call plugin#config_lightline()
-  call plugin#config_leaderf()
   call plugin#config_which_key()
   call plugin#config_asyncrun()
   call plugin#config_ultisnips()
@@ -79,6 +79,7 @@ function! plugin#main()
   if has('nvim')
     call plugin#config_nvim_tree()
     call plugin#config_deoplete()
+    call plugin#config_telescope()
     call plugin#config_lsp()
   endif
   call plugin#config_git_plugins()
@@ -89,11 +90,6 @@ function! plugin#main()
   let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
   let g:auto_save_slient = 1 "do not display the auto-save notification
 
-  """vim-indent-guides
-  let g:indent_guides_start_level = 2
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_enable_on_vim_startup = 1
-  
   """ airline 
   let g:airline_theme='bubblegum'
   let g:airline#extensions#tabline#enabled = 1
@@ -123,20 +119,13 @@ function! plugin#config_lightline()
       \ 'right': [ [ 'close' ] ] }
 endfunction
 
-""" 配置 leaderf
-function! plugin#config_leaderf()
-  " 配置图标
-  let g:Lf_ShowDevIcons = 0
-  let g:Lf_UseVersionControlTool = 0
-  let g:Lf_DefaultExternalTool = "rg"
-endfunction
-
 """ 配置 toggleterm.nvim
 function! plugin#config_toggleterm()
 lua << EOF
 require("toggleterm").setup{}
 EOF
 endfunction
+
 """ 配置 deoplete
 function! plugin#config_deoplete()
   let g:deoplete#enable_at_startup = 1
@@ -145,12 +134,29 @@ function! plugin#config_deoplete()
   \})
 endfunction
 
+function! plugin#config_telescope()
+lua << EOF
+require('telescope').setup {
+  pickers = {
+    find_files = {
+      previewer = false,
+      theme="dropdown",
+    },
+    buffers= {
+      heme="dropdown",
+    }
+  },
+}
+EOF
+endfunction
+
 """ 配置 whichkey
 function! plugin#config_which_key()
   let g:mapleader = "\<Space>"
   let g:which_key_use_floating_win = 1
   nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 endfunction
+
 """" 配置 Asyncrun
 function! plugin#config_asyncrun()
   " 自动打开 quickfix window ，高度为 6
