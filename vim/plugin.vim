@@ -46,8 +46,11 @@ function! plugin#main()
   Plug 'vim-scripts/Solarized'
   
   """"""""""""""""""""""""""""" IDE 相关的插件
+  " lsp 相关
   Plug 'neovim/nvim-lspconfig'
   Plug 'folke/trouble.nvim'
+
+  Plug 'jiangmiao/auto-pairs'
 
   " 彩虹括号
   Plug 'luochen1990/rainbow'
@@ -135,18 +138,20 @@ function! plugin#config_deoplete()
 endfunction
 
 function! plugin#config_telescope()
+  autocmd FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
 lua << EOF
-require('telescope').setup {
-  pickers = {
-    find_files = {
-      previewer = false,
-      theme="dropdown",
+  require('telescope').setup {
+    pickers = {
+      find_files = {
+        previewer = false,
+        theme="dropdown",
+      },
+      buffers= {
+        previewer = false,
+        heme="dropdown",
+      }
     },
-    buffers= {
-      heme="dropdown",
-    }
-  },
-}
+  }
 EOF
 endfunction
 
