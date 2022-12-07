@@ -45,7 +45,6 @@ function install_vim_config() {
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  
   echo finish install vim config
   echo
 }

@@ -6,17 +6,17 @@ set ignorecase
 
 inoremap jk <Esc>
 
-nnoremap <leader><space> :
-
 nnoremap <leader>jc :action GotoClass<CR>
 nnoremap <leader>jf :action GotoFile<CR>
 nnoremap <leader>js :action FileStructurePopup<CR>
 
-nnoremap <leader>rr :action RenameElement<CR>
+nnoremap <leader>lr :action RenameElement<CR>
 nnoremap <leader>p "0p
 
 nnoremap H ^
 nnoremap L $
+vnoremap H ^
+vnoremap L $
 
 set ideajoin
 set surround

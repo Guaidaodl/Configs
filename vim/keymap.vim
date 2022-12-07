@@ -26,6 +26,8 @@ function! ConfigKeymap()
   "移动光标的快捷键
   nnoremap H ^
   nnoremap L $
+  vnoremap H ^
+  vnoremap L $
 
   " laeder相关的配置
   call utils#nnore_leader_key_map('p', '"0p', 'paste 0')
