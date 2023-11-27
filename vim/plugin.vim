@@ -16,12 +16,11 @@ function! plugin#main()
     Plug 'deoplete-plugins/deoplete-lsp'
   endif
 
-  
   Plug 'itchyny/lightline.vim'
   Plug 'vim-scripts/vim-auto-save'
  
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
 
   Plug 'liuchengxu/vim-which-key'
   " Git 

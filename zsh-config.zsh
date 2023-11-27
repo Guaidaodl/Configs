@@ -37,11 +37,6 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 ###########################################################
 eval "$(lua $Z_LUA_PATH --init zsh)"
 
-########################################################### 
-# thefuck
-###########################################################
-eval $(thefuck --alias)
-
 ###########################################################
 # 别名
 ########################################################### 
@@ -56,7 +51,6 @@ then
     alias vimdiff=nvimdiff
 fi
 alias g=git
-alias f=fuck
 alias ls=lsd
 alias ll='lsd -l'
 alias en='emacs -nw'
