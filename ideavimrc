@@ -4,7 +4,7 @@ set hlsearch
 set incsearch
 set ignorecase
 
-inoremap jk <Esc>
+inoremap <C-[> <Esc>
 
 nnoremap <leader>jc :action GotoClass<CR>
 nnoremap <leader>jf :action GotoFile<CR>

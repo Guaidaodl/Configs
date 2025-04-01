@@ -13,7 +13,7 @@ function! ConfigKeymap()
 
   "insert模式下的快捷键
   inoremap <C-k> <Esc>d$a
-  inoremap jk <Esc>
+  inoremap <C-[> <Esc>
 
   " Cmdline 的快捷键
   cnoremap <C-A> <Home>
@@ -125,7 +125,7 @@ function! ConfigKeymap()
 
   " Terminal
   if has('nvim')
-    tnoremap jk <C-\><C-N>
+    tnoremap <C-[> <C-\><C-N>
     tnoremap <A-h> <C-\><C-N><C-w>h
     tnoremap <A-j> <C-\><C-N><C-w>j
     tnoremap <A-k> <C-\><C-N><C-w>k

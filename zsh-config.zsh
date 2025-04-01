@@ -19,7 +19,7 @@
 # 想要有最佳体验需要:
 # - nerd font: https://github.com/ryanoasis/nerd-fonts
 
-plugins=(adb zsh-autosuggestions git)
+plugins=(zsh-autosuggestions git)
 source $ZSH/oh-my-zsh.sh
 
 export TERM=xterm-256color
@@ -31,6 +31,7 @@ export ZSH_THEME="powerlevel10k/powerlevel10k"
 ###########################################################
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 ########################################################### 
 # z.lua 
