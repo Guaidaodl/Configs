@@ -194,6 +194,9 @@ lua << EOF
   lspconfig.pyright.setup{
     on_attach = on_attach
   }
+  lspconfig.ts_ls.setup {
+
+  }
 EOF
 endfunction
 
