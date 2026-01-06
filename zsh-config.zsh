@@ -4,8 +4,8 @@
 #
 # 需要先安装的软件:
 # - fzf: https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
-# - z.lua: https://github.com/skywind3000/z.lua 
 # - thefunck: https://github.com/nvbn/thefuck
+# - zoxide
 # - lsd: https://github.com/Peltoche/lsd
 # - nvm: https://github.com/nvm-sh/nvm
 # - pyenv: https://github.com/pyenv/pyenv
@@ -24,8 +24,6 @@ source $ZSH/oh-my-zsh.sh
 
 export TERM=xterm-256color
 
-export ZSH_THEME="powerlevel10k/powerlevel10k"
-
 ########################################################### 
 # fzf 
 ###########################################################
@@ -34,9 +32,9 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 source <(fzf --zsh)
 
 ########################################################### 
-# z.lua 
+# zoxide
 ###########################################################
-eval "$(lua $Z_LUA_PATH --init zsh)"
+eval "$(zoxide init zsh)"
 
 ###########################################################
 # 别名
