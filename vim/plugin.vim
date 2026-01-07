@@ -34,10 +34,6 @@ function! plugin#main()
   " 预览
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
  
-  "Code snippet
-  Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
-  
   " Themes
   Plug 'sickill/vim-monokai'
   Plug 'skielbasa/vim-material-monokai'
@@ -63,7 +59,6 @@ function! plugin#main()
 
   """ 语法高亮
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'p00f/nvim-ts-rainbow'
   Plug 'udalov/kotlin-vim'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'wlangstroth/vim-racket'
@@ -82,10 +77,10 @@ function! plugin#main()
     call plugin#config_nvim_tree()
     call plugin#config_deoplete()
     call plugin#config_telescope()
-    call plugin#config_lsp()
+    "call plugin#config_lsp()
+    "call plugin#config_treesitter()
   endif
   call plugin#config_git_plugins()
-  call plugin#config_treesitter()
   """vim-auto-save
   let g:auto_save = 1 "enable the vim-auto-save
   let g:auto_save_in_insert_mode = 0 "do not save while in insert mode
@@ -186,7 +181,7 @@ endfunction
 
 function! plugin#config_lsp() 
 lua << EOF
-  local lspconfig = require('lspconfig')
+  local lspconfig = vim.lsp.config
   local on_attach = function(client, bufnr)
   end
   lspconfig.rls.setup{}
