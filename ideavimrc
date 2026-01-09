@@ -21,6 +21,7 @@ vnoremap L $
 set ideajoin
 set surround
 set easymotion
+set argtextobj
 
 " disable the timeout option
 set notimeout
