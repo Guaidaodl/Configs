@@ -31,3 +31,5 @@
 	ui = auto
 [init]
 	defaultBranch = main
+[credential]
+    useHttpPath=true
