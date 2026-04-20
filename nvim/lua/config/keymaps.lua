@@ -35,6 +35,7 @@ map("n", "<A-l>", "<C-w>l")
 map({ "n", "t" }, "<A-f>", "<cmd>ToggleTerm<CR>")
 
 -- Terminal: exit terminal mode + window navigation
+map("t", "<Esc>", "<Esc>")
 map("t", "<C-[>", "<C-\\><C-N>")
 map("t", "<A-h>", "<C-\\><C-N><C-w>h")
 map("t", "<A-j>", "<C-\\><C-N><C-w>j")
