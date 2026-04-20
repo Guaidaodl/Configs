@@ -19,7 +19,11 @@ return {
         opts = {
             pickers = {
                 find_files = { previewer = false, theme = "dropdown" },
-                buffers    = { previewer = false, theme = "dropdown" },
+                buffers    = { 
+                    previewer = false, 
+                    theme = "dropdown",
+                    sort_lastused = true,
+                },
             },
         },
     },
