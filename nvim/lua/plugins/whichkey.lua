@@ -10,7 +10,16 @@ return {
         event = "VeryLazy",
         config = function()
             local wk = require("which-key")
+
+            local function bind_tool_panel_keymap(num, cmd, desc)
+                vim.keymap.set("n", "<D-" .. num .. ">", cmd, { desc = desc })
+                wk.add({ { "<leader>n" .. num, cmd, desc = desc } })
+            end
+
             wk.setup({})
+
+            bind_tool_panel_keymap(1, "<cmd>NvimTreeToggle<CR>", "tree")
+
             wk.add({
                 -- Groups (for bindings declared in other plugin files)
                 { "<leader>g", group = "git" },
@@ -104,6 +113,9 @@ return {
                 { "<leader>m3", "@3",  desc = "@3" },
                 { "<leader>m4", "@4",  desc = "@4" },
                 { "<leader>m5", "@5",  desc = "@5" },
+
+                -- Tool Panel
+                { "<leader>n", group = "num" },
             })
         end,
     },
