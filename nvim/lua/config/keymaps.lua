@@ -31,6 +31,9 @@ map("n", "<A-j>", "<C-w>j")
 map("n", "<A-k>", "<C-w>k")
 map("n", "<A-l>", "<C-w>l")
 
+-- Terminal: toggle float terminal
+map({ "n", "t" }, "<A-f>", "<cmd>ToggleTerm<CR>")
+
 -- Terminal: exit terminal mode + window navigation
 map("t", "<C-[>", "<C-\\><C-N>")
 map("t", "<A-h>", "<C-\\><C-N><C-w>h")
