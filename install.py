@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import argparse
 from pathlib import Path
 
@@ -25,12 +26,6 @@ def link(src: Path, dst: Path, force: bool) -> None:
     print(f"  link  {dst} -> {src}")
 
 
-def install_vim(force: bool) -> None:
-    link(REPO / "vim/vimrc", HOME / ".vimrc", force)
-    for f in ["plugin.vim", "keymap.vim", "utils.vim"]:
-        link(REPO / "vim" / f, HOME / ".vim/config" / f, force)
-
-
 def install_nvim(force: bool) -> None:
     link(REPO / "nvim", HOME / ".config/nvim", force)
 
@@ -53,7 +48,6 @@ def install_zsh(force: bool) -> None:
 
 
 CONFIGS: dict[str, tuple[str, object]] = {
-    "vim":       ("Vim config",       install_vim),
     "nvim":      ("Neovim config",    install_nvim),
     "git":       ("Git config",       install_git),
     "ideavim":   ("IdeaVim config",   install_ideavim),
