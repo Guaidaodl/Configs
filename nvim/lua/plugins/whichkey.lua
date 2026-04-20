@@ -26,8 +26,6 @@ return {
 
                 -- Preferences
                 { "<leader>P",  group = "preferences" },
-                { "<leader>Pe", "<cmd>tabe $MYVIMRC<CR>",    desc = "edit config" },
-                { "<leader>Pl", "<cmd>source $MYVIMRC<CR>",  desc = "reload config" },
                 { "<leader>Pi", "<cmd>Lazy install<CR>",     desc = "install plugins" },
                 { "<leader>Pc", "<cmd>Lazy clean<CR>",       desc = "clean plugins" },
                 { "<leader>Pu", "<cmd>Lazy update<CR>",      desc = "update plugins" },
