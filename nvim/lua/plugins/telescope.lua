@@ -17,6 +17,16 @@ return {
             { "<D-g>",      "<cmd>Telescope lsp_document_symbols<CR>", desc = "symbols" },
         },
         opts = {
+            defaults = {
+                mappings = {
+                    i = {
+                        ["<C-s>"] = "select_horizontal",
+                        ["<C-v>"] = "select_vertical",
+                        ["<C-t>"] = "select_tab",
+                        ["<C-/>"] = "which_key",
+                    },
+                },
+            },
             pickers = {
                 find_files = { previewer = false, theme = "dropdown" },
                 buffers    = { 
