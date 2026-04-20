@@ -38,12 +38,6 @@ map("t", "<A-j>", "<C-\\><C-N><C-w>j")
 map("t", "<A-k>", "<C-\\><C-N><C-w>k")
 map("t", "<A-l>", "<C-\\><C-N><C-w>l")
 
--- Map Mac Option key special chars to Alt (terminal sends these)
-for char, alt in pairs({ ["˙"] = "h", ["∆"] = "j", ["˚"] = "k", ["¬"] = "l", ["≈"] = "x" }) do
-    map({ "n", "v" }, char, "<A-" .. alt .. ">")
-    map("t", char, "<A-" .. alt .. ">")
-end
-
 -- Neovide Mac shortcuts
 if vim.g.neovide then
     map("n", "<D-a>", "ggVG")

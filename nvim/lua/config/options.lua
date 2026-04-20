@@ -38,6 +38,7 @@ opt.fileencodings = "utf-8,gb18030,gbk,gb2312,cp936"
 -- Neovide
 if vim.g.neovide then
     opt.guifont = "FiraCode Nerd Font:h14"
+    vim.g.neovide_input_macos_option_key_is_meta = "only_left"
     vim.g.neovide_position_animation_length = 0
     vim.g.neovide_cursor_animation_length = 0.00
     vim.g.neovide_cursor_trail_size = 0
