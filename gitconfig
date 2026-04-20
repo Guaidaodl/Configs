@@ -19,11 +19,11 @@
     	lgdiff = log -p --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)'
 	dfc = diff --cached
 [user]
-	name = Guaidaodl 
+	name = Guaidaodl
 	email = linyubinas@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = vim
+	editor = nvim
 	ignorecase = true
 	quotepath = false
 	fileMode = false
@@ -31,5 +31,8 @@
 	ui = auto
 [init]
 	defaultBranch = main
-[credential]
-    useHttpPath=true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
