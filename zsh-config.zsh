@@ -4,8 +4,8 @@
 #
 # 需要先安装的软件:
 # - fzf: https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
-# - thefunck: https://github.com/nvbn/thefuck
-# - zoxide
+# - pay-respects: https://github.com/iffse/pay-respects (replaces thefuck)
+# - zoxide: https://github.com/ajeetdsouza/zoxide
 # - lsd: https://github.com/Peltoche/lsd
 # - nvm: https://github.com/nvm-sh/nvm
 # - pyenv: https://github.com/pyenv/pyenv
@@ -34,8 +34,15 @@ source <(fzf --zsh)
 ########################################################### 
 # zoxide
 ###########################################################
-eval "$(zoxide init zsh)"
-
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init zsh)"
+fi
+###########################################################
+# pay-respects
+###########################################################
+if command -v pay-respects &>/dev/null; then
+    eval "$(pay-respects zsh --alias)"
+fi
 ###########################################################
 # 别名
 ########################################################### 
@@ -78,6 +85,7 @@ function proxy_off(){
     unset http_proxy https_proxy
     echo -e "终端代理已关闭。"
 }
+
 ########################################################### 
 # git 相关的配置
 ###########################################################
@@ -102,7 +110,7 @@ function gpg() {
     git rev-parse --git-dir 1>/dev/null 2>&1
     if [ $? -ne 0 ]; then
         (>&2 echo "Not in git dir")
-        return -1
+        return 1
     fi
 
     local branch
@@ -115,7 +123,7 @@ function gpn() {
     git rev-parse --git-dir 1>/dev/null 2>&1
     if [ $? -ne 0 ]; then
         (>&2 echo "Not in git dir")
-        return -1
+        return 1
     fi
 
     local branch
@@ -144,28 +152,3 @@ function gmb() {
 
 alias gsa='git stage -A'
 alias gbf=gd_gsb
-
-########################################################### 
-# Jenkins 相关的配置
-###########################################################
-
-# 使用 Jenkins 构建 like 当前分支的包
-# build-like
-function bl() {
-  local branch
-  branch=$(git rev-parse --abbrev-ref HEAD)
-  
-  curl $JENKINS_URL/view/Like/job/like-android/buildWithParameters \
-    --user $JENKINS_LOGIN_NAME:$JENKINS_TOKEN \
-    -X POST -F BRANCH=$branch
-}
-
-# build-like-branch
-function blb() {
-  local branch
-  branch=$(gsb)
-  
-  curl $JENKINS_URL/view/Like/job/like-android/buildWithParameters \
-    --user $JENKINS_LOGIN_NAME:$JENKINS_TOKEN \
-    -X POST -F BRANCH=$branch
-}

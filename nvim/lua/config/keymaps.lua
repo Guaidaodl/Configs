@@ -47,6 +47,7 @@ if vim.g.neovide then
     map("n", "<D-a>", "ggVG")
     map("n", "<D-v>", '"+p')
     map("i", "<D-v>", '<Esc>"+p')
+    map("t", "<D-v>", '<C-\\><C-N>"+pi')
     map("n", "<D-c>", '"+yy')
     map("v", "<D-c>", '"+y')
     map("v", "<D-x>", '"+x')
