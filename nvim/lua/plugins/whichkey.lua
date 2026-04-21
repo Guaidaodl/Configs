@@ -25,6 +25,7 @@ return {
                 { "<leader>g", group = "git" },
                 { "<leader>j", group = "jump" },
                 { "<leader>l", group = "lsp" },
+                { "<leader>s", group = "shell" },
 
                 -- Paste / clipboard
                 { "<leader>p", '"0p',   desc = "paste 0",  mode = "n" },

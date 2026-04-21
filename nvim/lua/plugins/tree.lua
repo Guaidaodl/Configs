@@ -5,6 +5,7 @@ return {
         cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeFocus" },
         keys = {
             { "<F2>", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file tree" },
+            { "<leader>fe", "<cmd>NvimTreeFindFile<CR>", desc = "Reveal current file" },
         },
         opts = {},
         config = function(_, opts)
