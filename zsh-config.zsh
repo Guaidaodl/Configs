@@ -23,6 +23,7 @@ plugins=(zsh-autosuggestions git)
 source $ZSH/oh-my-zsh.sh
 
 export TERM=xterm-256color
+export LANG=zh_CN.UTF-8
 
 ########################################################### 
 # fzf 
@@ -46,16 +47,12 @@ fi
 ###########################################################
 # 别名
 ########################################################### 
-if which mvim 2>&1 1>/dev/null
-then
-    alias vim=mvim
-    alias vimdiff=mvimdiff
-fi
 if which nvim 2>&1 1>/dev/null
 then
     alias vim=nvim
     alias vimdiff=nvimdiff
 fi
+alias gim=neovide
 alias g=git
 alias ls=lsd
 alias ll='lsd -l'
