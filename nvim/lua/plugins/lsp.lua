@@ -12,6 +12,14 @@ return {
         "neovim/nvim-lspconfig",
         dependencies = { "hrsh7th/cmp-nvim-lsp" },
         config = function()
+            vim.diagnostic.config({
+                virtual_text = {
+                    spacing = 2,
+                    source = "if_many",
+                    prefix = "●",
+                },
+            })
+
             -- Inject cmp capabilities into all LSP servers
             vim.lsp.config("*", {
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),

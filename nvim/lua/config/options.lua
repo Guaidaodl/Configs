@@ -32,6 +32,7 @@ opt.foldlevelstart = 99
 -- Misc
 opt.mouse = "a"
 opt.autoread = true
+opt.updatetime = 250
 opt.backspace = "indent,eol,start"
 opt.fileencodings = "utf-8,gb18030,gbk,gb2312,cp936"
 
