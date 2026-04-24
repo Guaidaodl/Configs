@@ -28,9 +28,9 @@ return {
                 },
             })
             vim.lsp.enable("lua_ls")
-
             vim.lsp.enable("pyright")
             vim.lsp.enable("jsonls")
+            vim.lsp.enable("taplo")
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 callback = function(args)
