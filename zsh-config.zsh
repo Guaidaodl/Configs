@@ -52,7 +52,7 @@ then
     alias vim=nvim
     alias vimdiff=nvimdiff
 fi
-alias gim=neovide
+alias nv=neovide
 alias g=git
 alias ls=lsd
 alias ll='lsd -l'
