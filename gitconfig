@@ -1,38 +1,38 @@
 [alias]
-	st = status
-	br = branch
-	cm = commit -am
-	l2 = log -2
-	l5 = log -5
-	ch = checkout
-	pr = pull --rebase
-	ci = commit
-	re = rebase
-	ss = stash save
-	sp = stash pop
-	sl = stash list
-	df = diff
-	su = submodule update
-    	lg = log --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
-   	lga = log --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
-    	lgg = log --graph --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
-    	lgdiff = log -p --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)'
-	dfc = diff --cached
+    st = status
+    br = branch
+    cm = commit -am
+    ch = checkout
+    pr = pull --rebase
+    ci = commit
+    re = rebase
+    ss = stash save
+    sp = stash pop
+    sl = stash list
+    df = diff
+    su = submodule update
+    l2 = log -2
+    l5 = log -5
+    lg = log --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+    lga = log --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+    lgg = log --graph --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+    lgdiff = log -p --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)'
+    dfc = diff --cached
 [user]
-	name = Guaidaodl
-	email = linyubinas@gmail.com
+    name = Guaidaodl
+    email = linyubinas@gmail.com
 [core]
-	excludesfile = ~/.gitignore_global
-	editor = nvim
-	ignorecase = true
-	quotepath = false
-	fileMode = false
+    excludesfile = ~/.gitignore_global
+    editor = nvim
+    ignorecase = true
+    quotepath = false
+    fileMode = false
 [color]
-	ui = auto
+    ui = auto
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
