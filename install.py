@@ -58,6 +58,10 @@ def install_spacemacs(force: bool) -> None:
     link(REPO / "spacemacs", HOME / ".spacemacs", force)
 
 
+def install_starship(force: bool) -> None:
+    link(REPO / "starship.toml", HOME / ".config/starship.toml", force)
+
+
 def install_zsh(force: bool) -> None:
     zshrc = HOME / ".zshrc"
     source_line = f"source {REPO / 'zsh-config.zsh'}"
@@ -74,6 +78,7 @@ INSTALLS: dict[str, tuple[str, object]] = {
     "git":       ("Git config",       install_git),
     "ideavim":   ("IdeaVim config",   install_ideavim),
     "spacemacs": ("Spacemacs config", install_spacemacs),
+    "starship":  ("Starship config",  install_starship),
     "zsh":       ("Zsh config",       install_zsh),
 }
 
