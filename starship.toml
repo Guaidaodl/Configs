@@ -3,27 +3,7 @@
 
 # Sets user-defined palette
 # Palettes must be defined _after_ this line
-palette = "catppuccin_mocha"
-
-format = """
-[░▒▓](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
-[](bg:blue fg:#a3aed2)\
-$directory\
-[](fg:blue bg:overlay0)\
-$git_branch\
-$git_status\
-[](fg:overlay0 bg:#212736)\
-$nodejs\
-$bun\
-$rust\
-$golang\
-$php\
-$python\
-[](fg:#212736 bg:#1d2230)\
-$time\
-[ ](fg:base)\
-\n$character"""
+palette = "catppuccin_frappe"
 
 # Starship modules
 [character]
@@ -32,19 +12,7 @@ success_symbol = "[[󰄛](green) ❯](peach)"
 error_symbol = "[[󰄛](red) ❯](peach)"
 vimcmd_symbol = "[󰄛 ❮](subtext1)" # For use with zsh-vi-mode
 
-
-[git_branch]
-symbol = ""
-style = "bg:overlay0"
-format = '[[ $symbol $branch ](fg:sapphire bg:overlay0)]($style)'
-
-[git_status]
-style = "bg:overlay0"
-format = '[[($all_status$ahead_behind )](fg:sapphire bg:overlay0)]($style)'
-
 [directory]
-style = "fg:#e3e5e5 bg:blue"
-format = "[ $path ]($style)"
 truncation_length = 0
 truncate_to_repo = false
 
@@ -77,12 +45,6 @@ disabled = true
 
 [kotlin]
 disabled = true
-
-[time]
-disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:overlay1 bg:base)]($style)'
 
 # Palette definitions
 [palettes.catppuccin_latte]
