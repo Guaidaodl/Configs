@@ -5,6 +5,8 @@ return {
         keys = {
             { "<leader>jb", "<cmd>Telescope buffers<CR>",              desc = "buffer" },
             { "<leader>jf", "<cmd>Telescope find_files<CR>",           desc = "files" },
+            { "<leader>jF", "<cmd>Telescope find_files no_ignore=true hidden=true<CR>", desc = "files(ALL)" },
+            { "<leader>ji", "<cmd>Telescope find_files no_ignore=true<CR>", desc = "files(include ignore)" },
             { "<leader>jh", "<cmd>Telescope command_history<CR>",      desc = "cmd history" },
             { "<leader>jj", "<cmd>Telescope jumplist<CR>",             desc = "jump list" },
             { "<leader>jt", "<cmd>Telescope lsp_document_symbols<CR>", desc = "buf symbols" },
