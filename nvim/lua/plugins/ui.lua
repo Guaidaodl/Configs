@@ -8,6 +8,13 @@ return {
         end,
     },
     {
+        "norcalli/nvim-colorizer.lua",
+        event = { "BufReadPost", "BufNewFile" },
+        config = function()
+            require("colorizer").setup()
+        end,
+    },
+    {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
