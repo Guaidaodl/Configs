@@ -11,11 +11,12 @@
     sl = stash list
     df = diff
     su = submodule update
+    ll = log --oneline
     l2 = log -2
     l5 = log -5
-    lg = log --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
-    lga = log --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
-    lgg = log --graph --all --pretty=format:'%Cred%h %Creset%<(100,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+    lg = log --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%Cred%h %Creset%<(80,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+    lga = log --graph --all --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%Cred%h %Creset%<(80,trunc)%s %Cgreen%ad %an %C(yellow)%d'
+    lgg = log --all --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%Cred%h %Creset%<(80,trunc)%s %Cgreen%ad %an %C(yellow)%d'
     lgdiff = log -p --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)'
     dfc = diff --cached
 [user]
