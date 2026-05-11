@@ -9,6 +9,20 @@ opt.laststatus = 2
 opt.showmatch = true
 opt.pumheight = 10
 
+-- Clipboard
+vim.g.clipboard = {
+    name = 'pbcopy',
+    copy = {
+        ['+'] = 'pbcopy',
+        ['*'] = 'pbcopy',
+    },
+    paste = {
+        ['+'] = 'pbpaste',
+        ['*'] = 'pbpaste',
+    },
+    cache_enabled = 1,
+}
+
 -- Indentation
 opt.expandtab = true
 opt.shiftwidth = 4
