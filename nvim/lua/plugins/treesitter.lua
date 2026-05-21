@@ -11,6 +11,7 @@ return {
                 "kotlin", "cmake",
                 "markdown", "markdown_inline",
                 "c", "cpp",
+                "mermaid",
             })
 
             vim.api.nvim_create_autocmd("FileType", {
