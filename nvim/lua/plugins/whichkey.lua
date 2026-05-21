@@ -42,7 +42,8 @@ return {
 
                 -- File
                 { "<leader>f",  group = "file" },
-                { "<leader>fq", "<cmd>q<CR>",  desc = "quit" },
+                { "<leader>fq", "<cmd>wq<CR>",  desc = "Save and Quit" },
+                { "<leader>fQ", "<cmd>q!<CR>",  desc = "Quit!" },
                 { "<leader>fn", "<cmd>new<CR>", desc = "new" },
                 { "<leader>fs", "<cmd>w<CR>",  desc = "save" },
                 { "<leader>fS", ":w ",         desc = "save as" },
