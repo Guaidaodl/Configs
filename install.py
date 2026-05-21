@@ -63,6 +63,7 @@ def install_starship(force: bool) -> None:
 
 
 def install_zsh(force: bool) -> None:
+    link(REPO / "zellij", HOME / ".config/zellij", force)
     zshrc = HOME / ".zshrc"
     source_line = f"source {REPO / 'zsh-config.zsh'}"
     if zshrc.exists() and source_line in zshrc.read_text():
