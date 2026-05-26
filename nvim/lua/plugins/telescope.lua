@@ -4,6 +4,7 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         keys = {
             { "<leader>jb", "<cmd>Telescope buffers<CR>",              desc = "buffer" },
+            { "<leader>jc", "<cmd>Telescope git_status<CR>",           desc = "change list" },
             { "<leader>jf", "<cmd>Telescope find_files<CR>",           desc = "files" },
             { "<leader>jF", "<cmd>Telescope find_files no_ignore=true hidden=true<CR>", desc = "files(ALL)" },
             { "<leader>ji", "<cmd>Telescope find_files no_ignore=true<CR>", desc = "files(include ignore)" },
@@ -31,8 +32,8 @@ return {
             },
             pickers = {
                 find_files = { previewer = false, theme = "dropdown" },
-                buffers    = { 
-                    previewer = false, 
+                buffers    = {
+                    previewer = false,
                     theme = "dropdown",
                     sort_lastused = true,
                 },
