@@ -20,10 +20,30 @@ return {
                 },
             })
 
-            -- Inject cmp capabilities into all LSP servers
+            -- 为所有 LSP 注入 cmp capabilities
             vim.lsp.config("*", {
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
             })
+
+            local function get_python_path(root_dir)
+                local candidates = {
+                    root_dir .. "/.venv/bin/python",
+                    root_dir .. "/venv/bin/python",
+                }
+
+                for _, path in ipairs(candidates) do
+                    if vim.fn.executable(path) == 1 then
+                        return path
+                    end
+                end
+
+                local python3 = vim.fn.exepath("python3")
+                if python3 ~= "" then
+                    return python3
+                end
+
+                return "python3"
+            end
 
             vim.lsp.config("lua_ls", {
                 settings = {
@@ -36,6 +56,23 @@ return {
                 },
             })
             vim.lsp.enable("lua_ls")
+            vim.lsp.config("pyright", {
+                before_init = function(_, config)
+                    local root_dir = config.root_dir or vim.fn.getcwd()
+
+                    config.settings = config.settings or {}
+                    config.settings.python = config.settings.python or {}
+                    config.settings.python.pythonPath = get_python_path(root_dir)
+                end,
+                settings = {
+                    python = {
+                        analysis = {
+                            autoSearchPaths = true,
+                            useLibraryCodeForTypes = true,
+                        },
+                    },
+                },
+            })
             vim.lsp.enable("pyright")
             vim.lsp.enable("jsonls")
             vim.lsp.enable("taplo")
