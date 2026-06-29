@@ -51,4 +51,6 @@ if vim.g.neovide then
     map("n", "<D-c>", '"+yy')
     map("v", "<D-c>", '"+y')
     map("v", "<D-x>", '"+x')
+    map("n", "<D-[>", '<C-o>')
+    map("n", "<D-]>", '<C-i>')
 end
