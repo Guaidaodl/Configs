@@ -91,6 +91,9 @@ return {
                     map("<leader>ls", vim.lsp.buf.signature_help,                          "signature")
                     map("<leader>lf", function() vim.lsp.buf.format({ async = true }) end, "format")
                     map("<F2>",       vim.lsp.buf.rename,                                  "rename")
+                    if vim.g.neovide then
+                        map("<D-LeftMouse>", vim.lsp.buf.definition, "definition")
+                    end
                 end,
             })
         end,
