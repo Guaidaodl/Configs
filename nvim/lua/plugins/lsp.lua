@@ -12,6 +12,14 @@ return {
         "neovim/nvim-lspconfig",
         dependencies = { "hrsh7th/cmp-nvim-lsp" },
         config = function()
+            vim.filetype.add({
+                extension = {
+                    jinja = "jinja",
+                    jinja2 = "jinja",
+                    j2 = "jinja",
+                },
+            })
+
             vim.diagnostic.config({
                 virtual_text = {
                     spacing = 2,
@@ -76,6 +84,7 @@ return {
             vim.lsp.enable("pyright")
             vim.lsp.enable("jsonls")
             vim.lsp.enable("taplo")
+            vim.lsp.enable("jinja_lsp")
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 callback = function(args)
